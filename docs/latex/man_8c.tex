@@ -1,0 +1,136 @@
+\hypertarget{man_8c}{}\doxysection{man.\+c File Reference}
+\label{man_8c}\index{man.c@{man.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{man_8c_ab456f738bec038962389b5c5cfca3de4}{MAXBUFFER}}~1000
+\item 
+\#define \mbox{\hyperlink{man_8c_a9c4636b2eca0b9f6c873269df40f3dda}{PIPE\+\_\+\+WRITE}}~1
+\item 
+\#define \mbox{\hyperlink{man_8c_a4d3fd39039e53cbef1db585ad1099a22}{PIPE\+\_\+\+READ}}~0
+\item 
+\#define \mbox{\hyperlink{man_8c_aedbdc4de92793ec613416fe9cff63436}{TENMILLISEC}}~10000
+\item 
+\#define \mbox{\hyperlink{man_8c_a1eb935c0b49607f19ed1a74e64ee5184}{DELAY\+\_\+\+FOR\+\_\+\+HOST\+\_\+\+REPLY}}~10  /$\ast$ Delay in ten of milliseconds $\ast$/
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{man_8c_adc38eb35b9d78b25d4f8fb06a1224039}{display\+\_\+host}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$list, struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
+\item 
+void \mbox{\hyperlink{man_8c_a6e6782ad3effc46713c100e88c9640ac}{change\+\_\+host}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$list, struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$curr\+\_\+host)
+\item 
+void \mbox{\hyperlink{man_8c_a6d059a9dc0d2eae334306ba2ecb3e524}{display\+\_\+host\+\_\+state}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
+\item 
+void \mbox{\hyperlink{man_8c_ac9ba2c3a1a62dc03767de9c4809cde22}{set\+\_\+host\+\_\+dir}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
+\item 
+char \mbox{\hyperlink{man_8c_a00394a4112e50ace1a9e2819b9144769}{man\+\_\+get\+\_\+user\+\_\+cmd}} (int curr\+\_\+host)
+\item 
+void \mbox{\hyperlink{man_8c_ae4378cb13b8341080a3563606fd5a8ff}{ping}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
+\item 
+int \mbox{\hyperlink{man_8c_ae6450ec543935f296e9b394801c1e9e7}{file\+\_\+upload}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
+\item 
+int \mbox{\hyperlink{man_8c_abd94258fb8b93b3ad5e2983ae6ed3687}{file\+\_\+download}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
+\item 
+void \mbox{\hyperlink{man_8c_aa6dcff712a69b62c3e78532997ea2396}{man\+\_\+main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{man_8c_a1eb935c0b49607f19ed1a74e64ee5184}\label{man_8c_a1eb935c0b49607f19ed1a74e64ee5184}} 
+\index{man.c@{man.c}!DELAY\_FOR\_HOST\_REPLY@{DELAY\_FOR\_HOST\_REPLY}}
+\index{DELAY\_FOR\_HOST\_REPLY@{DELAY\_FOR\_HOST\_REPLY}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{DELAY\_FOR\_HOST\_REPLY}{DELAY\_FOR\_HOST\_REPLY}}
+{\footnotesize\ttfamily \#define DELAY\+\_\+\+FOR\+\_\+\+HOST\+\_\+\+REPLY~10  /$\ast$ Delay in ten of milliseconds $\ast$/}
+
+\mbox{\Hypertarget{man_8c_ab456f738bec038962389b5c5cfca3de4}\label{man_8c_ab456f738bec038962389b5c5cfca3de4}} 
+\index{man.c@{man.c}!MAXBUFFER@{MAXBUFFER}}
+\index{MAXBUFFER@{MAXBUFFER}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{MAXBUFFER}{MAXBUFFER}}
+{\footnotesize\ttfamily \#define MAXBUFFER~1000}
+
+\mbox{\Hypertarget{man_8c_a4d3fd39039e53cbef1db585ad1099a22}\label{man_8c_a4d3fd39039e53cbef1db585ad1099a22}} 
+\index{man.c@{man.c}!PIPE\_READ@{PIPE\_READ}}
+\index{PIPE\_READ@{PIPE\_READ}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{PIPE\_READ}{PIPE\_READ}}
+{\footnotesize\ttfamily \#define PIPE\+\_\+\+READ~0}
+
+\mbox{\Hypertarget{man_8c_a9c4636b2eca0b9f6c873269df40f3dda}\label{man_8c_a9c4636b2eca0b9f6c873269df40f3dda}} 
+\index{man.c@{man.c}!PIPE\_WRITE@{PIPE\_WRITE}}
+\index{PIPE\_WRITE@{PIPE\_WRITE}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{PIPE\_WRITE}{PIPE\_WRITE}}
+{\footnotesize\ttfamily \#define PIPE\+\_\+\+WRITE~1}
+
+\mbox{\Hypertarget{man_8c_aedbdc4de92793ec613416fe9cff63436}\label{man_8c_aedbdc4de92793ec613416fe9cff63436}} 
+\index{man.c@{man.c}!TENMILLISEC@{TENMILLISEC}}
+\index{TENMILLISEC@{TENMILLISEC}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{TENMILLISEC}{TENMILLISEC}}
+{\footnotesize\ttfamily \#define TENMILLISEC~10000}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{man_8c_a6e6782ad3effc46713c100e88c9640ac}\label{man_8c_a6e6782ad3effc46713c100e88c9640ac}} 
+\index{man.c@{man.c}!change\_host@{change\_host}}
+\index{change\_host@{change\_host}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{change\_host()}{change\_host()}}
+{\footnotesize\ttfamily void change\+\_\+host (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{list,  }\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_adc38eb35b9d78b25d4f8fb06a1224039}\label{man_8c_adc38eb35b9d78b25d4f8fb06a1224039}} 
+\index{man.c@{man.c}!display\_host@{display\_host}}
+\index{display\_host@{display\_host}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{display\_host()}{display\_host()}}
+{\footnotesize\ttfamily void display\+\_\+host (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{list,  }\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_a6d059a9dc0d2eae334306ba2ecb3e524}\label{man_8c_a6d059a9dc0d2eae334306ba2ecb3e524}} 
+\index{man.c@{man.c}!display\_host\_state@{display\_host\_state}}
+\index{display\_host\_state@{display\_host\_state}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{display\_host\_state()}{display\_host\_state()}}
+{\footnotesize\ttfamily void display\+\_\+host\+\_\+state (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_abd94258fb8b93b3ad5e2983ae6ed3687}\label{man_8c_abd94258fb8b93b3ad5e2983ae6ed3687}} 
+\index{man.c@{man.c}!file\_download@{file\_download}}
+\index{file\_download@{file\_download}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{file\_download()}{file\_download()}}
+{\footnotesize\ttfamily int file\+\_\+download (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_ae6450ec543935f296e9b394801c1e9e7}\label{man_8c_ae6450ec543935f296e9b394801c1e9e7}} 
+\index{man.c@{man.c}!file\_upload@{file\_upload}}
+\index{file\_upload@{file\_upload}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{file\_upload()}{file\_upload()}}
+{\footnotesize\ttfamily int file\+\_\+upload (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_a00394a4112e50ace1a9e2819b9144769}\label{man_8c_a00394a4112e50ace1a9e2819b9144769}} 
+\index{man.c@{man.c}!man\_get\_user\_cmd@{man\_get\_user\_cmd}}
+\index{man\_get\_user\_cmd@{man\_get\_user\_cmd}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{man\_get\_user\_cmd()}{man\_get\_user\_cmd()}}
+{\footnotesize\ttfamily char man\+\_\+get\+\_\+user\+\_\+cmd (\begin{DoxyParamCaption}\item[{int}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_aa6dcff712a69b62c3e78532997ea2396}\label{man_8c_aa6dcff712a69b62c3e78532997ea2396}} 
+\index{man.c@{man.c}!man\_main@{man\_main}}
+\index{man\_main@{man\_main}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{man\_main()}{man\_main()}}
+{\footnotesize\ttfamily void man\+\_\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_ae4378cb13b8341080a3563606fd5a8ff}\label{man_8c_ae4378cb13b8341080a3563606fd5a8ff}} 
+\index{man.c@{man.c}!ping@{ping}}
+\index{ping@{ping}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{ping()}{ping()}}
+{\footnotesize\ttfamily void ping (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{man_8c_ac9ba2c3a1a62dc03767de9c4809cde22}\label{man_8c_ac9ba2c3a1a62dc03767de9c4809cde22}} 
+\index{man.c@{man.c}!set\_host\_dir@{set\_host\_dir}}
+\index{set\_host\_dir@{set\_host\_dir}!man.c@{man.c}}
+\doxysubsubsection{\texorpdfstring{set\_host\_dir()}{set\_host\_dir()}}
+{\footnotesize\ttfamily void set\+\_\+host\+\_\+dir (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
+

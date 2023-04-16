@@ -1,0 +1,151 @@
+\hypertarget{main_8h}{}\doxysection{main.\+h File Reference}
+\label{main_8h}\index{main.h@{main.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}}
+\item 
+struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}}
+\item 
+struct \mbox{\hyperlink{structpacket}{packet}}
+\begin{DoxyCompactList}\small\item\em This is a packet data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8h_aad5e2a18600df1a6b404baf946e1c1df}{BCAST\+\_\+\+ADDR}}~100
+\item 
+\#define \mbox{\hyperlink{main_8h_ac7642f3091690d2eb0363ad9a22c5383}{PAYLOAD\+\_\+\+MAX}}~100
+\item 
+\#define \mbox{\hyperlink{main_8h_a41f16f17393bc7dfd8c3a44a6ba595ba}{STRING\+\_\+\+MAX}}~100
+\item 
+\#define \mbox{\hyperlink{main_8h_af71324c57f05ff9e24bd384925dd6b17}{NAME\+\_\+\+LENGTH}}~100
+\item 
+\#define \mbox{\hyperlink{main_8h_ae6ccbc01485bc382de92136b5edc9914}{PKT\+\_\+\+PING\+\_\+\+REQ}}~0
+\item 
+\#define \mbox{\hyperlink{main_8h_a74109e561b3c7944c06720b9856fc5a1}{PKT\+\_\+\+PING\+\_\+\+REPLY}}~1
+\item 
+\#define \mbox{\hyperlink{main_8h_ac1584eb62df728663025c150a456efc1}{PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+START}}~2
+\item 
+\#define \mbox{\hyperlink{main_8h_ad05af74191df9482e3205e2743419336}{PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+CONT}}~3
+\item 
+\#define \mbox{\hyperlink{main_8h_a17a5e14fa8229805637e0d5160d61885}{PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+END}}~4
+\item 
+\#define \mbox{\hyperlink{main_8h_ab2d504a2b2969a2c39f40b16212fc713}{PKT\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+SEND}}~5
+\item 
+\#define \mbox{\hyperlink{main_8h_af2b635eef3601c4dd8c3edc5e4a61dae}{PKT\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+RECV}}~6
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430}{Net\+Node\+Type}} \{ \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430a1e8b0083abfe3fb8f02bcb3a1c26a766}{HOST}}
+, \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430a53396ea1193548270407675ea4eeee2b}{SWITCH}}
+ \}
+\item 
+enum \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}{Net\+Link\+Type}} \{ \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa9bc832fa28809fb974f6ce5bb0cc7117}{PIPE}}
+, \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa0917971ba80f3b48c7d0cf1b2da024c7}{SOCKET}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8h_aad5e2a18600df1a6b404baf946e1c1df}\label{main_8h_aad5e2a18600df1a6b404baf946e1c1df}} 
+\index{main.h@{main.h}!BCAST\_ADDR@{BCAST\_ADDR}}
+\index{BCAST\_ADDR@{BCAST\_ADDR}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{BCAST\_ADDR}{BCAST\_ADDR}}
+{\footnotesize\ttfamily \#define BCAST\+\_\+\+ADDR~100}
+
+\mbox{\Hypertarget{main_8h_af71324c57f05ff9e24bd384925dd6b17}\label{main_8h_af71324c57f05ff9e24bd384925dd6b17}} 
+\index{main.h@{main.h}!NAME\_LENGTH@{NAME\_LENGTH}}
+\index{NAME\_LENGTH@{NAME\_LENGTH}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{NAME\_LENGTH}{NAME\_LENGTH}}
+{\footnotesize\ttfamily \#define NAME\+\_\+\+LENGTH~100}
+
+\mbox{\Hypertarget{main_8h_ac7642f3091690d2eb0363ad9a22c5383}\label{main_8h_ac7642f3091690d2eb0363ad9a22c5383}} 
+\index{main.h@{main.h}!PAYLOAD\_MAX@{PAYLOAD\_MAX}}
+\index{PAYLOAD\_MAX@{PAYLOAD\_MAX}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PAYLOAD\_MAX}{PAYLOAD\_MAX}}
+{\footnotesize\ttfamily \#define PAYLOAD\+\_\+\+MAX~100}
+
+\mbox{\Hypertarget{main_8h_af2b635eef3601c4dd8c3edc5e4a61dae}\label{main_8h_af2b635eef3601c4dd8c3edc5e4a61dae}} 
+\index{main.h@{main.h}!PKT\_FILE\_DOWNLOAD\_RECV@{PKT\_FILE\_DOWNLOAD\_RECV}}
+\index{PKT\_FILE\_DOWNLOAD\_RECV@{PKT\_FILE\_DOWNLOAD\_RECV}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_FILE\_DOWNLOAD\_RECV}{PKT\_FILE\_DOWNLOAD\_RECV}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+RECV~6}
+
+\mbox{\Hypertarget{main_8h_ab2d504a2b2969a2c39f40b16212fc713}\label{main_8h_ab2d504a2b2969a2c39f40b16212fc713}} 
+\index{main.h@{main.h}!PKT\_FILE\_DOWNLOAD\_SEND@{PKT\_FILE\_DOWNLOAD\_SEND}}
+\index{PKT\_FILE\_DOWNLOAD\_SEND@{PKT\_FILE\_DOWNLOAD\_SEND}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_FILE\_DOWNLOAD\_SEND}{PKT\_FILE\_DOWNLOAD\_SEND}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+SEND~5}
+
+\mbox{\Hypertarget{main_8h_ad05af74191df9482e3205e2743419336}\label{main_8h_ad05af74191df9482e3205e2743419336}} 
+\index{main.h@{main.h}!PKT\_FILE\_UPLOAD\_CONT@{PKT\_FILE\_UPLOAD\_CONT}}
+\index{PKT\_FILE\_UPLOAD\_CONT@{PKT\_FILE\_UPLOAD\_CONT}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_FILE\_UPLOAD\_CONT}{PKT\_FILE\_UPLOAD\_CONT}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+CONT~3}
+
+\mbox{\Hypertarget{main_8h_a17a5e14fa8229805637e0d5160d61885}\label{main_8h_a17a5e14fa8229805637e0d5160d61885}} 
+\index{main.h@{main.h}!PKT\_FILE\_UPLOAD\_END@{PKT\_FILE\_UPLOAD\_END}}
+\index{PKT\_FILE\_UPLOAD\_END@{PKT\_FILE\_UPLOAD\_END}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_FILE\_UPLOAD\_END}{PKT\_FILE\_UPLOAD\_END}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+END~4}
+
+\mbox{\Hypertarget{main_8h_ac1584eb62df728663025c150a456efc1}\label{main_8h_ac1584eb62df728663025c150a456efc1}} 
+\index{main.h@{main.h}!PKT\_FILE\_UPLOAD\_START@{PKT\_FILE\_UPLOAD\_START}}
+\index{PKT\_FILE\_UPLOAD\_START@{PKT\_FILE\_UPLOAD\_START}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_FILE\_UPLOAD\_START}{PKT\_FILE\_UPLOAD\_START}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+START~2}
+
+\mbox{\Hypertarget{main_8h_a74109e561b3c7944c06720b9856fc5a1}\label{main_8h_a74109e561b3c7944c06720b9856fc5a1}} 
+\index{main.h@{main.h}!PKT\_PING\_REPLY@{PKT\_PING\_REPLY}}
+\index{PKT\_PING\_REPLY@{PKT\_PING\_REPLY}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_PING\_REPLY}{PKT\_PING\_REPLY}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+PING\+\_\+\+REPLY~1}
+
+\mbox{\Hypertarget{main_8h_ae6ccbc01485bc382de92136b5edc9914}\label{main_8h_ae6ccbc01485bc382de92136b5edc9914}} 
+\index{main.h@{main.h}!PKT\_PING\_REQ@{PKT\_PING\_REQ}}
+\index{PKT\_PING\_REQ@{PKT\_PING\_REQ}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_PING\_REQ}{PKT\_PING\_REQ}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+PING\+\_\+\+REQ~0}
+
+\mbox{\Hypertarget{main_8h_a41f16f17393bc7dfd8c3a44a6ba595ba}\label{main_8h_a41f16f17393bc7dfd8c3a44a6ba595ba}} 
+\index{main.h@{main.h}!STRING\_MAX@{STRING\_MAX}}
+\index{STRING\_MAX@{STRING\_MAX}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{STRING\_MAX}{STRING\_MAX}}
+{\footnotesize\ttfamily \#define STRING\+\_\+\+MAX~100}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}\label{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}} 
+\index{main.h@{main.h}!NetLinkType@{NetLinkType}}
+\index{NetLinkType@{NetLinkType}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{NetLinkType}{NetLinkType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}{Net\+Link\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PIPE@{PIPE}!main.h@{main.h}}\index{main.h@{main.h}!PIPE@{PIPE}}}\mbox{\Hypertarget{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa9bc832fa28809fb974f6ce5bb0cc7117}\label{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa9bc832fa28809fb974f6ce5bb0cc7117}} 
+PIPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOCKET@{SOCKET}!main.h@{main.h}}\index{main.h@{main.h}!SOCKET@{SOCKET}}}\mbox{\Hypertarget{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa0917971ba80f3b48c7d0cf1b2da024c7}\label{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa0917971ba80f3b48c7d0cf1b2da024c7}} 
+SOCKET&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{main_8h_a4a5505b26f2fbf500ca971fa9e421430}\label{main_8h_a4a5505b26f2fbf500ca971fa9e421430}} 
+\index{main.h@{main.h}!NetNodeType@{NetNodeType}}
+\index{NetNodeType@{NetNodeType}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{NetNodeType}{NetNodeType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430}{Net\+Node\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOST@{HOST}!main.h@{main.h}}\index{main.h@{main.h}!HOST@{HOST}}}\mbox{\Hypertarget{main_8h_a4a5505b26f2fbf500ca971fa9e421430a1e8b0083abfe3fb8f02bcb3a1c26a766}\label{main_8h_a4a5505b26f2fbf500ca971fa9e421430a1e8b0083abfe3fb8f02bcb3a1c26a766}} 
+HOST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SWITCH@{SWITCH}!main.h@{main.h}}\index{main.h@{main.h}!SWITCH@{SWITCH}}}\mbox{\Hypertarget{main_8h_a4a5505b26f2fbf500ca971fa9e421430a53396ea1193548270407675ea4eeee2b}\label{main_8h_a4a5505b26f2fbf500ca971fa9e421430a53396ea1193548270407675ea4eeee2b}} 
+SWITCH&\\
+\hline
+
+\end{DoxyEnumFields}

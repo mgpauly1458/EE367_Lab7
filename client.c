@@ -7,8 +7,9 @@
 
 #define PAYLOAD_MAX 1024
 
+/// This is a packet data type.
 struct packet {
-    char src;
+    char src; /// This is a src. It is the source host ID of the packet
     char dst;
     char type;
     int length;

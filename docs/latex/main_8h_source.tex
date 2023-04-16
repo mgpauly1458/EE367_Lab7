@@ -1,0 +1,55 @@
+\hypertarget{main_8h_source}{}\doxysection{main.\+h}
+\mbox{\hyperlink{main_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BCAST\_ADDR\ 100}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ PAYLOAD\_MAX\ 100}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ STRING\_MAX\ 100}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ NAME\_LENGTH\ 100}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430}{NetNodeType}}\ \{\ \textcolor{comment}{/*\ Types\ of\ network\ nodes\ */}}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430a1e8b0083abfe3fb8f02bcb3a1c26a766}{HOST}},}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430a53396ea1193548270407675ea4eeee2b}{SWITCH}}}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}{NetLinkType}}\ \{\ \textcolor{comment}{/*\ Types\ of\ linkls\ */}}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa9bc832fa28809fb974f6ce5bb0cc7117}{PIPE}},}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4aa0917971ba80f3b48c7d0cf1b2da024c7}{SOCKET}}}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__node}{net\_node}}\ \{\ \textcolor{comment}{/*\ Network\ node,\ e.g.,\ host\ or\ switch\ */}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main_8h_a4a5505b26f2fbf500ca971fa9e421430}{NetNodeType}}\ \mbox{\hyperlink{structnet__node_ae18d9ebf7289cdf85aad4ce2a2df6c5d}{type}};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__node_aad73c334ea15ebbc71b6285f8be7eebd}{id}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__node}{net\_node}}\ *\mbox{\hyperlink{structnet__node_a4c45baa7abf71119a74d35490dd17460}{next}};}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__port}{net\_port}}\ \{\ \textcolor{comment}{/*\ port\ to\ communicate\ with\ another\ node\ */}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}{NetLinkType}}\ \mbox{\hyperlink{structnet__port_a35a968ffac1cefb1e999743d5b342881}{type}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__port_aa3afce4abb5e3f888b4f98bb91129fcc}{pipe\_host\_id}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__port_a293d259fb7dea2953ef34d38a2dac4f3}{pipe\_send\_fd}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__port_aac8407e391bbacf9e48a2da5d0c2bd1b}{pipe\_recv\_fd}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__port}{net\_port}}\ *\mbox{\hyperlink{structnet__port_a521276807faf17f52cb92b4c1eede953}{next}};}
+\DoxyCodeLine{00029\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__port_af520bf5dec6c1b21cee632adcf2981e4}{sock\_host\_id}};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{/*\ Packet\ sent\ between\ nodes\ \ */}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpacket}{packet}}\ \{\ \textcolor{comment}{/*\ struct\ for\ a\ packet\ */}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structpacket_ae2340973e423e22d9924cf31fb75b975}{src}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structpacket_a74cbe94e077f2f9e76666876317582e2}{dst}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structpacket_a352b1d429d9d96e85eb74f4a2c5203f5}{type}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpacket_a146f8dec4029aa113a1bd6996a83fadb}{length}};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structpacket_a50e97c9ec4b8bd17c9e39e5a526b4caf}{payload}}[\mbox{\hyperlink{main_8h_ac7642f3091690d2eb0363ad9a22c5383}{PAYLOAD\_MAX}}];}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{/*\ Types\ of\ packets\ */}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ PKT\_PING\_REQ\ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ PKT\_PING\_REPLY\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ PKT\_FILE\_UPLOAD\_START\ \ \ 2}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ PKT\_FILE\_UPLOAD\_CONT\ 3}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ PKT\_FILE\_UPLOAD\_END\ 4}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ PKT\_FILE\_DOWNLOAD\_SEND\ 5}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ PKT\_FILE\_DOWNLOAD\_RECV\ 6}}
+
+\end{DoxyCode}

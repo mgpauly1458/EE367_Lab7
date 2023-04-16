@@ -1,0 +1,61 @@
+\hypertarget{net_8h}{}\doxysection{net.\+h File Reference}
+\label{net_8h}\index{net.h@{net.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{net_8h_a22b2914249628f6cba7d4e1f138c969f}{net\+\_\+init}} ()
+\item 
+struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ \mbox{\hyperlink{net_8h_aec19f600a98c80de0a2d5369350e0194}{net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list}} ()
+\item 
+struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ \mbox{\hyperlink{net_8h_ae5ce1bc73a406917997636e3d52853a8}{net\+\_\+get\+\_\+host\+\_\+port}} (int host\+\_\+id)
+\item 
+struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ \mbox{\hyperlink{net_8h_aa59500439b78e290e89c2c01b8cac797}{net\+\_\+get\+\_\+node\+\_\+list}} ()
+\item 
+struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ \mbox{\hyperlink{net_8h_a2d57f7f0c32601131260cb00d1d6518d}{net\+\_\+get\+\_\+port\+\_\+list}} (int host\+\_\+id)
+\item 
+struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ \mbox{\hyperlink{net_8h_a1e50ac47f3d599c9148f0a01fc07fb8a}{get\+\_\+g\+\_\+net\+\_\+data}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{net_8h_a1e50ac47f3d599c9148f0a01fc07fb8a}\label{net_8h_a1e50ac47f3d599c9148f0a01fc07fb8a}} 
+\index{net.h@{net.h}!get\_g\_net\_data@{get\_g\_net\_data}}
+\index{get\_g\_net\_data@{get\_g\_net\_data}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{get\_g\_net\_data()}{get\_g\_net\_data()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ get\+\_\+g\+\_\+net\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8h_ae5ce1bc73a406917997636e3d52853a8}\label{net_8h_ae5ce1bc73a406917997636e3d52853a8}} 
+\index{net.h@{net.h}!net\_get\_host\_port@{net\_get\_host\_port}}
+\index{net\_get\_host\_port@{net\_get\_host\_port}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{net\_get\_host\_port()}{net\_get\_host\_port()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ net\+\_\+get\+\_\+host\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8h_aec19f600a98c80de0a2d5369350e0194}\label{net_8h_aec19f600a98c80de0a2d5369350e0194}} 
+\index{net.h@{net.h}!net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}}
+\index{net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{net\_get\_man\_ports\_at\_man\_list()}{net\_get\_man\_ports\_at\_man\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8h_aa59500439b78e290e89c2c01b8cac797}\label{net_8h_aa59500439b78e290e89c2c01b8cac797}} 
+\index{net.h@{net.h}!net\_get\_node\_list@{net\_get\_node\_list}}
+\index{net\_get\_node\_list@{net\_get\_node\_list}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{net\_get\_node\_list()}{net\_get\_node\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ net\+\_\+get\+\_\+node\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8h_a2d57f7f0c32601131260cb00d1d6518d}\label{net_8h_a2d57f7f0c32601131260cb00d1d6518d}} 
+\index{net.h@{net.h}!net\_get\_port\_list@{net\_get\_port\_list}}
+\index{net\_get\_port\_list@{net\_get\_port\_list}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{net\_get\_port\_list()}{net\_get\_port\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ net\+\_\+get\+\_\+port\+\_\+list (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8h_a22b2914249628f6cba7d4e1f138c969f}\label{net_8h_a22b2914249628f6cba7d4e1f138c969f}} 
+\index{net.h@{net.h}!net\_init@{net\_init}}
+\index{net\_init@{net\_init}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{net\_init()}{net\_init()}}
+{\footnotesize\ttfamily int net\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

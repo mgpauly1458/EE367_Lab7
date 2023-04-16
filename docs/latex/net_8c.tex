@@ -1,0 +1,208 @@
+\hypertarget{net_8c}{}\doxysection{net.\+c File Reference}
+\label{net_8c}\index{net.c@{net.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}packet.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnet__link}{net\+\_\+link}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{net_8c_a369266c24eacffb87046522897a570d5}{\+\_\+\+GNU\+\_\+\+SOURCE}}
+\item 
+\#define \mbox{\hyperlink{net_8c_af43dedece15d018ffad8970492870bac}{MAX\+\_\+\+FILE\+\_\+\+NAME}}~100
+\item 
+\#define \mbox{\hyperlink{net_8c_a4d3fd39039e53cbef1db585ad1099a22}{PIPE\+\_\+\+READ}}~0
+\item 
+\#define \mbox{\hyperlink{net_8c_a9c4636b2eca0b9f6c873269df40f3dda}{PIPE\+\_\+\+WRITE}}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1}{bool}} \{ \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+, \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}{TRUE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ \mbox{\hyperlink{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}{get\+\_\+g\+\_\+net\+\_\+data}} ()
+\item 
+int \mbox{\hyperlink{net_8c_a99a6cd9c18d2bb5266e61289894bccc5}{load\+\_\+net\+\_\+data\+\_\+file}} ()
+\item 
+void \mbox{\hyperlink{net_8c_ae2896d953358763e21f7478f31bb4b25}{create\+\_\+node\+\_\+list}} ()
+\item 
+void \mbox{\hyperlink{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}{create\+\_\+port\+\_\+list}} ()
+\item 
+void \mbox{\hyperlink{net_8c_afc4c86c91de3ff42656532fb55c97e9e}{create\+\_\+man\+\_\+ports}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$p\+\_\+m, struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$$\ast$p\+\_\+h)
+\item 
+void \mbox{\hyperlink{net_8c_a8587acb35c535e4f5872b66261443efc}{net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts}} ()
+\item 
+void \mbox{\hyperlink{net_8c_a01acc3efe0d03b893ad75c508d0915b9}{net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts\+\_\+except}} (int host\+\_\+id)
+\item 
+void \mbox{\hyperlink{net_8c_a187ff497eaba8920c33a9355fab358f8}{net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts}} ()
+\item 
+void \mbox{\hyperlink{net_8c_a4ca1b8c86b93e7aff77cdac060e8920b}{net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+man}} ()
+\item 
+void \mbox{\hyperlink{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}{net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+man}} ()
+\item 
+struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ \mbox{\hyperlink{net_8c_a2d57f7f0c32601131260cb00d1d6518d}{net\+\_\+get\+\_\+port\+\_\+list}} (int host\+\_\+id)
+\item 
+struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ \mbox{\hyperlink{net_8c_aa59500439b78e290e89c2c01b8cac797}{net\+\_\+get\+\_\+node\+\_\+list}} ()
+\item 
+struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ \mbox{\hyperlink{net_8c_aec19f600a98c80de0a2d5369350e0194}{net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list}} ()
+\item 
+struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ \mbox{\hyperlink{net_8c_ae5ce1bc73a406917997636e3d52853a8}{net\+\_\+get\+\_\+host\+\_\+port}} (int host\+\_\+id)
+\item 
+int \mbox{\hyperlink{net_8c_a22b2914249628f6cba7d4e1f138c969f}{net\+\_\+init}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{net_8c_a369266c24eacffb87046522897a570d5}\label{net_8c_a369266c24eacffb87046522897a570d5}} 
+\index{net.c@{net.c}!\_GNU\_SOURCE@{\_GNU\_SOURCE}}
+\index{\_GNU\_SOURCE@{\_GNU\_SOURCE}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{\_GNU\_SOURCE}{\_GNU\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+GNU\+\_\+\+SOURCE}
+
+\mbox{\Hypertarget{net_8c_af43dedece15d018ffad8970492870bac}\label{net_8c_af43dedece15d018ffad8970492870bac}} 
+\index{net.c@{net.c}!MAX\_FILE\_NAME@{MAX\_FILE\_NAME}}
+\index{MAX\_FILE\_NAME@{MAX\_FILE\_NAME}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_FILE\_NAME}{MAX\_FILE\_NAME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+NAME~100}
+
+\mbox{\Hypertarget{net_8c_a4d3fd39039e53cbef1db585ad1099a22}\label{net_8c_a4d3fd39039e53cbef1db585ad1099a22}} 
+\index{net.c@{net.c}!PIPE\_READ@{PIPE\_READ}}
+\index{PIPE\_READ@{PIPE\_READ}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{PIPE\_READ}{PIPE\_READ}}
+{\footnotesize\ttfamily \#define PIPE\+\_\+\+READ~0}
+
+\mbox{\Hypertarget{net_8c_a9c4636b2eca0b9f6c873269df40f3dda}\label{net_8c_a9c4636b2eca0b9f6c873269df40f3dda}} 
+\index{net.c@{net.c}!PIPE\_WRITE@{PIPE\_WRITE}}
+\index{PIPE\_WRITE@{PIPE\_WRITE}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{PIPE\_WRITE}{PIPE\_WRITE}}
+{\footnotesize\ttfamily \#define PIPE\+\_\+\+WRITE~1}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{net_8c_af6a258d8f3ee5206d682d799316314b1}\label{net_8c_af6a258d8f3ee5206d682d799316314b1}} 
+\index{net.c@{net.c}!bool@{bool}}
+\index{bool@{bool}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{bool}{bool}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1}{bool}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FALSE@{FALSE}!net.c@{net.c}}\index{net.c@{net.c}!FALSE@{FALSE}}}\mbox{\Hypertarget{net_8c_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}\label{net_8c_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}} 
+FALSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRUE@{TRUE}!net.c@{net.c}}\index{net.c@{net.c}!TRUE@{TRUE}}}\mbox{\Hypertarget{net_8c_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}\label{net_8c_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}} 
+TRUE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{net_8c_afc4c86c91de3ff42656532fb55c97e9e}\label{net_8c_afc4c86c91de3ff42656532fb55c97e9e}} 
+\index{net.c@{net.c}!create\_man\_ports@{create\_man\_ports}}
+\index{create\_man\_ports@{create\_man\_ports}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{create\_man\_ports()}{create\_man\_ports()}}
+{\footnotesize\ttfamily void create\+\_\+man\+\_\+ports (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$}]{p\+\_\+m,  }\item[{struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$$\ast$}]{p\+\_\+h }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_ae2896d953358763e21f7478f31bb4b25}\label{net_8c_ae2896d953358763e21f7478f31bb4b25}} 
+\index{net.c@{net.c}!create\_node\_list@{create\_node\_list}}
+\index{create\_node\_list@{create\_node\_list}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{create\_node\_list()}{create\_node\_list()}}
+{\footnotesize\ttfamily void create\+\_\+node\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}\label{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}} 
+\index{net.c@{net.c}!create\_port\_list@{create\_port\_list}}
+\index{create\_port\_list@{create\_port\_list}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{create\_port\_list()}{create\_port\_list()}}
+{\footnotesize\ttfamily void create\+\_\+port\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}\label{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}} 
+\index{net.c@{net.c}!get\_g\_net\_data@{get\_g\_net\_data}}
+\index{get\_g\_net\_data@{get\_g\_net\_data}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{get\_g\_net\_data()}{get\_g\_net\_data()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ get\+\_\+g\+\_\+net\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a99a6cd9c18d2bb5266e61289894bccc5}\label{net_8c_a99a6cd9c18d2bb5266e61289894bccc5}} 
+\index{net.c@{net.c}!load\_net\_data\_file@{load\_net\_data\_file}}
+\index{load\_net\_data\_file@{load\_net\_data\_file}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{load\_net\_data\_file()}{load\_net\_data\_file()}}
+{\footnotesize\ttfamily int load\+\_\+net\+\_\+data\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a8587acb35c535e4f5872b66261443efc}\label{net_8c_a8587acb35c535e4f5872b66261443efc}} 
+\index{net.c@{net.c}!net\_close\_man\_ports\_at\_hosts@{net\_close\_man\_ports\_at\_hosts}}
+\index{net\_close\_man\_ports\_at\_hosts@{net\_close\_man\_ports\_at\_hosts}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_close\_man\_ports\_at\_hosts()}{net\_close\_man\_ports\_at\_hosts()}}
+{\footnotesize\ttfamily void net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a01acc3efe0d03b893ad75c508d0915b9}\label{net_8c_a01acc3efe0d03b893ad75c508d0915b9}} 
+\index{net.c@{net.c}!net\_close\_man\_ports\_at\_hosts\_except@{net\_close\_man\_ports\_at\_hosts\_except}}
+\index{net\_close\_man\_ports\_at\_hosts\_except@{net\_close\_man\_ports\_at\_hosts\_except}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_close\_man\_ports\_at\_hosts\_except()}{net\_close\_man\_ports\_at\_hosts\_except()}}
+{\footnotesize\ttfamily void net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts\+\_\+except (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a4ca1b8c86b93e7aff77cdac060e8920b}\label{net_8c_a4ca1b8c86b93e7aff77cdac060e8920b}} 
+\index{net.c@{net.c}!net\_close\_man\_ports\_at\_man@{net\_close\_man\_ports\_at\_man}}
+\index{net\_close\_man\_ports\_at\_man@{net\_close\_man\_ports\_at\_man}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_close\_man\_ports\_at\_man()}{net\_close\_man\_ports\_at\_man()}}
+{\footnotesize\ttfamily void net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+man (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a187ff497eaba8920c33a9355fab358f8}\label{net_8c_a187ff497eaba8920c33a9355fab358f8}} 
+\index{net.c@{net.c}!net\_free\_man\_ports\_at\_hosts@{net\_free\_man\_ports\_at\_hosts}}
+\index{net\_free\_man\_ports\_at\_hosts@{net\_free\_man\_ports\_at\_hosts}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_free\_man\_ports\_at\_hosts()}{net\_free\_man\_ports\_at\_hosts()}}
+{\footnotesize\ttfamily void net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}\label{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}} 
+\index{net.c@{net.c}!net\_free\_man\_ports\_at\_man@{net\_free\_man\_ports\_at\_man}}
+\index{net\_free\_man\_ports\_at\_man@{net\_free\_man\_ports\_at\_man}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_free\_man\_ports\_at\_man()}{net\_free\_man\_ports\_at\_man()}}
+{\footnotesize\ttfamily void net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+man (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_ae5ce1bc73a406917997636e3d52853a8}\label{net_8c_ae5ce1bc73a406917997636e3d52853a8}} 
+\index{net.c@{net.c}!net\_get\_host\_port@{net\_get\_host\_port}}
+\index{net\_get\_host\_port@{net\_get\_host\_port}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_get\_host\_port()}{net\_get\_host\_port()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ net\+\_\+get\+\_\+host\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_aec19f600a98c80de0a2d5369350e0194}\label{net_8c_aec19f600a98c80de0a2d5369350e0194}} 
+\index{net.c@{net.c}!net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}}
+\index{net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_get\_man\_ports\_at\_man\_list()}{net\_get\_man\_ports\_at\_man\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_aa59500439b78e290e89c2c01b8cac797}\label{net_8c_aa59500439b78e290e89c2c01b8cac797}} 
+\index{net.c@{net.c}!net\_get\_node\_list@{net\_get\_node\_list}}
+\index{net\_get\_node\_list@{net\_get\_node\_list}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_get\_node\_list()}{net\_get\_node\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ net\+\_\+get\+\_\+node\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a2d57f7f0c32601131260cb00d1d6518d}\label{net_8c_a2d57f7f0c32601131260cb00d1d6518d}} 
+\index{net.c@{net.c}!net\_get\_port\_list@{net\_get\_port\_list}}
+\index{net\_get\_port\_list@{net\_get\_port\_list}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_get\_port\_list()}{net\_get\_port\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ net\+\_\+get\+\_\+port\+\_\+list (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{net_8c_a22b2914249628f6cba7d4e1f138c969f}\label{net_8c_a22b2914249628f6cba7d4e1f138c969f}} 
+\index{net.c@{net.c}!net\_init@{net\_init}}
+\index{net\_init@{net\_init}!net.c@{net.c}}
+\doxysubsubsection{\texorpdfstring{net\_init()}{net\_init()}}
+{\footnotesize\ttfamily int net\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

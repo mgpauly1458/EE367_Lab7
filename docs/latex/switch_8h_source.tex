@@ -1,0 +1,30 @@
+\hypertarget{switch_8h_source}{}\doxysection{switch.\+h}
+\mbox{\hyperlink{switch_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#define\ MAX\_TABLE\_SIZE\ 100}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{switch_8h_a95a08d3598a416ff667b9728c0a62e6f}{switch\_main}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structswitch__job}{switch\_job}}\ \{}
+\DoxyCodeLine{00006\ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpacket}{packet}}\ *\mbox{\hyperlink{structswitch__job_a7407c64ded785669daf60d8a3268cd83}{packet}};}
+\DoxyCodeLine{00007\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structswitch__job_a4ae5a052cb412d268a849c5eef956b06}{in\_port\_index}};}
+\DoxyCodeLine{00008\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structswitch__job_a1d033834a61ef98a9318183c771a2571}{out\_port\_index}};}
+\DoxyCodeLine{00009\ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structswitch__job}{switch\_job}}\ *\mbox{\hyperlink{structswitch__job_a9b0a9e2526773291ea64bb743202acff}{next}};}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structswitch__job__queue}{switch\_job\_queue}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structswitch__job}{switch\_job}}\ *\mbox{\hyperlink{structswitch__job__queue_abc2a74af12abc1f71bb676806613e1d5}{head}};}
+\DoxyCodeLine{00014\ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structswitch__job}{switch\_job}}\ *\mbox{\hyperlink{structswitch__job__queue_a2f900fe5f6ed62ca1f861223b00a8b94}{tail}};}
+\DoxyCodeLine{00015\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structswitch__job__queue_aecfeb467ba9b346c934a6f60f82679a1}{occ}};}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{switch_8h_ab0629c386e170aa963c8bb398a001437}{display\_port\_info}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structnet__port}{net\_port}}*);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structforward__table}{forward\_table}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structforward__table_af23386e495a9b88cf0a66a888ede25b2}{size}};}
+\DoxyCodeLine{00022\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structforward__table_a1974c441c4722629f453135bd912a095}{valid}}[100];}
+\DoxyCodeLine{00023\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structforward__table_a269ec3cf05b377d36e30f909dcdc2df9}{HostID}}[100];}
+\DoxyCodeLine{00024\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structforward__table_ad53f3c11ebd81cfa42edd8be92d7a33d}{port}}[100];}
+\DoxyCodeLine{00025\ \};}
+
+\end{DoxyCode}

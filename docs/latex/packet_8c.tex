@@ -1,0 +1,34 @@
+\hypertarget{packet_8c}{}\doxysection{packet.\+c File Reference}
+\label{packet_8c}\index{packet.c@{packet.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}packet.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sockets.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{packet_8c_a02864b5c19698e976618ad7fa974190a}{packet\+\_\+send}} (struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$port, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
+\item 
+int \mbox{\hyperlink{packet_8c_a07454c44c671aa460683664b2bbdc40c}{packet\+\_\+recv}} (struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$port, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{packet_8c_a07454c44c671aa460683664b2bbdc40c}\label{packet_8c_a07454c44c671aa460683664b2bbdc40c}} 
+\index{packet.c@{packet.c}!packet\_recv@{packet\_recv}}
+\index{packet\_recv@{packet\_recv}!packet.c@{packet.c}}
+\doxysubsubsection{\texorpdfstring{packet\_recv()}{packet\_recv()}}
+{\footnotesize\ttfamily int packet\+\_\+recv (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$}]{port,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{packet_8c_a02864b5c19698e976618ad7fa974190a}\label{packet_8c_a02864b5c19698e976618ad7fa974190a}} 
+\index{packet.c@{packet.c}!packet\_send@{packet\_send}}
+\index{packet\_send@{packet\_send}!packet.c@{packet.c}}
+\doxysubsubsection{\texorpdfstring{packet\_send()}{packet\_send()}}
+{\footnotesize\ttfamily void packet\+\_\+send (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$}]{port,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
+

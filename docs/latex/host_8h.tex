@@ -1,0 +1,108 @@
+\hypertarget{host_8h}{}\doxysection{host.\+h File Reference}
+\label{host_8h}\index{host.h@{host.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}}
+\item 
+struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\+\_\+job\+\_\+type}} \{ \newline
+\mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a0fbc7e4f10742101424c721d3fd6e61e}{JOB\+\_\+\+SEND\+\_\+\+PKT\+\_\+\+ALL\+\_\+\+PORTS}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a11d8094fa5d8d087d88a966e60f55b46}{JOB\+\_\+\+PING\+\_\+\+SEND\+\_\+\+REQ}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40aa2bda760b0dc1bc3ce5e455b65047de6}{JOB\+\_\+\+PING\+\_\+\+SEND\+\_\+\+REPLY}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a310508ddf68a676cb544cc719b42a040}{JOB\+\_\+\+PING\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+REPLY}}
+, \newline
+\mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a991aca8febd75e91407da719ed4a142e}{JOB\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+SEND}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a7f803b98770719fc91e78bdd08a3654f}{JOB\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+RECV}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40ab4e6332f4ec5a12100dfd987a6ebbcbe}{JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+SEND}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a65c840cd2f4655bcdc23ae3d12f5475e}{JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+START}}
+, \newline
+\mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40af257f5c84b3e7c250b54234a2a21a730}{JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+CONT}}
+, \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a9128b2e5992d6346d2c583e420a48a57}{JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+END}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{host_8h_a35f54a0431212d003631782de8c3fe6b}{host\+\_\+main}} (int host\+\_\+id)
+\item 
+void \mbox{\hyperlink{host_8h_ad4eda050472b9f02b29a574ddeb04b05}{display\+\_\+packet\+\_\+info}} (struct \mbox{\hyperlink{structpacket}{packet}} $\ast$)
+\item 
+void \mbox{\hyperlink{host_8h_a312ab59f3184926dc8c5a97908dee884}{display\+\_\+host\+\_\+job\+\_\+info}} (struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$, int)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40}} 
+\index{host.h@{host.h}!host\_job\_type@{host\_job\_type}}
+\index{host\_job\_type@{host\_job\_type}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{host\_job\_type}{host\_job\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\+\_\+job\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_SEND\_PKT\_ALL\_PORTS@{JOB\_SEND\_PKT\_ALL\_PORTS}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_SEND\_PKT\_ALL\_PORTS@{JOB\_SEND\_PKT\_ALL\_PORTS}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a0fbc7e4f10742101424c721d3fd6e61e}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a0fbc7e4f10742101424c721d3fd6e61e}} 
+JOB\+\_\+\+SEND\+\_\+\+PKT\+\_\+\+ALL\+\_\+\+PORTS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_PING\_SEND\_REQ@{JOB\_PING\_SEND\_REQ}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_PING\_SEND\_REQ@{JOB\_PING\_SEND\_REQ}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a11d8094fa5d8d087d88a966e60f55b46}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a11d8094fa5d8d087d88a966e60f55b46}} 
+JOB\+\_\+\+PING\+\_\+\+SEND\+\_\+\+REQ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_PING\_SEND\_REPLY@{JOB\_PING\_SEND\_REPLY}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_PING\_SEND\_REPLY@{JOB\_PING\_SEND\_REPLY}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40aa2bda760b0dc1bc3ce5e455b65047de6}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40aa2bda760b0dc1bc3ce5e455b65047de6}} 
+JOB\+\_\+\+PING\+\_\+\+SEND\+\_\+\+REPLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_PING\_WAIT\_FOR\_REPLY@{JOB\_PING\_WAIT\_FOR\_REPLY}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_PING\_WAIT\_FOR\_REPLY@{JOB\_PING\_WAIT\_FOR\_REPLY}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a310508ddf68a676cb544cc719b42a040}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a310508ddf68a676cb544cc719b42a040}} 
+JOB\+\_\+\+PING\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+REPLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_FILE\_DOWNLOAD\_SEND@{JOB\_FILE\_DOWNLOAD\_SEND}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_FILE\_DOWNLOAD\_SEND@{JOB\_FILE\_DOWNLOAD\_SEND}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a991aca8febd75e91407da719ed4a142e}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a991aca8febd75e91407da719ed4a142e}} 
+JOB\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+SEND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_FILE\_DOWNLOAD\_RECV@{JOB\_FILE\_DOWNLOAD\_RECV}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_FILE\_DOWNLOAD\_RECV@{JOB\_FILE\_DOWNLOAD\_RECV}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a7f803b98770719fc91e78bdd08a3654f}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a7f803b98770719fc91e78bdd08a3654f}} 
+JOB\+\_\+\+FILE\+\_\+\+DOWNLOAD\+\_\+\+RECV&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_FILE\_UPLOAD\_SEND@{JOB\_FILE\_UPLOAD\_SEND}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_FILE\_UPLOAD\_SEND@{JOB\_FILE\_UPLOAD\_SEND}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40ab4e6332f4ec5a12100dfd987a6ebbcbe}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40ab4e6332f4ec5a12100dfd987a6ebbcbe}} 
+JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+SEND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_FILE\_UPLOAD\_RECV\_START@{JOB\_FILE\_UPLOAD\_RECV\_START}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_FILE\_UPLOAD\_RECV\_START@{JOB\_FILE\_UPLOAD\_RECV\_START}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a65c840cd2f4655bcdc23ae3d12f5475e}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a65c840cd2f4655bcdc23ae3d12f5475e}} 
+JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_FILE\_UPLOAD\_RECV\_CONT@{JOB\_FILE\_UPLOAD\_RECV\_CONT}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_FILE\_UPLOAD\_RECV\_CONT@{JOB\_FILE\_UPLOAD\_RECV\_CONT}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40af257f5c84b3e7c250b54234a2a21a730}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40af257f5c84b3e7c250b54234a2a21a730}} 
+JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+CONT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JOB\_FILE\_UPLOAD\_RECV\_END@{JOB\_FILE\_UPLOAD\_RECV\_END}!host.h@{host.h}}\index{host.h@{host.h}!JOB\_FILE\_UPLOAD\_RECV\_END@{JOB\_FILE\_UPLOAD\_RECV\_END}}}\mbox{\Hypertarget{host_8h_a6c2f6cdd2948f011e385256203daaf40a9128b2e5992d6346d2c583e420a48a57}\label{host_8h_a6c2f6cdd2948f011e385256203daaf40a9128b2e5992d6346d2c583e420a48a57}} 
+JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{host_8h_a312ab59f3184926dc8c5a97908dee884}\label{host_8h_a312ab59f3184926dc8c5a97908dee884}} 
+\index{host.h@{host.h}!display\_host\_job\_info@{display\_host\_job\_info}}
+\index{display\_host\_job\_info@{display\_host\_job\_info}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{display\_host\_job\_info()}{display\_host\_job\_info()}}
+{\footnotesize\ttfamily void display\+\_\+host\+\_\+job\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$}]{job,  }\item[{int}]{hostid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{host_8h_ad4eda050472b9f02b29a574ddeb04b05}\label{host_8h_ad4eda050472b9f02b29a574ddeb04b05}} 
+\index{host.h@{host.h}!display\_packet\_info@{display\_packet\_info}}
+\index{display\_packet\_info@{display\_packet\_info}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{display\_packet\_info()}{display\_packet\_info()}}
+{\footnotesize\ttfamily void display\+\_\+packet\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{pkt }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{host_8h_a35f54a0431212d003631782de8c3fe6b}\label{host_8h_a35f54a0431212d003631782de8c3fe6b}} 
+\index{host.h@{host.h}!host\_main@{host\_main}}
+\index{host\_main@{host\_main}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{host\_main()}{host\_main()}}
+{\footnotesize\ttfamily void host\+\_\+main (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
+

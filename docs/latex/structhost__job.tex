@@ -1,0 +1,97 @@
+\hypertarget{structhost__job}{}\doxysection{host\+\_\+job Struct Reference}
+\label{structhost__job}\index{host\_job@{host\_job}}
+
+
+{\ttfamily \#include $<$host.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\+\_\+job\+\_\+type}} \mbox{\hyperlink{structhost__job_a8ec32c8e86bad3dfd6e6665b8cc6b2f3}{type}}
+\item 
+struct \mbox{\hyperlink{structpacket}{packet}} $\ast$ \mbox{\hyperlink{structhost__job_ae25a5a65439ea9bad9e846e16d1e7ae7}{packet}}
+\item 
+int \mbox{\hyperlink{structhost__job_a22e9731757a5e33d8088e69b89838ffd}{in\+\_\+port\+\_\+index}}
+\item 
+int \mbox{\hyperlink{structhost__job_a877fecbd8902feee622d02048013277a}{out\+\_\+port\+\_\+index}}
+\item 
+char \mbox{\hyperlink{structhost__job_a6f5c1f2c1d396993ac48b7055f424ad0}{fname\+\_\+download}} \mbox{[}100\mbox{]}
+\item 
+char \mbox{\hyperlink{structhost__job_a3cb4ebcc3e78638ddeac174a83adb972}{fname\+\_\+upload}} \mbox{[}100\mbox{]}
+\item 
+int \mbox{\hyperlink{structhost__job_a121005898372f15f4306e63a5f7dfc1a}{ping\+\_\+timer}}
+\item 
+int \mbox{\hyperlink{structhost__job_a9a741067cae738c93b140ecd9055d0c7}{file\+\_\+upload\+\_\+dst}}
+\item 
+int \mbox{\hyperlink{structhost__job_a93f7651274dcd7ac57f5f8eff13c3ccf}{file\+\_\+download\+\_\+dst}}
+\item 
+struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$ \mbox{\hyperlink{structhost__job_a3ef9a9d887b8ab40a17053e69dd62190}{next}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structhost__job_a93f7651274dcd7ac57f5f8eff13c3ccf}\label{structhost__job_a93f7651274dcd7ac57f5f8eff13c3ccf}} 
+\index{host\_job@{host\_job}!file\_download\_dst@{file\_download\_dst}}
+\index{file\_download\_dst@{file\_download\_dst}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{file\_download\_dst}{file\_download\_dst}}
+{\footnotesize\ttfamily int host\+\_\+job\+::file\+\_\+download\+\_\+dst}
+
+\mbox{\Hypertarget{structhost__job_a9a741067cae738c93b140ecd9055d0c7}\label{structhost__job_a9a741067cae738c93b140ecd9055d0c7}} 
+\index{host\_job@{host\_job}!file\_upload\_dst@{file\_upload\_dst}}
+\index{file\_upload\_dst@{file\_upload\_dst}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{file\_upload\_dst}{file\_upload\_dst}}
+{\footnotesize\ttfamily int host\+\_\+job\+::file\+\_\+upload\+\_\+dst}
+
+\mbox{\Hypertarget{structhost__job_a6f5c1f2c1d396993ac48b7055f424ad0}\label{structhost__job_a6f5c1f2c1d396993ac48b7055f424ad0}} 
+\index{host\_job@{host\_job}!fname\_download@{fname\_download}}
+\index{fname\_download@{fname\_download}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{fname\_download}{fname\_download}}
+{\footnotesize\ttfamily char host\+\_\+job\+::fname\+\_\+download\mbox{[}100\mbox{]}}
+
+\mbox{\Hypertarget{structhost__job_a3cb4ebcc3e78638ddeac174a83adb972}\label{structhost__job_a3cb4ebcc3e78638ddeac174a83adb972}} 
+\index{host\_job@{host\_job}!fname\_upload@{fname\_upload}}
+\index{fname\_upload@{fname\_upload}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{fname\_upload}{fname\_upload}}
+{\footnotesize\ttfamily char host\+\_\+job\+::fname\+\_\+upload\mbox{[}100\mbox{]}}
+
+\mbox{\Hypertarget{structhost__job_a22e9731757a5e33d8088e69b89838ffd}\label{structhost__job_a22e9731757a5e33d8088e69b89838ffd}} 
+\index{host\_job@{host\_job}!in\_port\_index@{in\_port\_index}}
+\index{in\_port\_index@{in\_port\_index}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{in\_port\_index}{in\_port\_index}}
+{\footnotesize\ttfamily int host\+\_\+job\+::in\+\_\+port\+\_\+index}
+
+\mbox{\Hypertarget{structhost__job_a3ef9a9d887b8ab40a17053e69dd62190}\label{structhost__job_a3ef9a9d887b8ab40a17053e69dd62190}} 
+\index{host\_job@{host\_job}!next@{next}}
+\index{next@{next}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}}$\ast$ host\+\_\+job\+::next}
+
+\mbox{\Hypertarget{structhost__job_a877fecbd8902feee622d02048013277a}\label{structhost__job_a877fecbd8902feee622d02048013277a}} 
+\index{host\_job@{host\_job}!out\_port\_index@{out\_port\_index}}
+\index{out\_port\_index@{out\_port\_index}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{out\_port\_index}{out\_port\_index}}
+{\footnotesize\ttfamily int host\+\_\+job\+::out\+\_\+port\+\_\+index}
+
+\mbox{\Hypertarget{structhost__job_ae25a5a65439ea9bad9e846e16d1e7ae7}\label{structhost__job_ae25a5a65439ea9bad9e846e16d1e7ae7}} 
+\index{host\_job@{host\_job}!packet@{packet}}
+\index{packet@{packet}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structpacket}{packet}}$\ast$ host\+\_\+job\+::packet}
+
+\mbox{\Hypertarget{structhost__job_a121005898372f15f4306e63a5f7dfc1a}\label{structhost__job_a121005898372f15f4306e63a5f7dfc1a}} 
+\index{host\_job@{host\_job}!ping\_timer@{ping\_timer}}
+\index{ping\_timer@{ping\_timer}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{ping\_timer}{ping\_timer}}
+{\footnotesize\ttfamily int host\+\_\+job\+::ping\+\_\+timer}
+
+\mbox{\Hypertarget{structhost__job_a8ec32c8e86bad3dfd6e6665b8cc6b2f3}\label{structhost__job_a8ec32c8e86bad3dfd6e6665b8cc6b2f3}} 
+\index{host\_job@{host\_job}!type@{type}}
+\index{type@{type}!host\_job@{host\_job}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\+\_\+job\+\_\+type}} host\+\_\+job\+::type}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{host_8h}{host.\+h}}\end{DoxyCompactItemize}

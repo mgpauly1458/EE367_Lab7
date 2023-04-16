@@ -1,0 +1,45 @@
+\hypertarget{host_8h_source}{}\doxysection{host.\+h}
+\mbox{\hyperlink{host_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ host.h\ }}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\_job\_type}}\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a0fbc7e4f10742101424c721d3fd6e61e}{JOB\_SEND\_PKT\_ALL\_PORTS}},}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a11d8094fa5d8d087d88a966e60f55b46}{JOB\_PING\_SEND\_REQ}},\ }
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40aa2bda760b0dc1bc3ce5e455b65047de6}{JOB\_PING\_SEND\_REPLY}},}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a310508ddf68a676cb544cc719b42a040}{JOB\_PING\_WAIT\_FOR\_REPLY}},}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a991aca8febd75e91407da719ed4a142e}{JOB\_FILE\_DOWNLOAD\_SEND}},}
+\DoxyCodeLine{00011\ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a7f803b98770719fc91e78bdd08a3654f}{JOB\_FILE\_DOWNLOAD\_RECV}},}
+\DoxyCodeLine{00012\ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40ab4e6332f4ec5a12100dfd987a6ebbcbe}{JOB\_FILE\_UPLOAD\_SEND}},}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a65c840cd2f4655bcdc23ae3d12f5475e}{JOB\_FILE\_UPLOAD\_RECV\_START}},}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40af257f5c84b3e7c250b54234a2a21a730}{JOB\_FILE\_UPLOAD\_RECV\_CONT}},}
+\DoxyCodeLine{00015\ \ \ \ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40a9128b2e5992d6346d2c583e420a48a57}{JOB\_FILE\_UPLOAD\_RECV\_END}}}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhost__job}{host\_job}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\_job\_type}}\ \mbox{\hyperlink{structhost__job_a8ec32c8e86bad3dfd6e6665b8cc6b2f3}{type}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpacket}{packet}}\ *\mbox{\hyperlink{structhost__job_ae25a5a65439ea9bad9e846e16d1e7ae7}{packet}};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhost__job_a22e9731757a5e33d8088e69b89838ffd}{in\_port\_index}};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhost__job_a877fecbd8902feee622d02048013277a}{out\_port\_index}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structhost__job_a6f5c1f2c1d396993ac48b7055f424ad0}{fname\_download}}[100];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structhost__job_a3cb4ebcc3e78638ddeac174a83adb972}{fname\_upload}}[100];}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhost__job_a121005898372f15f4306e63a5f7dfc1a}{ping\_timer}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhost__job_a9a741067cae738c93b140ecd9055d0c7}{file\_upload\_dst}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhost__job_a93f7651274dcd7ac57f5f8eff13c3ccf}{file\_download\_dst}};}
+\DoxyCodeLine{00028\ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhost__job}{host\_job}}\ *\mbox{\hyperlink{structhost__job_a3ef9a9d887b8ab40a17053e69dd62190}{next}};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structjob__queue}{job\_queue}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhost__job}{host\_job}}\ *\mbox{\hyperlink{structjob__queue_a346653e4f6036a326a68488d9a38f678}{head}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhost__job}{host\_job}}\ *\mbox{\hyperlink{structjob__queue_a95928562f1e95d25b5414f5a290b59de}{tail}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structjob__queue_ab8ec2c8acf5c265f04cf6952004691f1}{occ}};}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{host_8h_a35f54a0431212d003631782de8c3fe6b}{host\_main}}(\textcolor{keywordtype}{int}\ host\_id);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{host_8h_ad4eda050472b9f02b29a574ddeb04b05}{display\_packet\_info}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structpacket}{packet}}\ *);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{host_8h_a312ab59f3184926dc8c5a97908dee884}{display\_host\_job\_info}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structhost__job}{host\_job}}*,\ \textcolor{keywordtype}{int});}
+
+\end{DoxyCode}

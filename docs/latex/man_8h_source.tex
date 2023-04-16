@@ -1,0 +1,37 @@
+\hypertarget{man_8h_source}{}\doxysection{man.\+h}
+\mbox{\hyperlink{man_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ man.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ MAN\_MSG\_LENGTH\ 1000}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ \ The\ next\ two\ structs\ are\ ports\ used\ to\ transfer\ commands}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ \ and\ replies\ between\ the\ manager\ and\ hosts}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__host}{man\_port\_at\_host}}\ \{\ \ \textcolor{comment}{/*\ Port\ located\ at\ the\ man\ */}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__host_ac072e5957b1e30988c55adc51d0ccff5}{host\_id}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__host_a3310fa2666713bd1cfbbf380593ea25e}{send\_fd}};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__host_a7fce254ecf5589fba438048587d4f99d}{recv\_fd}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__host}{man\_port\_at\_host}}\ *\mbox{\hyperlink{structman__port__at__host_acf7d41d5077db8cdab5cec40a358d03f}{next}};}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__man}{man\_port\_at\_man}}\ \{\ \ \textcolor{comment}{/*\ Port\ located\ at\ the\ host\ */}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__man_a06a72dcbdf765e77bcea0da75ad72638}{host\_id}};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__man_a4245ef7702ce7901be70ce4f8ed19063}{send\_fd}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__man_ad3a57fd550210c71fc8ff9cab63eb1dc}{recv\_fd}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__man}{man\_port\_at\_man}}\ *\mbox{\hyperlink{structman__port__at__man_a2f88cdb6a72dc1f6150dc51900359ef3}{next}};}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ Main\ loop\ for\ the\ manager.\ \ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{man_8h_aa6dcff712a69b62c3e78532997ea2396}{man\_main}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+
+\end{DoxyCode}

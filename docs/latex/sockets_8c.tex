@@ -1,0 +1,53 @@
+\hypertarget{sockets_8c}{}\doxysection{sockets.\+c File Reference}
+\label{sockets_8c}\index{sockets.c@{sockets.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sockets.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sockets_8c_a00e3cf7960681f2888aacd8fb3639266}{send\+\_\+packet}} (int pipe\+\_\+fd, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
+\item 
+int \mbox{\hyperlink{sockets_8c_a428e2e73d20e902b21d84e19cd231016}{receive\+\_\+packet}} (int pipe\+\_\+fd, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
+\item 
+void \mbox{\hyperlink{sockets_8c_ac682607ad77ec7cfeda376a8bf15dc99}{create\+\_\+server}} (int port, int pipe\+\_\+fd)
+\item 
+void \mbox{\hyperlink{sockets_8c_aa5180eae33365fe64d3591720fe0f424}{create\+\_\+client}} (char $\ast$domain\+\_\+name, int port, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sockets_8c_aa5180eae33365fe64d3591720fe0f424}\label{sockets_8c_aa5180eae33365fe64d3591720fe0f424}} 
+\index{sockets.c@{sockets.c}!create\_client@{create\_client}}
+\index{create\_client@{create\_client}!sockets.c@{sockets.c}}
+\doxysubsubsection{\texorpdfstring{create\_client()}{create\_client()}}
+{\footnotesize\ttfamily void create\+\_\+client (\begin{DoxyParamCaption}\item[{char $\ast$}]{domain\+\_\+name,  }\item[{int}]{port,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sockets_8c_ac682607ad77ec7cfeda376a8bf15dc99}\label{sockets_8c_ac682607ad77ec7cfeda376a8bf15dc99}} 
+\index{sockets.c@{sockets.c}!create\_server@{create\_server}}
+\index{create\_server@{create\_server}!sockets.c@{sockets.c}}
+\doxysubsubsection{\texorpdfstring{create\_server()}{create\_server()}}
+{\footnotesize\ttfamily void create\+\_\+server (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{int}]{pipe\+\_\+fd }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sockets_8c_a428e2e73d20e902b21d84e19cd231016}\label{sockets_8c_a428e2e73d20e902b21d84e19cd231016}} 
+\index{sockets.c@{sockets.c}!receive\_packet@{receive\_packet}}
+\index{receive\_packet@{receive\_packet}!sockets.c@{sockets.c}}
+\doxysubsubsection{\texorpdfstring{receive\_packet()}{receive\_packet()}}
+{\footnotesize\ttfamily int receive\+\_\+packet (\begin{DoxyParamCaption}\item[{int}]{pipe\+\_\+fd,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sockets_8c_a00e3cf7960681f2888aacd8fb3639266}\label{sockets_8c_a00e3cf7960681f2888aacd8fb3639266}} 
+\index{sockets.c@{sockets.c}!send\_packet@{send\_packet}}
+\index{send\_packet@{send\_packet}!sockets.c@{sockets.c}}
+\doxysubsubsection{\texorpdfstring{send\_packet()}{send\_packet()}}
+{\footnotesize\ttfamily void send\+\_\+packet (\begin{DoxyParamCaption}\item[{int}]{pipe\+\_\+fd,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
+
