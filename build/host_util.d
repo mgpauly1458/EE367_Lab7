@@ -1,8 +1,8 @@
-build/host_util.o: src/host_util.c src/main.h src/net.h src/man.h \
- src/host.h src/packet.h src/switch.h
-src/main.h:
-src/net.h:
-src/man.h:
+build/host_util.o: src/host_util.c src/host.h src/main.h src/man.h \
+ src/net.h src/packet.h src/switch.h
 src/host.h:
+src/main.h:
+src/man.h:
+src/net.h:
 src/packet.h:
 src/switch.h:

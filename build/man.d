@@ -1,5 +1,5 @@
-build/man.o: src/man.c src/main.h src/man.h src/net.h src/host.h
-src/main.h:
+build/man.o: src/man.c src/man.h src/host.h src/main.h src/net.h
 src/man.h:
-src/net.h:
 src/host.h:
+src/main.h:
+src/net.h:

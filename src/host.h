@@ -2,6 +2,8 @@
  * host.h 
  */
 
+#include <stdio.h>
+
 #define MAX_FILE_BUFFER 1000
 #define MAX_MSG_LENGTH 100
 #define MAX_DIR_NAME 100
