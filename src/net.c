@@ -17,34 +17,13 @@
 #include <string.h>
 #include <sys/types.h>
 
-#define _GNU_SOURCE
 #include <fcntl.h>
 #include <unistd.h>
-
 #include "main.h"
 #include "man.h"
 #include "host.h"
 #include "net.h"
 #include "packet.h"
-
-
-#define MAX_FILE_NAME 100
-#define PIPE_READ 0
-#define PIPE_WRITE 1
-
-enum bool {FALSE, TRUE};
-
-/* 
- * Struct used to store a link. It is used when the 
- * network configuration file is loaded.
- */
-
-struct net_link {
-	enum NetLinkType type;
-	int pipe_node0;
-	int pipe_node1;
-};
-
 
 /* 
  * The following are private global variables to this file net.c
@@ -491,15 +470,12 @@ else {
 			printf(" net.c: Unidentified Node Type\n");
 		}
 
-	//	if (i != node_id) {
-	//		printf(" net.c: Incorrect node id\n");
-	//		fclose(fp);
-	//		return(0);
-	//	}
 	
    }
 }
-	/* 
+	
+
+/* 
 	 * Read link information from the file and
 	 * fill in data structure for links.
 	 * The data structure is an array g_net_link[ ]

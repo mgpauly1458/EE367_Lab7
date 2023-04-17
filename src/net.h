@@ -1,3 +1,19 @@
+#define _GNU_SOURCE
+#define MAX_FILE_NAME 100
+#define PIPE_READ 0
+#define PIPE_WRITE 1
+enum bool {FALSE, TRUE};
+
+/*
+ * Struct used to store a link. It is used when the
+ * network configuration file is loaded.
+ */
+
+struct net_link {
+   enum NetLinkType type;
+   int pipe_node0;
+   int pipe_node1;
+};
 
 
 int net_init();
