@@ -1,4 +1,25 @@
 
+/**
+
+@file sockets.c
+@brief Provides functions for creating server and client sockets, sending and receiving packets in a C networking program.
+This file contains functions for handling sockets in a C networking program, including:
+
+\li Creating a server socket, which listens for incoming connections and forwards received data to a pipe.
+\li Creating a client socket, which connects to a remote server and sends packets.
+\li Sending a packet, which involves converting the packet to a message format and writing the message to a pipe or socket.
+\li Receiving a packet, which involves reading a message from a pipe or socket and converting it to a packet format.
+
+The server socket is created as a child process in the switch.c file, specifically in the switch_main(int host_id) function.
+
+This child process listens for incoming connections, reads data from the clients, and sends the data to the pipe for further
+
+processing by the parent process.
+
+The client socket is used to connect to a remote server and send packets, such as when forwarding packets to their destinations
+in a network. The client socket is set to non-blocking mode to allow for asynchronous communication.
+*/
+
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <netdb.h>
@@ -13,6 +34,15 @@
 #include "main.h"
 #include "net.h"
 #include "sockets.h"
+
+/**
+@brief Sends a packet by writing its message format to the given pipe.
+
+This function converts the given packet to a message format and writes the message to the specified pipe file descriptor.
+
+@param pipe_fd The file descriptor of the pipe to write the message to.
+@param p Pointer to the packet structure to be sent.
+*/
 
 void send_packet(int pipe_fd, struct packet *p) {
   char msg[PAYLOAD_MAX + 4];
@@ -31,6 +61,15 @@ void send_packet(int pipe_fd, struct packet *p) {
   write(pipe_fd, msg, p->length + 4);
 }
 
+/**
+@brief Receives a packet by reading its message format from the given pipe.
+
+This function reads a message from the specified pipe file descriptor and converts it to a packet format. It returns the number of bytes read from the pipe.
+
+@param pipe_fd The file descriptor of the pipe to read the message from.
+@param p Pointer to the packet structure that will store the received packet data.
+@return The number of bytes read from the pipe.
+*/
 int receive_packet(int pipe_fd, struct packet *p) {
   char msg[PAYLOAD_MAX + 4];
   int i, n;
@@ -50,6 +89,14 @@ int receive_packet(int pipe_fd, struct packet *p) {
   return n;
 }
 
+/**
+@brief Creates a server socket, listens for incoming connections and forwards received data to a pipe.
+
+This function creates a server socket, binds it to the specified port, and listens for incoming connections. It accepts connections, reads data from the clients, and sends the data to the specified pipe file descriptor for further processing.
+
+@param port The port number on which the server socket will listen for incoming connections.
+@param pipe_fd The file descriptor of the pipe to write the received data to.
+*/
 void create_server(int port, int pipe_fd) {
   int server_fd, client_fd;
   struct sockaddr_in address;
@@ -104,6 +151,15 @@ void create_server(int port, int pipe_fd) {
   }
 }
 
+/**
+@brief Creates a client socket, connects to a remote server, and sends a packet.
+
+This function creates a client socket, resolves the domain name to an IP address, and connects to the remote server at the specified port. It sets the socket to non-blocking mode for asynchronous communication and sends the given packet to the server.
+
+@param domain_name The domain name of the remote server to connect to.
+@param port The port number of the remote server.
+@param p Pointer to the packet structure to be sent.
+*/
 void create_client(char *domain_name, int port, struct packet *p) {
   int client_fd;
   struct sockaddr_in server_address;

@@ -1,161 +1,28 @@
-\hypertarget{switch_8c}{}\doxysection{switch.\+c File Reference}
-\label{switch_8c}\index{switch.c@{switch.c}}
+\hypertarget{switch_8c}{}\doxysection{src/switch.c File Reference}
+\label{switch_8c}\index{src/switch.c@{src/switch.c}}
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$sys/types.\+h$>$}\newline
-{\ttfamily \#include $<$signal.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-{\ttfamily \#include $<$fcntl.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}packet.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}switch.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}sockets.\+h\char`\"{}}\newline
-\doxysubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{switch_8c_a04ae11e38e4d8fe2de6e26f070bcf71d}{MAX\+\_\+\+FILE\+\_\+\+BUFFER}}~1000
-\item 
-\#define \mbox{\hyperlink{switch_8c_aae15a57359405fa67f39ff805c6eddd4}{MAX\+\_\+\+MSG\+\_\+\+LENGTH}}~100
-\item 
-\#define \mbox{\hyperlink{switch_8c_adb0aac0db8cdd703c55d3c2733727608}{MAX\+\_\+\+DIR\+\_\+\+NAME}}~100
-\item 
-\#define \mbox{\hyperlink{switch_8c_af43dedece15d018ffad8970492870bac}{MAX\+\_\+\+FILE\+\_\+\+NAME}}~100
-\item 
-\#define \mbox{\hyperlink{switch_8c_a8852c8f218a0b52cb063608f68d81d26}{PKT\+\_\+\+PAYLOAD\+\_\+\+MAX}}~100
-\item 
-\#define \mbox{\hyperlink{switch_8c_aedbdc4de92793ec613416fe9cff63436}{TENMILLISEC}}~10000
-\end{DoxyCompactItemize}
+{\ttfamily \#include \char`\"{}switch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}switch\+\_\+util.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$ \mbox{\hyperlink{switch_8c_a036bddf9c5758ad243f3cdfd43bc3be3}{job\+\_\+q\+\_\+remove}} (struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}} $\ast$j\+\_\+q)
-\item 
-void \mbox{\hyperlink{switch_8c_a1288bcdf0c52796ebdfe57cf642f1226}{job\+\_\+q\+\_\+init}} (struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}} $\ast$j\+\_\+q)
-\item 
-int \mbox{\hyperlink{switch_8c_adf49aaf663d1262d61f85a58bc8a1d65}{job\+\_\+q\+\_\+num}} (struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}} $\ast$j\+\_\+q)
-\item 
-void \mbox{\hyperlink{switch_8c_afce601001ec65f0c70e66d4d892c8598}{display\+\_\+port\+\_\+info}} (struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$p)
-\item 
-void \mbox{\hyperlink{switch_8c_a1eeee598946c00a2892ec89b51ecd49f}{switch\+\_\+job\+\_\+q\+\_\+add}} (struct \mbox{\hyperlink{structswitch__job__queue}{switch\+\_\+job\+\_\+queue}} $\ast$j\+\_\+q, struct \mbox{\hyperlink{structswitch__job}{switch\+\_\+job}} $\ast$j)
-\item 
-void \mbox{\hyperlink{switch_8c_a37372a9410c82b61a7cf96b68a4d15e6}{display\+\_\+forward\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} table)
-\item 
-void \mbox{\hyperlink{switch_8c_a12bce235e4afcb5132e038aca6d02acc}{init\+\_\+forward\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$table)
-\item 
-void \mbox{\hyperlink{switch_8c_a15be314046a17a16358977615932c8b3}{add\+\_\+src\+\_\+to\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$table, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$pkt, int port\+\_\+index)
-\item 
-void \mbox{\hyperlink{switch_8c_ac7bee0714142048122df1ea64d0aa5de}{send\+\_\+to\+\_\+all\+\_\+ports}} (int node\+\_\+port\+\_\+num, struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$$\ast$node\+\_\+port, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$pkt)
-\item 
-int \mbox{\hyperlink{switch_8c_aa649a10255d1dc2492f80d519ea105f0}{is\+\_\+host\+\_\+in\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$table, char dst)
 \item 
 void \mbox{\hyperlink{switch_8c_ac56485197b10f5021cedeaae9feec56c}{switch\+\_\+main}} (int host\+\_\+id)
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{switch_8c_adb0aac0db8cdd703c55d3c2733727608}\label{switch_8c_adb0aac0db8cdd703c55d3c2733727608}} 
-\index{switch.c@{switch.c}!MAX\_DIR\_NAME@{MAX\_DIR\_NAME}}
-\index{MAX\_DIR\_NAME@{MAX\_DIR\_NAME}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{MAX\_DIR\_NAME}{MAX\_DIR\_NAME}}
-{\footnotesize\ttfamily \#define MAX\+\_\+\+DIR\+\_\+\+NAME~100}
-
-\mbox{\Hypertarget{switch_8c_a04ae11e38e4d8fe2de6e26f070bcf71d}\label{switch_8c_a04ae11e38e4d8fe2de6e26f070bcf71d}} 
-\index{switch.c@{switch.c}!MAX\_FILE\_BUFFER@{MAX\_FILE\_BUFFER}}
-\index{MAX\_FILE\_BUFFER@{MAX\_FILE\_BUFFER}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{MAX\_FILE\_BUFFER}{MAX\_FILE\_BUFFER}}
-{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+BUFFER~1000}
-
-\mbox{\Hypertarget{switch_8c_af43dedece15d018ffad8970492870bac}\label{switch_8c_af43dedece15d018ffad8970492870bac}} 
-\index{switch.c@{switch.c}!MAX\_FILE\_NAME@{MAX\_FILE\_NAME}}
-\index{MAX\_FILE\_NAME@{MAX\_FILE\_NAME}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{MAX\_FILE\_NAME}{MAX\_FILE\_NAME}}
-{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+NAME~100}
-
-\mbox{\Hypertarget{switch_8c_aae15a57359405fa67f39ff805c6eddd4}\label{switch_8c_aae15a57359405fa67f39ff805c6eddd4}} 
-\index{switch.c@{switch.c}!MAX\_MSG\_LENGTH@{MAX\_MSG\_LENGTH}}
-\index{MAX\_MSG\_LENGTH@{MAX\_MSG\_LENGTH}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{MAX\_MSG\_LENGTH}{MAX\_MSG\_LENGTH}}
-{\footnotesize\ttfamily \#define MAX\+\_\+\+MSG\+\_\+\+LENGTH~100}
-
-\mbox{\Hypertarget{switch_8c_a8852c8f218a0b52cb063608f68d81d26}\label{switch_8c_a8852c8f218a0b52cb063608f68d81d26}} 
-\index{switch.c@{switch.c}!PKT\_PAYLOAD\_MAX@{PKT\_PAYLOAD\_MAX}}
-\index{PKT\_PAYLOAD\_MAX@{PKT\_PAYLOAD\_MAX}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{PKT\_PAYLOAD\_MAX}{PKT\_PAYLOAD\_MAX}}
-{\footnotesize\ttfamily \#define PKT\+\_\+\+PAYLOAD\+\_\+\+MAX~100}
-
-\mbox{\Hypertarget{switch_8c_aedbdc4de92793ec613416fe9cff63436}\label{switch_8c_aedbdc4de92793ec613416fe9cff63436}} 
-\index{switch.c@{switch.c}!TENMILLISEC@{TENMILLISEC}}
-\index{TENMILLISEC@{TENMILLISEC}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{TENMILLISEC}{TENMILLISEC}}
-{\footnotesize\ttfamily \#define TENMILLISEC~10000}
-
-
-
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{switch_8c_a15be314046a17a16358977615932c8b3}\label{switch_8c_a15be314046a17a16358977615932c8b3}} 
-\index{switch.c@{switch.c}!add\_src\_to\_table@{add\_src\_to\_table}}
-\index{add\_src\_to\_table@{add\_src\_to\_table}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{add\_src\_to\_table()}{add\_src\_to\_table()}}
-{\footnotesize\ttfamily void add\+\_\+src\+\_\+to\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$}]{table,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{pkt,  }\item[{int}]{port\+\_\+index }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_a37372a9410c82b61a7cf96b68a4d15e6}\label{switch_8c_a37372a9410c82b61a7cf96b68a4d15e6}} 
-\index{switch.c@{switch.c}!display\_forward\_table@{display\_forward\_table}}
-\index{display\_forward\_table@{display\_forward\_table}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{display\_forward\_table()}{display\_forward\_table()}}
-{\footnotesize\ttfamily void display\+\_\+forward\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}}}]{table }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_afce601001ec65f0c70e66d4d892c8598}\label{switch_8c_afce601001ec65f0c70e66d4d892c8598}} 
-\index{switch.c@{switch.c}!display\_port\_info@{display\_port\_info}}
-\index{display\_port\_info@{display\_port\_info}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{display\_port\_info()}{display\_port\_info()}}
-{\footnotesize\ttfamily void display\+\_\+port\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$}]{p }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_a12bce235e4afcb5132e038aca6d02acc}\label{switch_8c_a12bce235e4afcb5132e038aca6d02acc}} 
-\index{switch.c@{switch.c}!init\_forward\_table@{init\_forward\_table}}
-\index{init\_forward\_table@{init\_forward\_table}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{init\_forward\_table()}{init\_forward\_table()}}
-{\footnotesize\ttfamily void init\+\_\+forward\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$}]{table }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_aa649a10255d1dc2492f80d519ea105f0}\label{switch_8c_aa649a10255d1dc2492f80d519ea105f0}} 
-\index{switch.c@{switch.c}!is\_host\_in\_table@{is\_host\_in\_table}}
-\index{is\_host\_in\_table@{is\_host\_in\_table}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{is\_host\_in\_table()}{is\_host\_in\_table()}}
-{\footnotesize\ttfamily int is\+\_\+host\+\_\+in\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$}]{table,  }\item[{char}]{dst }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_a1288bcdf0c52796ebdfe57cf642f1226}\label{switch_8c_a1288bcdf0c52796ebdfe57cf642f1226}} 
-\index{switch.c@{switch.c}!job\_q\_init@{job\_q\_init}}
-\index{job\_q\_init@{job\_q\_init}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{job\_q\_init()}{job\_q\_init()}}
-{\footnotesize\ttfamily void job\+\_\+q\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}} $\ast$}]{j\+\_\+q }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_adf49aaf663d1262d61f85a58bc8a1d65}\label{switch_8c_adf49aaf663d1262d61f85a58bc8a1d65}} 
-\index{switch.c@{switch.c}!job\_q\_num@{job\_q\_num}}
-\index{job\_q\_num@{job\_q\_num}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{job\_q\_num()}{job\_q\_num()}}
-{\footnotesize\ttfamily int job\+\_\+q\+\_\+num (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}} $\ast$}]{j\+\_\+q }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_a036bddf9c5758ad243f3cdfd43bc3be3}\label{switch_8c_a036bddf9c5758ad243f3cdfd43bc3be3}} 
-\index{switch.c@{switch.c}!job\_q\_remove@{job\_q\_remove}}
-\index{job\_q\_remove@{job\_q\_remove}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{job\_q\_remove()}{job\_q\_remove()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$ job\+\_\+q\+\_\+remove (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}} $\ast$}]{j\+\_\+q }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_ac7bee0714142048122df1ea64d0aa5de}\label{switch_8c_ac7bee0714142048122df1ea64d0aa5de}} 
-\index{switch.c@{switch.c}!send\_to\_all\_ports@{send\_to\_all\_ports}}
-\index{send\_to\_all\_ports@{send\_to\_all\_ports}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{send\_to\_all\_ports()}{send\_to\_all\_ports()}}
-{\footnotesize\ttfamily void send\+\_\+to\+\_\+all\+\_\+ports (\begin{DoxyParamCaption}\item[{int}]{node\+\_\+port\+\_\+num,  }\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$$\ast$}]{node\+\_\+port,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{pkt }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{switch_8c_a1eeee598946c00a2892ec89b51ecd49f}\label{switch_8c_a1eeee598946c00a2892ec89b51ecd49f}} 
-\index{switch.c@{switch.c}!switch\_job\_q\_add@{switch\_job\_q\_add}}
-\index{switch\_job\_q\_add@{switch\_job\_q\_add}!switch.c@{switch.c}}
-\doxysubsubsection{\texorpdfstring{switch\_job\_q\_add()}{switch\_job\_q\_add()}}
-{\footnotesize\ttfamily void switch\+\_\+job\+\_\+q\+\_\+add (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structswitch__job__queue}{switch\+\_\+job\+\_\+queue}} $\ast$}]{j\+\_\+q,  }\item[{struct \mbox{\hyperlink{structswitch__job}{switch\+\_\+job}} $\ast$}]{j }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{switch_8c_ac56485197b10f5021cedeaae9feec56c}\label{switch_8c_ac56485197b10f5021cedeaae9feec56c}} 
 \index{switch.c@{switch.c}!switch\_main@{switch\_main}}
 \index{switch\_main@{switch\_main}!switch.c@{switch.c}}

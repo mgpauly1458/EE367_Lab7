@@ -1,5 +1,5 @@
-\hypertarget{switch_8h}{}\doxysection{switch.\+h File Reference}
-\label{switch_8h}\index{switch.h@{switch.h}}
+\hypertarget{switch_8h}{}\doxysection{src/switch.h File Reference}
+\label{switch_8h}\index{src/switch.h@{src/switch.h}}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,7 +20,7 @@ struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}}
 void \mbox{\hyperlink{switch_8h_a95a08d3598a416ff667b9728c0a62e6f}{switch\+\_\+main}} (int)
 \item 
 void \mbox{\hyperlink{switch_8h_ab0629c386e170aa963c8bb398a001437}{display\+\_\+port\+\_\+info}} (struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Displays the information of a network port. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -39,6 +39,17 @@ void \mbox{\hyperlink{switch_8h_ab0629c386e170aa963c8bb398a001437}{display\+\_\+
 \doxysubsubsection{\texorpdfstring{display\_port\_info()}{display\_port\_info()}}
 {\footnotesize\ttfamily void display\+\_\+port\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$}]{p }\end{DoxyParamCaption})}
 
+
+
+Displays the information of a network port. 
+
+This function prints the details of the given network port, including its type, pipe host ID, pipe send file descriptor, pipe receive file descriptor, next pointer, and socket host ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structure containing the network port information to display. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{switch_8h_a95a08d3598a416ff667b9728c0a62e6f}\label{switch_8h_a95a08d3598a416ff667b9728c0a62e6f}} 
 \index{switch.h@{switch.h}!switch\_main@{switch\_main}}
 \index{switch\_main@{switch\_main}!switch.h@{switch.h}}

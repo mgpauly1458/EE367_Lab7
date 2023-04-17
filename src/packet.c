@@ -1,3 +1,21 @@
+/**
+@file
+@brief Packet sending and receiving implementation
+
+This file provides an implementation for sending and receiving packets between hosts using either pipes or sockets as the underlying communication mechanism.
+
+The implementation includes two main functions:
+
+packet_send(): Sends a packet through the specified network port.
+packet_recv(): Receives a packet from the specified network port.
+The file depends on the host.h, main.h, net.h, sockets.h, and packet.h header files.
+
+@see host.h
+@see main.h
+@see net.h
+@see sockets.h
+@see packet.h
+*/
 
 #include <fcntl.h>
 #include <stdio.h>
@@ -11,6 +29,14 @@
 #include "sockets.h"
 #include "packet.h"
 
+/**
+@brief Sends a packet through the specified network port.
+
+The packet_send() function constructs a message from the given packet and sends it through the specified network port using either pipes or sockets, depending on the port type.
+
+@param port Pointer to the net_port structure containing the network port information to send the packet through.
+@param p Pointer to the packet structure containing the packet information to send.
+*/
 void packet_send(struct net_port *port, struct packet *p) {
   char msg[PAYLOAD_MAX + 4];
   int i;
@@ -33,6 +59,15 @@ void packet_send(struct net_port *port, struct packet *p) {
   return;
 }
 
+/**
+@brief Receives a packet from the specified network port.
+
+The packet_recv() function reads a message from the specified network port and extracts the packet information from it. The function returns the number of bytes received, or a negative value in case of an error.
+
+@param port Pointer to the net_port structure containing the network port information to receive the packet from.
+@param p Pointer to the packet structure to store the received packet information.
+@return The number of bytes received, or a negative value in case of an error.
+*/
 int packet_recv(struct net_port *port, struct packet *p) {
   char msg[PAYLOAD_MAX + 4];
   int n;

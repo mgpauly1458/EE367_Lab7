@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: packet.h File Reference</title>
+<title>EE 367 Lab 7: src/packet.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,6 +68,10 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -80,8 +85,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a07454c44c671aa460683664b2bbdc40c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="packet_8h.html#a07454c44c671aa460683664b2bbdc40c">packet_recv</a> (struct <a class="el" href="structnet__port.html">net_port</a> *port, struct <a class="el" href="structpacket.html">packet</a> *p)</td></tr>
+<tr class="memdesc:a07454c44c671aa460683664b2bbdc40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a packet from the specified network port.  <br /></td></tr>
 <tr class="separator:a07454c44c671aa460683664b2bbdc40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02864b5c19698e976618ad7fa974190a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="packet_8h.html#a02864b5c19698e976618ad7fa974190a">packet_send</a> (struct <a class="el" href="structnet__port.html">net_port</a> *port, struct <a class="el" href="structpacket.html">packet</a> *p)</td></tr>
+<tr class="memdesc:a02864b5c19698e976618ad7fa974190a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a packet through the specified network port.  <br /></td></tr>
 <tr class="separator:a02864b5c19698e976618ad7fa974190a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -111,6 +118,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Receives a packet from the specified network port. </p>
+<p>The <a class="el" href="packet_8c.html#a07454c44c671aa460683664b2bbdc40c" title="Receives a packet from the specified network port.">packet_recv()</a> function reads a message from the specified network port and extracts the packet information from it. The function returns the number of bytes received, or a negative value in case of an error.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Pointer to the <a class="el" href="structnet__port.html">net_port</a> structure containing the network port information to receive the packet from. </td></tr>
+    <tr><td class="paramname">p</td><td>Pointer to the packet structure to store the received packet information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of bytes received, or a negative value in case of an error. </dd></dl>
+
 </div>
 </div>
 <a id="a02864b5c19698e976618ad7fa974190a" name="a02864b5c19698e976618ad7fa974190a"></a>
@@ -138,6 +156,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sends a packet through the specified network port. </p>
+<p>The <a class="el" href="packet_8c.html#a02864b5c19698e976618ad7fa974190a" title="Sends a packet through the specified network port.">packet_send()</a> function constructs a message from the given packet and sends it through the specified network port using either pipes or sockets, depending on the port type.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Pointer to the <a class="el" href="structnet__port.html">net_port</a> structure containing the network port information to send the packet through. </td></tr>
+    <tr><td class="paramname">p</td><td>Pointer to the packet structure containing the packet information to send. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

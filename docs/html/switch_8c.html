@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: switch.c File Reference</title>
+<title>EE 367 Lab 7: src/switch.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,387 +68,39 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">switch.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/types.h&gt;</code><br />
-<code>#include &lt;signal.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;fcntl.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="net_8h_source.html">net.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="man_8h_source.html">man.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="host_8h_source.html">host.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="man_8h_source.html">man.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="net_8h_source.html">net.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="packet_8h_source.html">packet.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="switch_8h_source.html">switch.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="sockets_8h_source.html">sockets.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="switch_8h_source.html">switch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="switch__util_8h_source.html">switch_util.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a04ae11e38e4d8fe2de6e26f070bcf71d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a04ae11e38e4d8fe2de6e26f070bcf71d">MAX_FILE_BUFFER</a>&#160;&#160;&#160;1000</td></tr>
-<tr class="separator:a04ae11e38e4d8fe2de6e26f070bcf71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae15a57359405fa67f39ff805c6eddd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#aae15a57359405fa67f39ff805c6eddd4">MAX_MSG_LENGTH</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:aae15a57359405fa67f39ff805c6eddd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb0aac0db8cdd703c55d3c2733727608"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#adb0aac0db8cdd703c55d3c2733727608">MAX_DIR_NAME</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:adb0aac0db8cdd703c55d3c2733727608"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af43dedece15d018ffad8970492870bac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:af43dedece15d018ffad8970492870bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8852c8f218a0b52cb063608f68d81d26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a8852c8f218a0b52cb063608f68d81d26">PKT_PAYLOAD_MAX</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:a8852c8f218a0b52cb063608f68d81d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedbdc4de92793ec613416fe9cff63436"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#aedbdc4de92793ec613416fe9cff63436">TENMILLISEC</a>&#160;&#160;&#160;10000</td></tr>
-<tr class="separator:aedbdc4de92793ec613416fe9cff63436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a036bddf9c5758ad243f3cdfd43bc3be3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structhost__job.html">host_job</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a036bddf9c5758ad243f3cdfd43bc3be3">job_q_remove</a> (struct <a class="el" href="structjob__queue.html">job_queue</a> *j_q)</td></tr>
-<tr class="separator:a036bddf9c5758ad243f3cdfd43bc3be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1288bcdf0c52796ebdfe57cf642f1226"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a1288bcdf0c52796ebdfe57cf642f1226">job_q_init</a> (struct <a class="el" href="structjob__queue.html">job_queue</a> *j_q)</td></tr>
-<tr class="separator:a1288bcdf0c52796ebdfe57cf642f1226"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf49aaf663d1262d61f85a58bc8a1d65"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#adf49aaf663d1262d61f85a58bc8a1d65">job_q_num</a> (struct <a class="el" href="structjob__queue.html">job_queue</a> *j_q)</td></tr>
-<tr class="separator:adf49aaf663d1262d61f85a58bc8a1d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afce601001ec65f0c70e66d4d892c8598"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#afce601001ec65f0c70e66d4d892c8598">display_port_info</a> (struct <a class="el" href="structnet__port.html">net_port</a> *p)</td></tr>
-<tr class="separator:afce601001ec65f0c70e66d4d892c8598"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eeee598946c00a2892ec89b51ecd49f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a1eeee598946c00a2892ec89b51ecd49f">switch_job_q_add</a> (struct <a class="el" href="structswitch__job__queue.html">switch_job_queue</a> *j_q, struct <a class="el" href="structswitch__job.html">switch_job</a> *j)</td></tr>
-<tr class="separator:a1eeee598946c00a2892ec89b51ecd49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37372a9410c82b61a7cf96b68a4d15e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a37372a9410c82b61a7cf96b68a4d15e6">display_forward_table</a> (struct <a class="el" href="structforward__table.html">forward_table</a> table)</td></tr>
-<tr class="separator:a37372a9410c82b61a7cf96b68a4d15e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12bce235e4afcb5132e038aca6d02acc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a12bce235e4afcb5132e038aca6d02acc">init_forward_table</a> (struct <a class="el" href="structforward__table.html">forward_table</a> *table)</td></tr>
-<tr class="separator:a12bce235e4afcb5132e038aca6d02acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15be314046a17a16358977615932c8b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#a15be314046a17a16358977615932c8b3">add_src_to_table</a> (struct <a class="el" href="structforward__table.html">forward_table</a> *table, struct <a class="el" href="structpacket.html">packet</a> *pkt, int port_index)</td></tr>
-<tr class="separator:a15be314046a17a16358977615932c8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7bee0714142048122df1ea64d0aa5de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#ac7bee0714142048122df1ea64d0aa5de">send_to_all_ports</a> (int node_port_num, struct <a class="el" href="structnet__port.html">net_port</a> **node_port, struct <a class="el" href="structpacket.html">packet</a> *pkt)</td></tr>
-<tr class="separator:ac7bee0714142048122df1ea64d0aa5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa649a10255d1dc2492f80d519ea105f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#aa649a10255d1dc2492f80d519ea105f0">is_host_in_table</a> (struct <a class="el" href="structforward__table.html">forward_table</a> *table, char dst)</td></tr>
-<tr class="separator:aa649a10255d1dc2492f80d519ea105f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac56485197b10f5021cedeaae9feec56c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8c.html#ac56485197b10f5021cedeaae9feec56c">switch_main</a> (int host_id)</td></tr>
 <tr class="separator:ac56485197b10f5021cedeaae9feec56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="adb0aac0db8cdd703c55d3c2733727608" name="adb0aac0db8cdd703c55d3c2733727608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb0aac0db8cdd703c55d3c2733727608">&#9670;&#160;</a></span>MAX_DIR_NAME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_DIR_NAME&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a04ae11e38e4d8fe2de6e26f070bcf71d" name="a04ae11e38e4d8fe2de6e26f070bcf71d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04ae11e38e4d8fe2de6e26f070bcf71d">&#9670;&#160;</a></span>MAX_FILE_BUFFER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_FILE_BUFFER&#160;&#160;&#160;1000</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af43dedece15d018ffad8970492870bac" name="af43dedece15d018ffad8970492870bac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af43dedece15d018ffad8970492870bac">&#9670;&#160;</a></span>MAX_FILE_NAME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_FILE_NAME&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aae15a57359405fa67f39ff805c6eddd4" name="aae15a57359405fa67f39ff805c6eddd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae15a57359405fa67f39ff805c6eddd4">&#9670;&#160;</a></span>MAX_MSG_LENGTH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_MSG_LENGTH&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8852c8f218a0b52cb063608f68d81d26" name="a8852c8f218a0b52cb063608f68d81d26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8852c8f218a0b52cb063608f68d81d26">&#9670;&#160;</a></span>PKT_PAYLOAD_MAX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PKT_PAYLOAD_MAX&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aedbdc4de92793ec613416fe9cff63436" name="aedbdc4de92793ec613416fe9cff63436"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedbdc4de92793ec613416fe9cff63436">&#9670;&#160;</a></span>TENMILLISEC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TENMILLISEC&#160;&#160;&#160;10000</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a15be314046a17a16358977615932c8b3" name="a15be314046a17a16358977615932c8b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15be314046a17a16358977615932c8b3">&#9670;&#160;</a></span>add_src_to_table()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void add_src_to_table </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structforward__table.html">forward_table</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structpacket.html">packet</a> *&#160;</td>
-          <td class="paramname"><em>pkt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>port_index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a37372a9410c82b61a7cf96b68a4d15e6" name="a37372a9410c82b61a7cf96b68a4d15e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37372a9410c82b61a7cf96b68a4d15e6">&#9670;&#160;</a></span>display_forward_table()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void display_forward_table </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structforward__table.html">forward_table</a>&#160;</td>
-          <td class="paramname"><em>table</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afce601001ec65f0c70e66d4d892c8598" name="afce601001ec65f0c70e66d4d892c8598"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afce601001ec65f0c70e66d4d892c8598">&#9670;&#160;</a></span>display_port_info()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void display_port_info </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet__port.html">net_port</a> *&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a12bce235e4afcb5132e038aca6d02acc" name="a12bce235e4afcb5132e038aca6d02acc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12bce235e4afcb5132e038aca6d02acc">&#9670;&#160;</a></span>init_forward_table()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void init_forward_table </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structforward__table.html">forward_table</a> *&#160;</td>
-          <td class="paramname"><em>table</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa649a10255d1dc2492f80d519ea105f0" name="aa649a10255d1dc2492f80d519ea105f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa649a10255d1dc2492f80d519ea105f0">&#9670;&#160;</a></span>is_host_in_table()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_host_in_table </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structforward__table.html">forward_table</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>dst</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1288bcdf0c52796ebdfe57cf642f1226" name="a1288bcdf0c52796ebdfe57cf642f1226"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1288bcdf0c52796ebdfe57cf642f1226">&#9670;&#160;</a></span>job_q_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void job_q_init </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structjob__queue.html">job_queue</a> *&#160;</td>
-          <td class="paramname"><em>j_q</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adf49aaf663d1262d61f85a58bc8a1d65" name="adf49aaf663d1262d61f85a58bc8a1d65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf49aaf663d1262d61f85a58bc8a1d65">&#9670;&#160;</a></span>job_q_num()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int job_q_num </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structjob__queue.html">job_queue</a> *&#160;</td>
-          <td class="paramname"><em>j_q</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a036bddf9c5758ad243f3cdfd43bc3be3" name="a036bddf9c5758ad243f3cdfd43bc3be3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a036bddf9c5758ad243f3cdfd43bc3be3">&#9670;&#160;</a></span>job_q_remove()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structhost__job.html">host_job</a> * job_q_remove </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structjob__queue.html">job_queue</a> *&#160;</td>
-          <td class="paramname"><em>j_q</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac7bee0714142048122df1ea64d0aa5de" name="ac7bee0714142048122df1ea64d0aa5de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7bee0714142048122df1ea64d0aa5de">&#9670;&#160;</a></span>send_to_all_ports()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void send_to_all_ports </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>node_port_num</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structnet__port.html">net_port</a> **&#160;</td>
-          <td class="paramname"><em>node_port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structpacket.html">packet</a> *&#160;</td>
-          <td class="paramname"><em>pkt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1eeee598946c00a2892ec89b51ecd49f" name="a1eeee598946c00a2892ec89b51ecd49f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1eeee598946c00a2892ec89b51ecd49f">&#9670;&#160;</a></span>switch_job_q_add()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void switch_job_q_add </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structswitch__job__queue.html">switch_job_queue</a> *&#160;</td>
-          <td class="paramname"><em>j_q</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structswitch__job.html">switch_job</a> *&#160;</td>
-          <td class="paramname"><em>j</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac56485197b10f5021cedeaae9feec56c" name="ac56485197b10f5021cedeaae9feec56c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac56485197b10f5021cedeaae9feec56c">&#9670;&#160;</a></span>switch_main()</h2>
 

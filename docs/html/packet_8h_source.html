@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: packet.h Source File</title>
+<title>EE 367 Lab 7: src/packet.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -46,7 +47,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,6 +68,11 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">packet.h</div></div>
 </div><!--header-->
@@ -83,10 +88,10 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">void</span> <a class="code hl_function" href="packet_8h.html#a02864b5c19698e976618ad7fa974190a">packet_send</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structnet__port.html">net_port</a> *port, <span class="keyword">struct</span> <a class="code hl_struct" href="structpacket.html">packet</a> *p);</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="ttc" id="apacket_8h_html_a02864b5c19698e976618ad7fa974190a"><div class="ttname"><a href="packet_8h.html#a02864b5c19698e976618ad7fa974190a">packet_send</a></div><div class="ttdeci">void packet_send(struct net_port *port, struct packet *p)</div><div class="ttdef"><b>Definition:</b> packet.c:14</div></div>
-<div class="ttc" id="apacket_8h_html_a07454c44c671aa460683664b2bbdc40c"><div class="ttname"><a href="packet_8h.html#a07454c44c671aa460683664b2bbdc40c">packet_recv</a></div><div class="ttdeci">int packet_recv(struct net_port *port, struct packet *p)</div><div class="ttdef"><b>Definition:</b> packet.c:37</div></div>
+<div class="ttc" id="apacket_8h_html_a02864b5c19698e976618ad7fa974190a"><div class="ttname"><a href="packet_8h.html#a02864b5c19698e976618ad7fa974190a">packet_send</a></div><div class="ttdeci">void packet_send(struct net_port *port, struct packet *p)</div><div class="ttdoc">Sends a packet through the specified network port.</div><div class="ttdef"><b>Definition:</b> packet.c:40</div></div>
+<div class="ttc" id="apacket_8h_html_a07454c44c671aa460683664b2bbdc40c"><div class="ttname"><a href="packet_8h.html#a07454c44c671aa460683664b2bbdc40c">packet_recv</a></div><div class="ttdeci">int packet_recv(struct net_port *port, struct packet *p)</div><div class="ttdoc">Receives a packet from the specified network port.</div><div class="ttdef"><b>Definition:</b> packet.c:71</div></div>
 <div class="ttc" id="astructnet__port_html"><div class="ttname"><a href="structnet__port.html">net_port</a></div><div class="ttdef"><b>Definition:</b> main.h:23</div></div>
-<div class="ttc" id="astructpacket_html"><div class="ttname"><a href="structpacket.html">packet</a></div><div class="ttdoc">This is a packet data type.</div><div class="ttdef"><b>Definition:</b> client.c:11</div></div>
+<div class="ttc" id="astructpacket_html"><div class="ttname"><a href="structpacket.html">packet</a></div><div class="ttdef"><b>Definition:</b> main.h:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

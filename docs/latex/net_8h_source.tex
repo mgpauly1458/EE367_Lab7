@@ -1,24 +1,41 @@
 \hypertarget{net_8h_source}{}\doxysection{net.\+h}
+\label{net_8h_source}\index{src/net.h@{src/net.h}}
 \mbox{\hyperlink{net_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{net_8h_a22b2914249628f6cba7d4e1f138c969f}{net\_init}}();}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__man}{man\_port\_at\_man}}\ *\mbox{\hyperlink{net_8h_aec19f600a98c80de0a2d5369350e0194}{net\_get\_man\_ports\_at\_man\_list}}();}
-\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__host}{man\_port\_at\_host}}\ *\mbox{\hyperlink{net_8h_ae5ce1bc73a406917997636e3d52853a8}{net\_get\_host\_port}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__host_ac072e5957b1e30988c55adc51d0ccff5}{host\_id}});}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__node}{net\_node}}\ *\mbox{\hyperlink{net_8h_aa59500439b78e290e89c2c01b8cac797}{net\_get\_node\_list}}();}
-\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__port}{net\_port}}\ *\mbox{\hyperlink{net_8h_a2d57f7f0c32601131260cb00d1d6518d}{net\_get\_port\_list}}(\textcolor{keywordtype}{int}\ host\_id);}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__data}{net\_data}}\ \{}
-\DoxyCodeLine{00012\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_a808e30640169857474cc6d788a8c6eb1}{send\_port}};}
-\DoxyCodeLine{00013\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_a8087f485c61292295052d667b7880a2b}{server\_port}};}
-\DoxyCodeLine{00014\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_a6cc2c38b2df894c2cfcac5b379e27c7f}{server\_pipe}};}
-\DoxyCodeLine{00015\ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structnet__data_acc7002d5cd35de37986623a3d80748d4}{send\_domain}}[100];}
-\DoxyCodeLine{00016\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_aa3d66fcca5cf324826082c9826238941}{switch\_host\_id}};}
-\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#define\ \_GNU\_SOURCE}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAX\_FILE\_NAME\ 100}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ PIPE\_READ\ 0}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ PIPE\_WRITE\ 1}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{enum}\ \textcolor{keywordtype}{bool}\ \{\mbox{\hyperlink{net_8h_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}},\ \mbox{\hyperlink{net_8h_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}{TRUE}}\};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Struct\ used\ to\ store\ a\ link.\ It\ is\ used\ when\ the}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ network\ configuration\ file\ is\ loaded.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__link}{net\_link}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main_8h_ad3175955d2e6ef3c4f52da9b509d5b4a}{NetLinkType}}\ \mbox{\hyperlink{structnet__link_a4074c59d2febd90aa871fbd32e6b6743}{type}};}
+\DoxyCodeLine{00014\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__link_a753a3cfbaf78eeeb5eb3f3404b3ad105}{pipe\_node0}};}
+\DoxyCodeLine{00015\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__link_a95a166bd171eba492a75084112b9b173}{pipe\_node1}};}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__data}{net\_data}}**\ \mbox{\hyperlink{net_8h_a1e50ac47f3d599c9148f0a01fc07fb8a}{get\_g\_net\_data}}();}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{net_8h_a22b2914249628f6cba7d4e1f138c969f}{net\_init}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__man}{man\_port\_at\_man}}\ *\mbox{\hyperlink{net_8h_aec19f600a98c80de0a2d5369350e0194}{net\_get\_man\_ports\_at\_man\_list}}();}
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structman__port__at__host}{man\_port\_at\_host}}\ *\mbox{\hyperlink{net_8h_ae5ce1bc73a406917997636e3d52853a8}{net\_get\_host\_port}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structman__port__at__host_ac072e5957b1e30988c55adc51d0ccff5}{host\_id}});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__node}{net\_node}}\ *\mbox{\hyperlink{net_8h_aa59500439b78e290e89c2c01b8cac797}{net\_get\_node\_list}}();}
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__port}{net\_port}}\ *\mbox{\hyperlink{net_8h_a2d57f7f0c32601131260cb00d1d6518d}{net\_get\_port\_list}}(\textcolor{keywordtype}{int}\ host\_id);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__data}{net\_data}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_a808e30640169857474cc6d788a8c6eb1}{send\_port}};}
+\DoxyCodeLine{00029\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_a8087f485c61292295052d667b7880a2b}{server\_port}};}
+\DoxyCodeLine{00030\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_a6cc2c38b2df894c2cfcac5b379e27c7f}{server\_pipe}};}
+\DoxyCodeLine{00031\ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structnet__data_acc7002d5cd35de37986623a3d80748d4}{send\_domain}}[100];}
+\DoxyCodeLine{00032\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnet__data_aa3d66fcca5cf324826082c9826238941}{switch\_host\_id}};}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnet__data}{net\_data}}**\ \mbox{\hyperlink{net_8h_a1e50ac47f3d599c9148f0a01fc07fb8a}{get\_g\_net\_data}}();}
 
 \end{DoxyCode}

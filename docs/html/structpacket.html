@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -76,9 +77,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This is a packet data type.  
- <a href="structpacket.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="main_8h_source.html">main.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -86,18 +84,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae2340973e423e22d9924cf31fb75b975"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket.html#ae2340973e423e22d9924cf31fb75b975">src</a></td></tr>
 <tr class="separator:ae2340973e423e22d9924cf31fb75b975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74cbe94e077f2f9e76666876317582e2"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket.html#a74cbe94e077f2f9e76666876317582e2">dst</a></td></tr>
-<tr class="memdesc:a74cbe94e077f2f9e76666876317582e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a src. It is the source host ID of the packet.  <br /></td></tr>
 <tr class="separator:a74cbe94e077f2f9e76666876317582e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a352b1d429d9d96e85eb74f4a2c5203f5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket.html#a352b1d429d9d96e85eb74f4a2c5203f5">type</a></td></tr>
 <tr class="separator:a352b1d429d9d96e85eb74f4a2c5203f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a146f8dec4029aa113a1bd6996a83fadb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket.html#a146f8dec4029aa113a1bd6996a83fadb">length</a></td></tr>
 <tr class="separator:a146f8dec4029aa113a1bd6996a83fadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50e97c9ec4b8bd17c9e39e5a526b4caf"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket.html#a50e97c9ec4b8bd17c9e39e5a526b4caf">payload</a> [<a class="el" href="main_8h.html#ac7642f3091690d2eb0363ad9a22c5383">PAYLOAD_MAX</a>]</td></tr>
-<tr class="separator:a50e97c9ec4b8bd17c9e39e5a526b4caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06196f49e661ecf3b3e3007edd349b19"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket.html#a06196f49e661ecf3b3e3007edd349b19">payload</a> [<a class="el" href="main_8h.html#ac7642f3091690d2eb0363ad9a22c5383">PAYLOAD_MAX</a>]</td></tr>
+<tr class="separator:a06196f49e661ecf3b3e3007edd349b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is a packet data type. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a74cbe94e077f2f9e76666876317582e2" name="a74cbe94e077f2f9e76666876317582e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74cbe94e077f2f9e76666876317582e2">&#9670;&#160;</a></span>dst</h2>
 
@@ -109,8 +104,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>This is a src. It is the source host ID of the packet. </p>
 
 </div>
 </div>
@@ -128,14 +121,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a50e97c9ec4b8bd17c9e39e5a526b4caf" name="a50e97c9ec4b8bd17c9e39e5a526b4caf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50e97c9ec4b8bd17c9e39e5a526b4caf">&#9670;&#160;</a></span>payload</h2>
+<a id="a06196f49e661ecf3b3e3007edd349b19" name="a06196f49e661ecf3b3e3007edd349b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06196f49e661ecf3b3e3007edd349b19">&#9670;&#160;</a></span>payload</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char packet::payload</td>
+          <td class="memname">char packet::payload[<a class="el" href="main_8h.html#ac7642f3091690d2eb0363ad9a22c5383">PAYLOAD_MAX</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -170,9 +163,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="client_8c.html">client.c</a></li>
-<li><a class="el" href="main_8h_source.html">main.h</a></li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>src/<a class="el" href="main_8h_source.html">main.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

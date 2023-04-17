@@ -1,16 +1,21 @@
-\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
-\label{main_8c}\index{main.c@{main.c}}
+\hypertarget{main_8c}{}\doxysection{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Main program for managing network port communication, forwarding table, and packet handling.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$sys/types.\+h$>$}\newline
 {\ttfamily \#include $<$sys/wait.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-{\ttfamily \#include $<$fcntl.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}switch.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -18,6 +23,15 @@
 void \mbox{\hyperlink{main_8c_acdef7a1fd863a6d3770c1268cb06add3}{main}} ()
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Main program for managing network port communication, forwarding table, and packet handling. 
+
+This file contains the main program for a network switch application, handling network port communication, maintaining a forwarding table, and processing incoming packets. The main functionality includes\+:
+
+\begin{DoxyItemize}
+\item Displaying network port information. \item Displaying and managing the forwarding table. \item Initializing the forwarding table. \item Adding source hosts to the forwarding table. \item Sending packets to all network ports. \item Checking if a host is in the forwarding table.\end{DoxyItemize}
+The main program manages the forwarding table, which is used to keep track of host IDs and their associated ports. When a packet is received, the main program checks if the destination host is in the forwarding table. If so, it forwards the packet to the appropriate port. If not, it broadcasts the packet to all network ports. 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{main_8c_acdef7a1fd863a6d3770c1268cb06add3}\label{main_8c_acdef7a1fd863a6d3770c1268cb06add3}} 

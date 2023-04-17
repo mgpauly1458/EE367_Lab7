@@ -1,11 +1,29 @@
-\hypertarget{host_8h}{}\doxysection{host.\+h File Reference}
-\label{host_8h}\index{host.h@{host.h}}
+\hypertarget{host_8h}{}\doxysection{src/host.h File Reference}
+\label{host_8h}\index{src/host.h@{src/host.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfile__buf}{file\+\_\+buf}}
 \item 
 struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}}
 \item 
 struct \mbox{\hyperlink{structjob__queue}{job\+\_\+queue}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{host_8h_a04ae11e38e4d8fe2de6e26f070bcf71d}{MAX\+\_\+\+FILE\+\_\+\+BUFFER}}~1000
+\item 
+\#define \mbox{\hyperlink{host_8h_aae15a57359405fa67f39ff805c6eddd4}{MAX\+\_\+\+MSG\+\_\+\+LENGTH}}~100
+\item 
+\#define \mbox{\hyperlink{host_8h_adb0aac0db8cdd703c55d3c2733727608}{MAX\+\_\+\+DIR\+\_\+\+NAME}}~100
+\item 
+\#define \mbox{\hyperlink{host_8h_af43dedece15d018ffad8970492870bac}{MAX\+\_\+\+FILE\+\_\+\+NAME}}~100
+\item 
+\#define \mbox{\hyperlink{host_8h_a8852c8f218a0b52cb063608f68d81d26}{PKT\+\_\+\+PAYLOAD\+\_\+\+MAX}}~100
+\item 
+\#define \mbox{\hyperlink{host_8h_aedbdc4de92793ec613416fe9cff63436}{TENMILLISEC}}~10000   /$\ast$ 10 millisecond sleep $\ast$/
 \end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -34,6 +52,45 @@ void \mbox{\hyperlink{host_8h_ad4eda050472b9f02b29a574ddeb04b05}{display\+\_\+pa
 \item 
 void \mbox{\hyperlink{host_8h_a312ab59f3184926dc8c5a97908dee884}{display\+\_\+host\+\_\+job\+\_\+info}} (struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$, int)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{host_8h_adb0aac0db8cdd703c55d3c2733727608}\label{host_8h_adb0aac0db8cdd703c55d3c2733727608}} 
+\index{host.h@{host.h}!MAX\_DIR\_NAME@{MAX\_DIR\_NAME}}
+\index{MAX\_DIR\_NAME@{MAX\_DIR\_NAME}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_DIR\_NAME}{MAX\_DIR\_NAME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+DIR\+\_\+\+NAME~100}
+
+\mbox{\Hypertarget{host_8h_a04ae11e38e4d8fe2de6e26f070bcf71d}\label{host_8h_a04ae11e38e4d8fe2de6e26f070bcf71d}} 
+\index{host.h@{host.h}!MAX\_FILE\_BUFFER@{MAX\_FILE\_BUFFER}}
+\index{MAX\_FILE\_BUFFER@{MAX\_FILE\_BUFFER}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_FILE\_BUFFER}{MAX\_FILE\_BUFFER}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+BUFFER~1000}
+
+\mbox{\Hypertarget{host_8h_af43dedece15d018ffad8970492870bac}\label{host_8h_af43dedece15d018ffad8970492870bac}} 
+\index{host.h@{host.h}!MAX\_FILE\_NAME@{MAX\_FILE\_NAME}}
+\index{MAX\_FILE\_NAME@{MAX\_FILE\_NAME}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_FILE\_NAME}{MAX\_FILE\_NAME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+NAME~100}
+
+\mbox{\Hypertarget{host_8h_aae15a57359405fa67f39ff805c6eddd4}\label{host_8h_aae15a57359405fa67f39ff805c6eddd4}} 
+\index{host.h@{host.h}!MAX\_MSG\_LENGTH@{MAX\_MSG\_LENGTH}}
+\index{MAX\_MSG\_LENGTH@{MAX\_MSG\_LENGTH}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_MSG\_LENGTH}{MAX\_MSG\_LENGTH}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+MSG\+\_\+\+LENGTH~100}
+
+\mbox{\Hypertarget{host_8h_a8852c8f218a0b52cb063608f68d81d26}\label{host_8h_a8852c8f218a0b52cb063608f68d81d26}} 
+\index{host.h@{host.h}!PKT\_PAYLOAD\_MAX@{PKT\_PAYLOAD\_MAX}}
+\index{PKT\_PAYLOAD\_MAX@{PKT\_PAYLOAD\_MAX}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{PKT\_PAYLOAD\_MAX}{PKT\_PAYLOAD\_MAX}}
+{\footnotesize\ttfamily \#define PKT\+\_\+\+PAYLOAD\+\_\+\+MAX~100}
+
+\mbox{\Hypertarget{host_8h_aedbdc4de92793ec613416fe9cff63436}\label{host_8h_aedbdc4de92793ec613416fe9cff63436}} 
+\index{host.h@{host.h}!TENMILLISEC@{TENMILLISEC}}
+\index{TENMILLISEC@{TENMILLISEC}!host.h@{host.h}}
+\doxysubsubsection{\texorpdfstring{TENMILLISEC}{TENMILLISEC}}
+{\footnotesize\ttfamily \#define TENMILLISEC~10000   /$\ast$ 10 millisecond sleep $\ast$/}
+
 
 
 \doxysubsection{Enumeration Type Documentation}

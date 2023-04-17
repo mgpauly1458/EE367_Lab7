@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: switch.h File Reference</title>
+<title>EE 367 Lab 7: src/switch.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,6 +68,10 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -98,6 +103,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a95a08d3598a416ff667b9728c0a62e6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8h.html#a95a08d3598a416ff667b9728c0a62e6f">switch_main</a> (int)</td></tr>
 <tr class="separator:a95a08d3598a416ff667b9728c0a62e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0629c386e170aa963c8bb398a001437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="switch_8h.html#ab0629c386e170aa963c8bb398a001437">display_port_info</a> (struct <a class="el" href="structnet__port.html">net_port</a> *)</td></tr>
+<tr class="memdesc:ab0629c386e170aa963c8bb398a001437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the information of a network port.  <br /></td></tr>
 <tr class="separator:ab0629c386e170aa963c8bb398a001437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -131,6 +137,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Displays the information of a network port. </p>
+<p>This function prints the details of the given network port, including its type, pipe host ID, pipe send file descriptor, pipe receive file descriptor, next pointer, and socket host ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Pointer to the <a class="el" href="structnet__port.html">net_port</a> structure containing the network port information to display. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

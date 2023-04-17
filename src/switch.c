@@ -1,3 +1,20 @@
+/**
+@file main.c
+@brief Main program for managing network port communication, forwarding table, and packet handling.
+
+This file contains the main program for a network switch application, handling network port communication, maintaining a forwarding table, and processing incoming packets. The main functionality includes:
+
+\li Displaying network port information.
+\li Displaying and managing the forwarding table.
+\li Initializing the forwarding table.
+\li Adding source hosts to the forwarding table.
+\li Sending packets to all network ports.
+\li Checking if a host is in the forwarding table.
+
+The main program manages the forwarding table, which is used to keep track of host IDs and their associated ports. When a packet is received, the main program checks if the destination host is in the forwarding table. If so, it forwards the packet to the appropriate port. If not, it broadcasts the packet to all network ports.
+
+*/
+
 
 #include <fcntl.h>
 #include <signal.h>

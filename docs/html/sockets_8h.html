@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: sockets.h File Reference</title>
+<title>EE 367 Lab 7: src/sockets.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,6 +68,10 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -80,12 +85,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac682607ad77ec7cfeda376a8bf15dc99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sockets_8h.html#ac682607ad77ec7cfeda376a8bf15dc99">create_server</a> (int port, int pipe_fd)</td></tr>
+<tr class="memdesc:ac682607ad77ec7cfeda376a8bf15dc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a server socket, listens for incoming connections and forwards received data to a pipe.  <br /></td></tr>
 <tr class="separator:ac682607ad77ec7cfeda376a8bf15dc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00e3cf7960681f2888aacd8fb3639266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sockets_8h.html#a00e3cf7960681f2888aacd8fb3639266">send_packet</a> (int pipe_fd, struct <a class="el" href="structpacket.html">packet</a> *p)</td></tr>
+<tr class="memdesc:a00e3cf7960681f2888aacd8fb3639266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a packet by writing its message format to the given pipe.  <br /></td></tr>
 <tr class="separator:a00e3cf7960681f2888aacd8fb3639266"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5180eae33365fe64d3591720fe0f424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sockets_8h.html#aa5180eae33365fe64d3591720fe0f424">create_client</a> (char *domain_name, int port, struct <a class="el" href="structpacket.html">packet</a> *p)</td></tr>
+<tr class="memdesc:aa5180eae33365fe64d3591720fe0f424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a client socket, connects to a remote server, and sends a packet.  <br /></td></tr>
 <tr class="separator:aa5180eae33365fe64d3591720fe0f424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a428e2e73d20e902b21d84e19cd231016"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sockets_8h.html#a428e2e73d20e902b21d84e19cd231016">receive_packet</a> (int pipe_fd, struct <a class="el" href="structpacket.html">packet</a> *p)</td></tr>
+<tr class="memdesc:a428e2e73d20e902b21d84e19cd231016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a packet by reading its message format from the given pipe.  <br /></td></tr>
 <tr class="separator:a428e2e73d20e902b21d84e19cd231016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -121,6 +130,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates a client socket, connects to a remote server, and sends a packet. </p>
+<p>This function creates a client socket, resolves the domain name to an IP address, and connects to the remote server at the specified port. It sets the socket to non-blocking mode for asynchronous communication and sends the given packet to the server.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">domain_name</td><td>The domain name of the remote server to connect to. </td></tr>
+    <tr><td class="paramname">port</td><td>The port number of the remote server. </td></tr>
+    <tr><td class="paramname">p</td><td>Pointer to the packet structure to be sent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ac682607ad77ec7cfeda376a8bf15dc99" name="ac682607ad77ec7cfeda376a8bf15dc99"></a>
@@ -148,6 +168,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a server socket, listens for incoming connections and forwards received data to a pipe. </p>
+<p>This function creates a server socket, binds it to the specified port, and listens for incoming connections. It accepts connections, reads data from the clients, and sends the data to the specified pipe file descriptor for further processing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number on which the server socket will listen for incoming connections. </td></tr>
+    <tr><td class="paramname">pipe_fd</td><td>The file descriptor of the pipe to write the received data to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -177,6 +207,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Receives a packet by reading its message format from the given pipe. </p>
+<p>This function reads a message from the specified pipe file descriptor and converts it to a packet format. It returns the number of bytes read from the pipe.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pipe_fd</td><td>The file descriptor of the pipe to read the message from. </td></tr>
+    <tr><td class="paramname">p</td><td>Pointer to the packet structure that will store the received packet data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of bytes read from the pipe. </dd></dl>
+
 </div>
 </div>
 <a id="a00e3cf7960681f2888aacd8fb3639266" name="a00e3cf7960681f2888aacd8fb3639266"></a>
@@ -204,6 +245,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sends a packet by writing its message format to the given pipe. </p>
+<p>This function converts the given packet to a message format and writes the message to the specified pipe file descriptor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pipe_fd</td><td>The file descriptor of the pipe to write the message to. </td></tr>
+    <tr><td class="paramname">p</td><td>Pointer to the packet structure to be sent. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

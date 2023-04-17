@@ -1,140 +1,95 @@
-\hypertarget{net_8c}{}\doxysection{net.\+c File Reference}
-\label{net_8c}\index{net.c@{net.c}}
+\hypertarget{net_8c}{}\doxysection{src/net.c File Reference}
+\label{net_8c}\index{src/net.c@{src/net.c}}
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$sys/types.\+h$>$}\newline
-{\ttfamily \#include $<$fcntl.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}host.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}packet.\+h\char`\"{}}\newline
-\doxysubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{structnet__link}{net\+\_\+link}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{net_8c_a369266c24eacffb87046522897a570d5}{\+\_\+\+GNU\+\_\+\+SOURCE}}
-\item 
-\#define \mbox{\hyperlink{net_8c_af43dedece15d018ffad8970492870bac}{MAX\+\_\+\+FILE\+\_\+\+NAME}}~100
-\item 
-\#define \mbox{\hyperlink{net_8c_a4d3fd39039e53cbef1db585ad1099a22}{PIPE\+\_\+\+READ}}~0
-\item 
-\#define \mbox{\hyperlink{net_8c_a9c4636b2eca0b9f6c873269df40f3dda}{PIPE\+\_\+\+WRITE}}~1
-\end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-enum \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1}{bool}} \{ \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
-, \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}{TRUE}}
- \}
-\end{DoxyCompactItemize}
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ \mbox{\hyperlink{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}{get\+\_\+g\+\_\+net\+\_\+data}} ()
 \item 
 int \mbox{\hyperlink{net_8c_a99a6cd9c18d2bb5266e61289894bccc5}{load\+\_\+net\+\_\+data\+\_\+file}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Loads network data from a file and initializes the network structures. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_ae2896d953358763e21f7478f31bb4b25}{create\+\_\+node\+\_\+list}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a node list based on the network configuration. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}{create\+\_\+port\+\_\+list}} ()
-\item 
-void \mbox{\hyperlink{net_8c_afc4c86c91de3ff42656532fb55c97e9e}{create\+\_\+man\+\_\+ports}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$p\+\_\+m, struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$$\ast$p\+\_\+h)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a port list based on the network configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{net_8c_a18c5541b793198fc405401b6e2fad6b8}{create\+\_\+man\+\_\+ports}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$p\+\_\+man, struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$$\ast$p\+\_\+host)
+\begin{DoxyCompactList}\small\item\em Creates management ports for host nodes and the management node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_a8587acb35c535e4f5872b66261443efc}{net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Closes all management ports at host nodes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_a01acc3efe0d03b893ad75c508d0915b9}{net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts\+\_\+except}} (int host\+\_\+id)
-\item 
+\begin{DoxyCompactList}\small\item\em Closes all management ports at host nodes, except for the specified host ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_a187ff497eaba8920c33a9355fab358f8}{net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for management ports at host nodes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_a4ca1b8c86b93e7aff77cdac060e8920b}{net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+man}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Closes all management ports at the management node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}{net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+man}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for management ports at the management node. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ \mbox{\hyperlink{net_8c_a2d57f7f0c32601131260cb00d1d6518d}{net\+\_\+get\+\_\+port\+\_\+list}} (int host\+\_\+id)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures for a given host ID. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ \mbox{\hyperlink{net_8c_aa59500439b78e290e89c2c01b8cac797}{net\+\_\+get\+\_\+node\+\_\+list}} ()
 \item 
 struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ \mbox{\hyperlink{net_8c_aec19f600a98c80de0a2d5369350e0194}{net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves the list of management ports at the management node. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ \mbox{\hyperlink{net_8c_ae5ce1bc73a406917997636e3d52853a8}{net\+\_\+get\+\_\+host\+\_\+port}} (int host\+\_\+id)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves the management port at a host with a given host ID. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{net_8c_a22b2914249628f6cba7d4e1f138c969f}{net\+\_\+init}} ()
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{net_8c_a369266c24eacffb87046522897a570d5}\label{net_8c_a369266c24eacffb87046522897a570d5}} 
-\index{net.c@{net.c}!\_GNU\_SOURCE@{\_GNU\_SOURCE}}
-\index{\_GNU\_SOURCE@{\_GNU\_SOURCE}!net.c@{net.c}}
-\doxysubsubsection{\texorpdfstring{\_GNU\_SOURCE}{\_GNU\_SOURCE}}
-{\footnotesize\ttfamily \#define \+\_\+\+GNU\+\_\+\+SOURCE}
-
-\mbox{\Hypertarget{net_8c_af43dedece15d018ffad8970492870bac}\label{net_8c_af43dedece15d018ffad8970492870bac}} 
-\index{net.c@{net.c}!MAX\_FILE\_NAME@{MAX\_FILE\_NAME}}
-\index{MAX\_FILE\_NAME@{MAX\_FILE\_NAME}!net.c@{net.c}}
-\doxysubsubsection{\texorpdfstring{MAX\_FILE\_NAME}{MAX\_FILE\_NAME}}
-{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+NAME~100}
-
-\mbox{\Hypertarget{net_8c_a4d3fd39039e53cbef1db585ad1099a22}\label{net_8c_a4d3fd39039e53cbef1db585ad1099a22}} 
-\index{net.c@{net.c}!PIPE\_READ@{PIPE\_READ}}
-\index{PIPE\_READ@{PIPE\_READ}!net.c@{net.c}}
-\doxysubsubsection{\texorpdfstring{PIPE\_READ}{PIPE\_READ}}
-{\footnotesize\ttfamily \#define PIPE\+\_\+\+READ~0}
-
-\mbox{\Hypertarget{net_8c_a9c4636b2eca0b9f6c873269df40f3dda}\label{net_8c_a9c4636b2eca0b9f6c873269df40f3dda}} 
-\index{net.c@{net.c}!PIPE\_WRITE@{PIPE\_WRITE}}
-\index{PIPE\_WRITE@{PIPE\_WRITE}!net.c@{net.c}}
-\doxysubsubsection{\texorpdfstring{PIPE\_WRITE}{PIPE\_WRITE}}
-{\footnotesize\ttfamily \#define PIPE\+\_\+\+WRITE~1}
-
-
-
-\doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{net_8c_af6a258d8f3ee5206d682d799316314b1}\label{net_8c_af6a258d8f3ee5206d682d799316314b1}} 
-\index{net.c@{net.c}!bool@{bool}}
-\index{bool@{bool}!net.c@{net.c}}
-\doxysubsubsection{\texorpdfstring{bool}{bool}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{net_8c_af6a258d8f3ee5206d682d799316314b1}{bool}}}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FALSE@{FALSE}!net.c@{net.c}}\index{net.c@{net.c}!FALSE@{FALSE}}}\mbox{\Hypertarget{net_8c_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}\label{net_8c_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}} 
-FALSE&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TRUE@{TRUE}!net.c@{net.c}}\index{net.c@{net.c}!TRUE@{TRUE}}}\mbox{\Hypertarget{net_8c_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}\label{net_8c_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}} 
-TRUE&\\
-\hline
-
-\end{DoxyEnumFields}
-
+\doxysubsection{Detailed Description}
+This file handles the initialization and management of a network, including nodes, links, and communication between hosts and a manager. It provides various functions for network manipulation, such as creating nodes, links, and port lists, as well as loading a network configuration file. 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{net_8c_afc4c86c91de3ff42656532fb55c97e9e}\label{net_8c_afc4c86c91de3ff42656532fb55c97e9e}} 
+\mbox{\Hypertarget{net_8c_a18c5541b793198fc405401b6e2fad6b8}\label{net_8c_a18c5541b793198fc405401b6e2fad6b8}} 
 \index{net.c@{net.c}!create\_man\_ports@{create\_man\_ports}}
 \index{create\_man\_ports@{create\_man\_ports}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{create\_man\_ports()}{create\_man\_ports()}}
-{\footnotesize\ttfamily void create\+\_\+man\+\_\+ports (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$}]{p\+\_\+m,  }\item[{struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$$\ast$}]{p\+\_\+h }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void create\+\_\+man\+\_\+ports (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$}]{p\+\_\+man,  }\item[{struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$$\ast$}]{p\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Creates management ports for host nodes and the management node. 
+
+This function creates management ports for host nodes and the management node by iterating through the list of \mbox{\hyperlink{structnet__node}{net\+\_\+node}} structures. It sets up the pipes, file descriptors, and adds the created ports to the corresponding global lists.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em p\+\_\+man} & Pointer to the pointer of the first \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} structure. \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+\_\+host} & Pointer to the pointer of the first \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} structure. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{net_8c_ae2896d953358763e21f7478f31bb4b25}\label{net_8c_ae2896d953358763e21f7478f31bb4b25}} 
 \index{net.c@{net.c}!create\_node\_list@{create\_node\_list}}
 \index{create\_node\_list@{create\_node\_list}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{create\_node\_list()}{create\_node\_list()}}
 {\footnotesize\ttfamily void create\+\_\+node\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}\label{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}} 
+
+
+Creates a node list based on the network configuration. 
+
+This function reads the global network node data and creates a linked list of \mbox{\hyperlink{structnet__node}{net\+\_\+node}} structures, which represents the network nodes. The resulting linked list is stored in the global variable g\+\_\+node\+\_\+list. \mbox{\Hypertarget{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}\label{net_8c_adfe0c29df53727cf1bf79a7bd8ce7b88}} 
 \index{net.c@{net.c}!create\_port\_list@{create\_port\_list}}
 \index{create\_port\_list@{create\_port\_list}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{create\_port\_list()}{create\_port\_list()}}
 {\footnotesize\ttfamily void create\+\_\+port\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}\label{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}} 
+
+
+Creates a port list based on the network configuration. 
+
+This function reads the global network link data and creates a linked list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures, which represents the network ports. The resulting linked list is stored in the global variable g\+\_\+port\+\_\+list. Each port in the list is properly configured according to its type (PIPE or SOCKET), and it also includes necessary file descriptors for sending and receiving data. \mbox{\Hypertarget{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}\label{net_8c_a1e50ac47f3d599c9148f0a01fc07fb8a}} 
 \index{net.c@{net.c}!get\_g\_net\_data@{get\_g\_net\_data}}
 \index{get\_g\_net\_data@{get\_g\_net\_data}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{get\_g\_net\_data()}{get\_g\_net\_data()}}
@@ -146,60 +101,133 @@ TRUE&\\
 \doxysubsubsection{\texorpdfstring{load\_net\_data\_file()}{load\_net\_data\_file()}}
 {\footnotesize\ttfamily int load\+\_\+net\+\_\+data\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Loads network data from a file and initializes the network structures. 
+
+This function prompts the user for a network data file, reads the file, and initializes the network structures (nodes and links) based on the file content. It stores the number of nodes and links in the private global variables g\+\_\+net\+\_\+node\+\_\+num and g\+\_\+net\+\_\+link\+\_\+num, respectively. The nodes and links are stored in global arrays g\+\_\+net\+\_\+node and g\+\_\+net\+\_\+link, respectively.
+
+\begin{DoxyReturn}{Returns}
+1 if the data file is loaded successfully and the network structures are initialized correctly, 0 otherwise. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8c_a8587acb35c535e4f5872b66261443efc}\label{net_8c_a8587acb35c535e4f5872b66261443efc}} 
 \index{net.c@{net.c}!net\_close\_man\_ports\_at\_hosts@{net\_close\_man\_ports\_at\_hosts}}
 \index{net\_close\_man\_ports\_at\_hosts@{net\_close\_man\_ports\_at\_hosts}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_close\_man\_ports\_at\_hosts()}{net\_close\_man\_ports\_at\_hosts()}}
 {\footnotesize\ttfamily void net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_a01acc3efe0d03b893ad75c508d0915b9}\label{net_8c_a01acc3efe0d03b893ad75c508d0915b9}} 
+
+
+Closes all management ports at host nodes. 
+
+This function iterates through the list of management ports at host nodes and closes both the send and receive file descriptors for each port. \mbox{\Hypertarget{net_8c_a01acc3efe0d03b893ad75c508d0915b9}\label{net_8c_a01acc3efe0d03b893ad75c508d0915b9}} 
 \index{net.c@{net.c}!net\_close\_man\_ports\_at\_hosts\_except@{net\_close\_man\_ports\_at\_hosts\_except}}
 \index{net\_close\_man\_ports\_at\_hosts\_except@{net\_close\_man\_ports\_at\_hosts\_except}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_close\_man\_ports\_at\_hosts\_except()}{net\_close\_man\_ports\_at\_hosts\_except()}}
 {\footnotesize\ttfamily void net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts\+\_\+except (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
 
+
+
+Closes all management ports at host nodes, except for the specified host ID. 
+
+This function iterates through the list of management ports at host nodes and closes both the send and receive file descriptors for each port, except for the one with the specified host ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host\+\_\+id} & The ID of the host to exclude from closing. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{net_8c_a4ca1b8c86b93e7aff77cdac060e8920b}\label{net_8c_a4ca1b8c86b93e7aff77cdac060e8920b}} 
 \index{net.c@{net.c}!net\_close\_man\_ports\_at\_man@{net\_close\_man\_ports\_at\_man}}
 \index{net\_close\_man\_ports\_at\_man@{net\_close\_man\_ports\_at\_man}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_close\_man\_ports\_at\_man()}{net\_close\_man\_ports\_at\_man()}}
 {\footnotesize\ttfamily void net\+\_\+close\+\_\+man\+\_\+ports\+\_\+at\+\_\+man (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_a187ff497eaba8920c33a9355fab358f8}\label{net_8c_a187ff497eaba8920c33a9355fab358f8}} 
+
+
+Closes all management ports at the management node. 
+
+This function iterates through the list of management ports at the management node and closes both the send and receive file descriptors for each port. \mbox{\Hypertarget{net_8c_a187ff497eaba8920c33a9355fab358f8}\label{net_8c_a187ff497eaba8920c33a9355fab358f8}} 
 \index{net.c@{net.c}!net\_free\_man\_ports\_at\_hosts@{net\_free\_man\_ports\_at\_hosts}}
 \index{net\_free\_man\_ports\_at\_hosts@{net\_free\_man\_ports\_at\_hosts}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_free\_man\_ports\_at\_hosts()}{net\_free\_man\_ports\_at\_hosts()}}
 {\footnotesize\ttfamily void net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+hosts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}\label{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}} 
+
+
+Frees the memory allocated for management ports at host nodes. 
+
+This function iterates through the list of management ports at host nodes and frees the memory allocated for each \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} structure. \mbox{\Hypertarget{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}\label{net_8c_a1d2cad88e6a3df0fabd043d22d9f3211}} 
 \index{net.c@{net.c}!net\_free\_man\_ports\_at\_man@{net\_free\_man\_ports\_at\_man}}
 \index{net\_free\_man\_ports\_at\_man@{net\_free\_man\_ports\_at\_man}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_free\_man\_ports\_at\_man()}{net\_free\_man\_ports\_at\_man()}}
 {\footnotesize\ttfamily void net\+\_\+free\+\_\+man\+\_\+ports\+\_\+at\+\_\+man (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_ae5ce1bc73a406917997636e3d52853a8}\label{net_8c_ae5ce1bc73a406917997636e3d52853a8}} 
+
+
+Frees the memory allocated for management ports at the management node. 
+
+This function iterates through the list of management ports at the management node and frees the memory allocated for each \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} structure. \mbox{\Hypertarget{net_8c_ae5ce1bc73a406917997636e3d52853a8}\label{net_8c_ae5ce1bc73a406917997636e3d52853a8}} 
 \index{net.c@{net.c}!net\_get\_host\_port@{net\_get\_host\_port}}
 \index{net\_get\_host\_port@{net\_get\_host\_port}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_get\_host\_port()}{net\_get\_host\_port()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ net\+\_\+get\+\_\+host\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
 
+
+
+Retrieves the management port at a host with a given host ID. 
+
+This function searches for the management port at a host with the specified host ID and returns it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host\+\_\+id} & The ID of the host to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} structure, or NULL if not found. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8c_aec19f600a98c80de0a2d5369350e0194}\label{net_8c_aec19f600a98c80de0a2d5369350e0194}} 
 \index{net.c@{net.c}!net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}}
 \index{net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_get\_man\_ports\_at\_man\_list()}{net\_get\_man\_ports\_at\_man\_list()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Retrieves the list of management ports at the management node. 
+
+This function returns the global list of management ports at the management node.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the first \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} structure in the list. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8c_aa59500439b78e290e89c2c01b8cac797}\label{net_8c_aa59500439b78e290e89c2c01b8cac797}} 
 \index{net.c@{net.c}!net\_get\_node\_list@{net\_get\_node\_list}}
 \index{net\_get\_node\_list@{net\_get\_node\_list}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_get\_node\_list()}{net\_get\_node\_list()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ net\+\_\+get\+\_\+node\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8c_a2d57f7f0c32601131260cb00d1d6518d}\label{net_8c_a2d57f7f0c32601131260cb00d1d6518d}} 
+Return the linked list of nodes \mbox{\Hypertarget{net_8c_a2d57f7f0c32601131260cb00d1d6518d}\label{net_8c_a2d57f7f0c32601131260cb00d1d6518d}} 
 \index{net.c@{net.c}!net\_get\_port\_list@{net\_get\_port\_list}}
 \index{net\_get\_port\_list@{net\_get\_port\_list}!net.c@{net.c}}
 \doxysubsubsection{\texorpdfstring{net\_get\_port\_list()}{net\_get\_port\_list()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ net\+\_\+get\+\_\+port\+\_\+list (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
 
+
+
+Retrieves a list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures for a given host ID. 
+
+This function retrieves a list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures that match the specified host ID, either as pipe\+\_\+host\+\_\+id or sock\+\_\+host\+\_\+id. The function modifies the global port list and creates a new list with the matching \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host\+\_\+id} & The ID of the host to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the first \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structure in the list of matching ports, or NULL if no matching ports are found. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8c_a22b2914249628f6cba7d4e1f138c969f}\label{net_8c_a22b2914249628f6cba7d4e1f138c969f}} 
 \index{net.c@{net.c}!net\_init@{net\_init}}
 \index{net\_init@{net\_init}!net.c@{net.c}}

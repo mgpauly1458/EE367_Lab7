@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: net.c File Reference</title>
+<title>EE 367 Lab 7: src/net.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,163 +68,79 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">net.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/types.h&gt;</code><br />
-<code>#include &lt;fcntl.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="host_8h_source.html">host.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="man_8h_source.html">man.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="host_8h_source.html">host.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="net_8h_source.html">net.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="packet_8h_source.html">packet.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="net_8h_source.html">net.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet__link.html">net_link</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a369266c24eacffb87046522897a570d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a369266c24eacffb87046522897a570d5">_GNU_SOURCE</a></td></tr>
-<tr class="separator:a369266c24eacffb87046522897a570d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af43dedece15d018ffad8970492870bac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:af43dedece15d018ffad8970492870bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d3fd39039e53cbef1db585ad1099a22"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a4d3fd39039e53cbef1db585ad1099a22">PIPE_READ</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a4d3fd39039e53cbef1db585ad1099a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c4636b2eca0b9f6c873269df40f3dda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a9c4636b2eca0b9f6c873269df40f3dda">PIPE_WRITE</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a9c4636b2eca0b9f6c873269df40f3dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:af6a258d8f3ee5206d682d799316314b1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#af6a258d8f3ee5206d682d799316314b1">bool</a> { <a class="el" href="net_8c.html#af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>
-, <a class="el" href="net_8c.html#af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839">TRUE</a>
- }</td></tr>
-<tr class="separator:af6a258d8f3ee5206d682d799316314b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1e50ac47f3d599c9148f0a01fc07fb8a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structnet__data.html">net_data</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a1e50ac47f3d599c9148f0a01fc07fb8a">get_g_net_data</a> ()</td></tr>
 <tr class="separator:a1e50ac47f3d599c9148f0a01fc07fb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99a6cd9c18d2bb5266e61289894bccc5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a99a6cd9c18d2bb5266e61289894bccc5">load_net_data_file</a> ()</td></tr>
+<tr class="memdesc:a99a6cd9c18d2bb5266e61289894bccc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads network data from a file and initializes the network structures.  <br /></td></tr>
 <tr class="separator:a99a6cd9c18d2bb5266e61289894bccc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2896d953358763e21f7478f31bb4b25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#ae2896d953358763e21f7478f31bb4b25">create_node_list</a> ()</td></tr>
+<tr class="memdesc:ae2896d953358763e21f7478f31bb4b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a node list based on the network configuration.  <br /></td></tr>
 <tr class="separator:ae2896d953358763e21f7478f31bb4b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfe0c29df53727cf1bf79a7bd8ce7b88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#adfe0c29df53727cf1bf79a7bd8ce7b88">create_port_list</a> ()</td></tr>
+<tr class="memdesc:adfe0c29df53727cf1bf79a7bd8ce7b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a port list based on the network configuration.  <br /></td></tr>
 <tr class="separator:adfe0c29df53727cf1bf79a7bd8ce7b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc4c86c91de3ff42656532fb55c97e9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#afc4c86c91de3ff42656532fb55c97e9e">create_man_ports</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> **p_m, struct <a class="el" href="structman__port__at__host.html">man_port_at_host</a> **p_h)</td></tr>
-<tr class="separator:afc4c86c91de3ff42656532fb55c97e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18c5541b793198fc405401b6e2fad6b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a18c5541b793198fc405401b6e2fad6b8">create_man_ports</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> **p_man, struct <a class="el" href="structman__port__at__host.html">man_port_at_host</a> **p_host)</td></tr>
+<tr class="memdesc:a18c5541b793198fc405401b6e2fad6b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates management ports for host nodes and the management node.  <br /></td></tr>
+<tr class="separator:a18c5541b793198fc405401b6e2fad6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8587acb35c535e4f5872b66261443efc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a8587acb35c535e4f5872b66261443efc">net_close_man_ports_at_hosts</a> ()</td></tr>
+<tr class="memdesc:a8587acb35c535e4f5872b66261443efc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes all management ports at host nodes.  <br /></td></tr>
 <tr class="separator:a8587acb35c535e4f5872b66261443efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01acc3efe0d03b893ad75c508d0915b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a01acc3efe0d03b893ad75c508d0915b9">net_close_man_ports_at_hosts_except</a> (int host_id)</td></tr>
+<tr class="memdesc:a01acc3efe0d03b893ad75c508d0915b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes all management ports at host nodes, except for the specified host ID.  <br /></td></tr>
 <tr class="separator:a01acc3efe0d03b893ad75c508d0915b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a187ff497eaba8920c33a9355fab358f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a187ff497eaba8920c33a9355fab358f8">net_free_man_ports_at_hosts</a> ()</td></tr>
+<tr class="memdesc:a187ff497eaba8920c33a9355fab358f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory allocated for management ports at host nodes.  <br /></td></tr>
 <tr class="separator:a187ff497eaba8920c33a9355fab358f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca1b8c86b93e7aff77cdac060e8920b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a4ca1b8c86b93e7aff77cdac060e8920b">net_close_man_ports_at_man</a> ()</td></tr>
+<tr class="memdesc:a4ca1b8c86b93e7aff77cdac060e8920b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes all management ports at the management node.  <br /></td></tr>
 <tr class="separator:a4ca1b8c86b93e7aff77cdac060e8920b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d2cad88e6a3df0fabd043d22d9f3211"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a1d2cad88e6a3df0fabd043d22d9f3211">net_free_man_ports_at_man</a> ()</td></tr>
+<tr class="memdesc:a1d2cad88e6a3df0fabd043d22d9f3211"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory allocated for management ports at the management node.  <br /></td></tr>
 <tr class="separator:a1d2cad88e6a3df0fabd043d22d9f3211"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d57f7f0c32601131260cb00d1d6518d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structnet__port.html">net_port</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a2d57f7f0c32601131260cb00d1d6518d">net_get_port_list</a> (int host_id)</td></tr>
+<tr class="memdesc:a2d57f7f0c32601131260cb00d1d6518d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a list of <a class="el" href="structnet__port.html">net_port</a> structures for a given host ID.  <br /></td></tr>
 <tr class="separator:a2d57f7f0c32601131260cb00d1d6518d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa59500439b78e290e89c2c01b8cac797"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structnet__node.html">net_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#aa59500439b78e290e89c2c01b8cac797">net_get_node_list</a> ()</td></tr>
 <tr class="separator:aa59500439b78e290e89c2c01b8cac797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec19f600a98c80de0a2d5369350e0194"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#aec19f600a98c80de0a2d5369350e0194">net_get_man_ports_at_man_list</a> ()</td></tr>
+<tr class="memdesc:aec19f600a98c80de0a2d5369350e0194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the list of management ports at the management node.  <br /></td></tr>
 <tr class="separator:aec19f600a98c80de0a2d5369350e0194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5ce1bc73a406917997636e3d52853a8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structman__port__at__host.html">man_port_at_host</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#ae5ce1bc73a406917997636e3d52853a8">net_get_host_port</a> (int host_id)</td></tr>
+<tr class="memdesc:ae5ce1bc73a406917997636e3d52853a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the management port at a host with a given host ID.  <br /></td></tr>
 <tr class="separator:ae5ce1bc73a406917997636e3d52853a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22b2914249628f6cba7d4e1f138c969f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net_8c.html#a22b2914249628f6cba7d4e1f138c969f">net_init</a> ()</td></tr>
 <tr class="separator:a22b2914249628f6cba7d4e1f138c969f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a369266c24eacffb87046522897a570d5" name="a369266c24eacffb87046522897a570d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a369266c24eacffb87046522897a570d5">&#9670;&#160;</a></span>_GNU_SOURCE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _GNU_SOURCE</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af43dedece15d018ffad8970492870bac" name="af43dedece15d018ffad8970492870bac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af43dedece15d018ffad8970492870bac">&#9670;&#160;</a></span>MAX_FILE_NAME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_FILE_NAME&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4d3fd39039e53cbef1db585ad1099a22" name="a4d3fd39039e53cbef1db585ad1099a22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d3fd39039e53cbef1db585ad1099a22">&#9670;&#160;</a></span>PIPE_READ</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PIPE_READ&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9c4636b2eca0b9f6c873269df40f3dda" name="a9c4636b2eca0b9f6c873269df40f3dda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c4636b2eca0b9f6c873269df40f3dda">&#9670;&#160;</a></span>PIPE_WRITE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PIPE_WRITE&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="af6a258d8f3ee5206d682d799316314b1" name="af6a258d8f3ee5206d682d799316314b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6a258d8f3ee5206d682d799316314b1">&#9670;&#160;</a></span>bool</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="net_8c.html#af6a258d8f3ee5206d682d799316314b1">bool</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a" name="af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a"></a>FALSE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839" name="af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839"></a>TRUE&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="afc4c86c91de3ff42656532fb55c97e9e" name="afc4c86c91de3ff42656532fb55c97e9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc4c86c91de3ff42656532fb55c97e9e">&#9670;&#160;</a></span>create_man_ports()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file handles the initialization and management of a network, including nodes, links, and communication between hosts and a manager. It provides various functions for network manipulation, such as creating nodes, links, and port lists, as well as loading a network configuration file. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a18c5541b793198fc405401b6e2fad6b8" name="a18c5541b793198fc405401b6e2fad6b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18c5541b793198fc405401b6e2fad6b8">&#9670;&#160;</a></span>create_man_ports()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,13 +149,13 @@ Functions</h2></td></tr>
           <td class="memname">void create_man_ports </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> **&#160;</td>
-          <td class="paramname"><em>p_m</em>, </td>
+          <td class="paramname"><em>p_man</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">struct <a class="el" href="structman__port__at__host.html">man_port_at_host</a> **&#160;</td>
-          <td class="paramname"><em>p_h</em>&#160;</td>
+          <td class="paramname"><em>p_host</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -247,6 +164,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates management ports for host nodes and the management node. </p>
+<p>This function creates management ports for host nodes and the management node by iterating through the list of <a class="el" href="structnet__node.html">net_node</a> structures. It sets up the pipes, file descriptors, and adds the created ports to the corresponding global lists.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_man</td><td>Pointer to the pointer of the first <a class="el" href="structman__port__at__man.html">man_port_at_man</a> structure. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">p_host</td><td>Pointer to the pointer of the first <a class="el" href="structman__port__at__host.html">man_port_at_host</a> structure. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -265,6 +192,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates a node list based on the network configuration. </p>
+<p>This function reads the global network node data and creates a linked list of <a class="el" href="structnet__node.html">net_node</a> structures, which represents the network nodes. The resulting linked list is stored in the global variable g_node_list. </p>
+
 </div>
 </div>
 <a id="adfe0c29df53727cf1bf79a7bd8ce7b88" name="adfe0c29df53727cf1bf79a7bd8ce7b88"></a>
@@ -281,6 +211,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a port list based on the network configuration. </p>
+<p>This function reads the global network link data and creates a linked list of <a class="el" href="structnet__port.html">net_port</a> structures, which represents the network ports. The resulting linked list is stored in the global variable g_port_list. Each port in the list is properly configured according to its type (PIPE or SOCKET), and it also includes necessary file descriptors for sending and receiving data. </p>
 
 </div>
 </div>
@@ -316,6 +249,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Loads network data from a file and initializes the network structures. </p>
+<p>This function prompts the user for a network data file, reads the file, and initializes the network structures (nodes and links) based on the file content. It stores the number of nodes and links in the private global variables g_net_node_num and g_net_link_num, respectively. The nodes and links are stored in global arrays g_net_node and g_net_link, respectively.</p>
+<dl class="section return"><dt>Returns</dt><dd>1 if the data file is loaded successfully and the network structures are initialized correctly, 0 otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="a8587acb35c535e4f5872b66261443efc" name="a8587acb35c535e4f5872b66261443efc"></a>
@@ -332,6 +269,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Closes all management ports at host nodes. </p>
+<p>This function iterates through the list of management ports at host nodes and closes both the send and receive file descriptors for each port. </p>
 
 </div>
 </div>
@@ -351,6 +291,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Closes all management ports at host nodes, except for the specified host ID. </p>
+<p>This function iterates through the list of management ports at host nodes and closes both the send and receive file descriptors for each port, except for the one with the specified host ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_id</td><td>The ID of the host to exclude from closing. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a4ca1b8c86b93e7aff77cdac060e8920b" name="a4ca1b8c86b93e7aff77cdac060e8920b"></a>
@@ -367,6 +316,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Closes all management ports at the management node. </p>
+<p>This function iterates through the list of management ports at the management node and closes both the send and receive file descriptors for each port. </p>
 
 </div>
 </div>
@@ -385,6 +337,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Frees the memory allocated for management ports at host nodes. </p>
+<p>This function iterates through the list of management ports at host nodes and frees the memory allocated for each <a class="el" href="structman__port__at__host.html">man_port_at_host</a> structure. </p>
+
 </div>
 </div>
 <a id="a1d2cad88e6a3df0fabd043d22d9f3211" name="a1d2cad88e6a3df0fabd043d22d9f3211"></a>
@@ -401,6 +356,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Frees the memory allocated for management ports at the management node. </p>
+<p>This function iterates through the list of management ports at the management node and frees the memory allocated for each <a class="el" href="structman__port__at__man.html">man_port_at_man</a> structure. </p>
 
 </div>
 </div>
@@ -420,6 +378,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves the management port at a host with a given host ID. </p>
+<p>This function searches for the management port at a host with the specified host ID and returns it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_id</td><td>The ID of the host to search for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the <a class="el" href="structman__port__at__host.html">man_port_at_host</a> structure, or NULL if not found. </dd></dl>
+
 </div>
 </div>
 <a id="aec19f600a98c80de0a2d5369350e0194" name="aec19f600a98c80de0a2d5369350e0194"></a>
@@ -437,6 +405,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves the list of management ports at the management node. </p>
+<p>This function returns the global list of management ports at the management node.</p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the first <a class="el" href="structman__port__at__man.html">man_port_at_man</a> structure in the list. </dd></dl>
+
 </div>
 </div>
 <a id="aa59500439b78e290e89c2c01b8cac797" name="aa59500439b78e290e89c2c01b8cac797"></a>
@@ -453,6 +425,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Return the linked list of nodes </p>
 
 </div>
 </div>
@@ -471,6 +444,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retrieves a list of <a class="el" href="structnet__port.html">net_port</a> structures for a given host ID. </p>
+<p>This function retrieves a list of <a class="el" href="structnet__port.html">net_port</a> structures that match the specified host ID, either as pipe_host_id or sock_host_id. The function modifies the global port list and creates a new list with the matching <a class="el" href="structnet__port.html">net_port</a> structures.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host_id</td><td>The ID of the host to search for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the first <a class="el" href="structnet__port.html">net_port</a> structure in the list of matching ports, or NULL if no matching ports are found. </dd></dl>
 
 </div>
 </div>

@@ -1,0 +1,163 @@
+\hypertarget{switch__util_8c}{}\doxysection{src/switch\+\_\+util.c File Reference}
+\label{switch__util_8c}\index{src/switch\_util.c@{src/switch\_util.c}}
+
+
+Network switch functions.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}packet.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}switch.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{switch__util_8c_afce601001ec65f0c70e66d4d892c8598}{display\+\_\+port\+\_\+info}} (struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Displays the information of a network port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{switch__util_8c_a37372a9410c82b61a7cf96b68a4d15e6}{display\+\_\+forward\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} table)
+\begin{DoxyCompactList}\small\item\em Displays the forwarding table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{switch__util_8c_a12bce235e4afcb5132e038aca6d02acc}{init\+\_\+forward\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$table)
+\begin{DoxyCompactList}\small\item\em Initializes the forwarding table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{switch__util_8c_a15be314046a17a16358977615932c8b3}{add\+\_\+src\+\_\+to\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$table, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$pkt, int port\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Adds a source host to the forwarding table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{switch__util_8c_ac7bee0714142048122df1ea64d0aa5de}{send\+\_\+to\+\_\+all\+\_\+ports}} (int node\+\_\+port\+\_\+num, struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$$\ast$node\+\_\+port, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$pkt)
+\begin{DoxyCompactList}\small\item\em Sends a packet to all network ports. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{switch__util_8c_aa649a10255d1dc2492f80d519ea105f0}{is\+\_\+host\+\_\+in\+\_\+table}} (struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$table, char dst)
+\begin{DoxyCompactList}\small\item\em Checks if a host is in the forwarding table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Network switch functions. 
+
+This file provides a network switch implementation that handles network port information, manages the forwarding table, and sends packets to all associated network ports.
+
+The implementation includes functions to\+:
+
+\begin{DoxyItemize}
+\item Display information about a network port. \item Display the forwarding table. \item Initialize the forwarding table. \item Add a source host to the forwarding table. \item Send a packet to all network ports. \item Check if a host is in the forwarding table. \item The file depends on the \mbox{\hyperlink{main_8h}{main.\+h}}, \mbox{\hyperlink{packet_8h}{packet.\+h}}, and \mbox{\hyperlink{switch_8h}{switch.\+h}} header files.\end{DoxyItemize}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{main_8h}{main.\+h}} 
+
+\mbox{\hyperlink{packet_8h}{packet.\+h}} 
+
+\mbox{\hyperlink{switch_8h}{switch.\+h}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{switch__util_8c_a15be314046a17a16358977615932c8b3}\label{switch__util_8c_a15be314046a17a16358977615932c8b3}} 
+\index{switch\_util.c@{switch\_util.c}!add\_src\_to\_table@{add\_src\_to\_table}}
+\index{add\_src\_to\_table@{add\_src\_to\_table}!switch\_util.c@{switch\_util.c}}
+\doxysubsubsection{\texorpdfstring{add\_src\_to\_table()}{add\_src\_to\_table()}}
+{\footnotesize\ttfamily void add\+\_\+src\+\_\+to\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$}]{table,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{pkt,  }\item[{int}]{port\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+Adds a source host to the forwarding table. 
+
+This function adds the source host from the given packet to the forwarding table, associating it with the specified port index, only if the host is not already in the table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} structure to add the source host to. \\
+\hline
+{\em pkt} & Pointer to the packet structure containing the source host information. \\
+\hline
+{\em port\+\_\+index} & The index of the port to associate with the source host in the table. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{switch__util_8c_a37372a9410c82b61a7cf96b68a4d15e6}\label{switch__util_8c_a37372a9410c82b61a7cf96b68a4d15e6}} 
+\index{switch\_util.c@{switch\_util.c}!display\_forward\_table@{display\_forward\_table}}
+\index{display\_forward\_table@{display\_forward\_table}!switch\_util.c@{switch\_util.c}}
+\doxysubsubsection{\texorpdfstring{display\_forward\_table()}{display\_forward\_table()}}
+{\footnotesize\ttfamily void display\+\_\+forward\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}}}]{table }\end{DoxyParamCaption})}
+
+
+
+Displays the forwarding table. 
+
+This function prints the contents of the forwarding table, including its size, and for each entry, its validity, host ID, and associated port.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & The \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} structure containing the forwarding table information to display. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{switch__util_8c_afce601001ec65f0c70e66d4d892c8598}\label{switch__util_8c_afce601001ec65f0c70e66d4d892c8598}} 
+\index{switch\_util.c@{switch\_util.c}!display\_port\_info@{display\_port\_info}}
+\index{display\_port\_info@{display\_port\_info}!switch\_util.c@{switch\_util.c}}
+\doxysubsubsection{\texorpdfstring{display\_port\_info()}{display\_port\_info()}}
+{\footnotesize\ttfamily void display\+\_\+port\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Displays the information of a network port. 
+
+This function prints the details of the given network port, including its type, pipe host ID, pipe send file descriptor, pipe receive file descriptor, next pointer, and socket host ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structure containing the network port information to display. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{switch__util_8c_a12bce235e4afcb5132e038aca6d02acc}\label{switch__util_8c_a12bce235e4afcb5132e038aca6d02acc}} 
+\index{switch\_util.c@{switch\_util.c}!init\_forward\_table@{init\_forward\_table}}
+\index{init\_forward\_table@{init\_forward\_table}!switch\_util.c@{switch\_util.c}}
+\doxysubsubsection{\texorpdfstring{init\_forward\_table()}{init\_forward\_table()}}
+{\footnotesize\ttfamily void init\+\_\+forward\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+
+
+Initializes the forwarding table. 
+
+This function initializes the given forwarding table by setting its size to 0 and initializing all entries as invalid with a host ID of -\/1 and a port of 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} structure to initialize. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{switch__util_8c_aa649a10255d1dc2492f80d519ea105f0}\label{switch__util_8c_aa649a10255d1dc2492f80d519ea105f0}} 
+\index{switch\_util.c@{switch\_util.c}!is\_host\_in\_table@{is\_host\_in\_table}}
+\index{is\_host\_in\_table@{is\_host\_in\_table}!switch\_util.c@{switch\_util.c}}
+\doxysubsubsection{\texorpdfstring{is\_host\_in\_table()}{is\_host\_in\_table()}}
+{\footnotesize\ttfamily int is\+\_\+host\+\_\+in\+\_\+table (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} $\ast$}]{table,  }\item[{char}]{dst }\end{DoxyParamCaption})}
+
+
+
+Checks if a host is in the forwarding table. 
+
+This function checks if the specified host is in the given forwarding table by checking the validity of the corresponding entry. It returns 1 if the host is in the table, and 0 otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the \mbox{\hyperlink{structforward__table}{forward\+\_\+table}} structure to search for the host. \\
+\hline
+{\em dst} & The host ID to check for in the table. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the host is in the table, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{switch__util_8c_ac7bee0714142048122df1ea64d0aa5de}\label{switch__util_8c_ac7bee0714142048122df1ea64d0aa5de}} 
+\index{switch\_util.c@{switch\_util.c}!send\_to\_all\_ports@{send\_to\_all\_ports}}
+\index{send\_to\_all\_ports@{send\_to\_all\_ports}!switch\_util.c@{switch\_util.c}}
+\doxysubsubsection{\texorpdfstring{send\_to\_all\_ports()}{send\_to\_all\_ports()}}
+{\footnotesize\ttfamily void send\+\_\+to\+\_\+all\+\_\+ports (\begin{DoxyParamCaption}\item[{int}]{node\+\_\+port\+\_\+num,  }\item[{struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$$\ast$}]{node\+\_\+port,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{pkt }\end{DoxyParamCaption})}
+
+
+
+Sends a packet to all network ports. 
+
+This function sends the given packet to all network ports specified in the node\+\_\+port array, and then frees the packet memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+\_\+port\+\_\+num} & The number of network ports in the node\+\_\+port array. \\
+\hline
+{\em node\+\_\+port} & Pointer to the array of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} pointers containing the network ports to send the packet to. \\
+\hline
+{\em pkt} & Pointer to the packet structure to send. \\
+\hline
+\end{DoxyParams}

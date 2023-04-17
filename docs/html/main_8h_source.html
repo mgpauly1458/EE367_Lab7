@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: main.h Source File</title>
+<title>EE 367 Lab 7: src/main.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -46,7 +47,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,6 +68,11 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">main.h</div></div>
 </div><!--header-->
@@ -105,12 +110,12 @@ $(function() {
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/* Packet sent between nodes  */</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">struct </span><a class="code hl_struct" href="structpacket.html">packet</a> { <span class="comment">/* struct for a packet */</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#ae2340973e423e22d9924cf31fb75b975">src</a>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#a74cbe94e077f2f9e76666876317582e2">dst</a>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#a352b1d429d9d96e85eb74f4a2c5203f5">type</a>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpacket.html#a146f8dec4029aa113a1bd6996a83fadb">length</a>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#a50e97c9ec4b8bd17c9e39e5a526b4caf">payload</a>[<a class="code hl_define" href="main_8h.html#ac7642f3091690d2eb0363ad9a22c5383">PAYLOAD_MAX</a>];</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structpacket.html">   34</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structpacket.html">packet</a> { <span class="comment">/* struct for a packet */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structpacket.html#ae2340973e423e22d9924cf31fb75b975">   35</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#ae2340973e423e22d9924cf31fb75b975">src</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structpacket.html#a74cbe94e077f2f9e76666876317582e2">   36</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#a74cbe94e077f2f9e76666876317582e2">dst</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structpacket.html#a352b1d429d9d96e85eb74f4a2c5203f5">   37</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#a352b1d429d9d96e85eb74f4a2c5203f5">type</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structpacket.html#a146f8dec4029aa113a1bd6996a83fadb">   38</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpacket.html#a146f8dec4029aa113a1bd6996a83fadb">length</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structpacket.html#a06196f49e661ecf3b3e3007edd349b19">   39</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structpacket.html#a06196f49e661ecf3b3e3007edd349b19">payload</a>[<a class="code hl_define" href="main_8h.html#ac7642f3091690d2eb0363ad9a22c5383">PAYLOAD_MAX</a>];</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/* Types of packets */</span></div>
@@ -140,12 +145,12 @@ $(function() {
 <div class="ttc" id="astructnet__port_html_aa3afce4abb5e3f888b4f98bb91129fcc"><div class="ttname"><a href="structnet__port.html#aa3afce4abb5e3f888b4f98bb91129fcc">net_port::pipe_host_id</a></div><div class="ttdeci">int pipe_host_id</div><div class="ttdef"><b>Definition:</b> main.h:25</div></div>
 <div class="ttc" id="astructnet__port_html_aac8407e391bbacf9e48a2da5d0c2bd1b"><div class="ttname"><a href="structnet__port.html#aac8407e391bbacf9e48a2da5d0c2bd1b">net_port::pipe_recv_fd</a></div><div class="ttdeci">int pipe_recv_fd</div><div class="ttdef"><b>Definition:</b> main.h:27</div></div>
 <div class="ttc" id="astructnet__port_html_af520bf5dec6c1b21cee632adcf2981e4"><div class="ttname"><a href="structnet__port.html#af520bf5dec6c1b21cee632adcf2981e4">net_port::sock_host_id</a></div><div class="ttdeci">int sock_host_id</div><div class="ttdef"><b>Definition:</b> main.h:29</div></div>
-<div class="ttc" id="astructpacket_html"><div class="ttname"><a href="structpacket.html">packet</a></div><div class="ttdoc">This is a packet data type.</div><div class="ttdef"><b>Definition:</b> client.c:11</div></div>
-<div class="ttc" id="astructpacket_html_a146f8dec4029aa113a1bd6996a83fadb"><div class="ttname"><a href="structpacket.html#a146f8dec4029aa113a1bd6996a83fadb">packet::length</a></div><div class="ttdeci">int length</div><div class="ttdef"><b>Definition:</b> client.c:15</div></div>
-<div class="ttc" id="astructpacket_html_a352b1d429d9d96e85eb74f4a2c5203f5"><div class="ttname"><a href="structpacket.html#a352b1d429d9d96e85eb74f4a2c5203f5">packet::type</a></div><div class="ttdeci">char type</div><div class="ttdef"><b>Definition:</b> client.c:14</div></div>
-<div class="ttc" id="astructpacket_html_a50e97c9ec4b8bd17c9e39e5a526b4caf"><div class="ttname"><a href="structpacket.html#a50e97c9ec4b8bd17c9e39e5a526b4caf">packet::payload</a></div><div class="ttdeci">char payload[PAYLOAD_MAX]</div><div class="ttdef"><b>Definition:</b> client.c:16</div></div>
-<div class="ttc" id="astructpacket_html_a74cbe94e077f2f9e76666876317582e2"><div class="ttname"><a href="structpacket.html#a74cbe94e077f2f9e76666876317582e2">packet::dst</a></div><div class="ttdeci">char dst</div><div class="ttdoc">This is a src. It is the source host ID of the packet.</div><div class="ttdef"><b>Definition:</b> client.c:13</div></div>
-<div class="ttc" id="astructpacket_html_ae2340973e423e22d9924cf31fb75b975"><div class="ttname"><a href="structpacket.html#ae2340973e423e22d9924cf31fb75b975">packet::src</a></div><div class="ttdeci">char src</div><div class="ttdef"><b>Definition:</b> client.c:12</div></div>
+<div class="ttc" id="astructpacket_html"><div class="ttname"><a href="structpacket.html">packet</a></div><div class="ttdef"><b>Definition:</b> main.h:34</div></div>
+<div class="ttc" id="astructpacket_html_a06196f49e661ecf3b3e3007edd349b19"><div class="ttname"><a href="structpacket.html#a06196f49e661ecf3b3e3007edd349b19">packet::payload</a></div><div class="ttdeci">char payload[PAYLOAD_MAX]</div><div class="ttdef"><b>Definition:</b> main.h:39</div></div>
+<div class="ttc" id="astructpacket_html_a146f8dec4029aa113a1bd6996a83fadb"><div class="ttname"><a href="structpacket.html#a146f8dec4029aa113a1bd6996a83fadb">packet::length</a></div><div class="ttdeci">int length</div><div class="ttdef"><b>Definition:</b> main.h:38</div></div>
+<div class="ttc" id="astructpacket_html_a352b1d429d9d96e85eb74f4a2c5203f5"><div class="ttname"><a href="structpacket.html#a352b1d429d9d96e85eb74f4a2c5203f5">packet::type</a></div><div class="ttdeci">char type</div><div class="ttdef"><b>Definition:</b> main.h:37</div></div>
+<div class="ttc" id="astructpacket_html_a74cbe94e077f2f9e76666876317582e2"><div class="ttname"><a href="structpacket.html#a74cbe94e077f2f9e76666876317582e2">packet::dst</a></div><div class="ttdeci">char dst</div><div class="ttdef"><b>Definition:</b> main.h:36</div></div>
+<div class="ttc" id="astructpacket_html_ae2340973e423e22d9924cf31fb75b975"><div class="ttname"><a href="structpacket.html#ae2340973e423e22d9924cf31fb75b975">packet::src</a></div><div class="ttdeci">char src</div><div class="ttdef"><b>Definition:</b> main.h:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

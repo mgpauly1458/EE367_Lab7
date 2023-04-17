@@ -1,9 +1,29 @@
-\hypertarget{net_8h}{}\doxysection{net.\+h File Reference}
-\label{net_8h}\index{net.h@{net.h}}
+\hypertarget{net_8h}{}\doxysection{src/net.h File Reference}
+\label{net_8h}\index{src/net.h@{src/net.h}}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structnet__link}{net\+\_\+link}}
+\item 
 struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{net_8h_a369266c24eacffb87046522897a570d5}{\+\_\+\+GNU\+\_\+\+SOURCE}}
+\item 
+\#define \mbox{\hyperlink{net_8h_af43dedece15d018ffad8970492870bac}{MAX\+\_\+\+FILE\+\_\+\+NAME}}~100
+\item 
+\#define \mbox{\hyperlink{net_8h_a4d3fd39039e53cbef1db585ad1099a22}{PIPE\+\_\+\+READ}}~0
+\item 
+\#define \mbox{\hyperlink{net_8h_a9c4636b2eca0b9f6c873269df40f3dda}{PIPE\+\_\+\+WRITE}}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{net_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} \{ \mbox{\hyperlink{net_8h_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+, \mbox{\hyperlink{net_8h_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}{TRUE}}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -11,15 +31,61 @@ struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}}
 int \mbox{\hyperlink{net_8h_a22b2914249628f6cba7d4e1f138c969f}{net\+\_\+init}} ()
 \item 
 struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ \mbox{\hyperlink{net_8h_aec19f600a98c80de0a2d5369350e0194}{net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves the list of management ports at the management node. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ \mbox{\hyperlink{net_8h_ae5ce1bc73a406917997636e3d52853a8}{net\+\_\+get\+\_\+host\+\_\+port}} (int host\+\_\+id)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves the management port at a host with a given host ID. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ \mbox{\hyperlink{net_8h_aa59500439b78e290e89c2c01b8cac797}{net\+\_\+get\+\_\+node\+\_\+list}} ()
 \item 
 struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ \mbox{\hyperlink{net_8h_a2d57f7f0c32601131260cb00d1d6518d}{net\+\_\+get\+\_\+port\+\_\+list}} (int host\+\_\+id)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures for a given host ID. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ \mbox{\hyperlink{net_8h_a1e50ac47f3d599c9148f0a01fc07fb8a}{get\+\_\+g\+\_\+net\+\_\+data}} ()
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{net_8h_a369266c24eacffb87046522897a570d5}\label{net_8h_a369266c24eacffb87046522897a570d5}} 
+\index{net.h@{net.h}!\_GNU\_SOURCE@{\_GNU\_SOURCE}}
+\index{\_GNU\_SOURCE@{\_GNU\_SOURCE}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{\_GNU\_SOURCE}{\_GNU\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+GNU\+\_\+\+SOURCE}
+
+\mbox{\Hypertarget{net_8h_af43dedece15d018ffad8970492870bac}\label{net_8h_af43dedece15d018ffad8970492870bac}} 
+\index{net.h@{net.h}!MAX\_FILE\_NAME@{MAX\_FILE\_NAME}}
+\index{MAX\_FILE\_NAME@{MAX\_FILE\_NAME}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_FILE\_NAME}{MAX\_FILE\_NAME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+FILE\+\_\+\+NAME~100}
+
+\mbox{\Hypertarget{net_8h_a4d3fd39039e53cbef1db585ad1099a22}\label{net_8h_a4d3fd39039e53cbef1db585ad1099a22}} 
+\index{net.h@{net.h}!PIPE\_READ@{PIPE\_READ}}
+\index{PIPE\_READ@{PIPE\_READ}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{PIPE\_READ}{PIPE\_READ}}
+{\footnotesize\ttfamily \#define PIPE\+\_\+\+READ~0}
+
+\mbox{\Hypertarget{net_8h_a9c4636b2eca0b9f6c873269df40f3dda}\label{net_8h_a9c4636b2eca0b9f6c873269df40f3dda}} 
+\index{net.h@{net.h}!PIPE\_WRITE@{PIPE\_WRITE}}
+\index{PIPE\_WRITE@{PIPE\_WRITE}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{PIPE\_WRITE}{PIPE\_WRITE}}
+{\footnotesize\ttfamily \#define PIPE\+\_\+\+WRITE~1}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{net_8h_af6a258d8f3ee5206d682d799316314b1}\label{net_8h_af6a258d8f3ee5206d682d799316314b1}} 
+\index{net.h@{net.h}!bool@{bool}}
+\index{bool@{bool}!net.h@{net.h}}
+\doxysubsubsection{\texorpdfstring{bool}{bool}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{net_8h_af6a258d8f3ee5206d682d799316314b1}{bool}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FALSE@{FALSE}!net.h@{net.h}}\index{net.h@{net.h}!FALSE@{FALSE}}}\mbox{\Hypertarget{net_8h_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}\label{net_8h_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a}} 
+FALSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRUE@{TRUE}!net.h@{net.h}}\index{net.h@{net.h}!TRUE@{TRUE}}}\mbox{\Hypertarget{net_8h_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}\label{net_8h_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839}} 
+TRUE&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
@@ -35,24 +101,61 @@ struct \mbox{\hyperlink{structnet__data}{net\+\_\+data}} $\ast$$\ast$ \mbox{\hyp
 \doxysubsubsection{\texorpdfstring{net\_get\_host\_port()}{net\_get\_host\_port()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} $\ast$ net\+\_\+get\+\_\+host\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
 
+
+
+Retrieves the management port at a host with a given host ID. 
+
+This function searches for the management port at a host with the specified host ID and returns it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host\+\_\+id} & The ID of the host to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the \mbox{\hyperlink{structman__port__at__host}{man\+\_\+port\+\_\+at\+\_\+host}} structure, or NULL if not found. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8h_aec19f600a98c80de0a2d5369350e0194}\label{net_8h_aec19f600a98c80de0a2d5369350e0194}} 
 \index{net.h@{net.h}!net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}}
 \index{net\_get\_man\_ports\_at\_man\_list@{net\_get\_man\_ports\_at\_man\_list}!net.h@{net.h}}
 \doxysubsubsection{\texorpdfstring{net\_get\_man\_ports\_at\_man\_list()}{net\_get\_man\_ports\_at\_man\_list()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$ net\+\_\+get\+\_\+man\+\_\+ports\+\_\+at\+\_\+man\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Retrieves the list of management ports at the management node. 
+
+This function returns the global list of management ports at the management node.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the first \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} structure in the list. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8h_aa59500439b78e290e89c2c01b8cac797}\label{net_8h_aa59500439b78e290e89c2c01b8cac797}} 
 \index{net.h@{net.h}!net\_get\_node\_list@{net\_get\_node\_list}}
 \index{net\_get\_node\_list@{net\_get\_node\_list}!net.h@{net.h}}
 \doxysubsubsection{\texorpdfstring{net\_get\_node\_list()}{net\_get\_node\_list()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__node}{net\+\_\+node}} $\ast$ net\+\_\+get\+\_\+node\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{net_8h_a2d57f7f0c32601131260cb00d1d6518d}\label{net_8h_a2d57f7f0c32601131260cb00d1d6518d}} 
+Return the linked list of nodes \mbox{\Hypertarget{net_8h_a2d57f7f0c32601131260cb00d1d6518d}\label{net_8h_a2d57f7f0c32601131260cb00d1d6518d}} 
 \index{net.h@{net.h}!net\_get\_port\_list@{net\_get\_port\_list}}
 \index{net\_get\_port\_list@{net\_get\_port\_list}!net.h@{net.h}}
 \doxysubsubsection{\texorpdfstring{net\_get\_port\_list()}{net\_get\_port\_list()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structnet__port}{net\+\_\+port}} $\ast$ net\+\_\+get\+\_\+port\+\_\+list (\begin{DoxyParamCaption}\item[{int}]{host\+\_\+id }\end{DoxyParamCaption})}
 
+
+
+Retrieves a list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures for a given host ID. 
+
+This function retrieves a list of \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures that match the specified host ID, either as pipe\+\_\+host\+\_\+id or sock\+\_\+host\+\_\+id. The function modifies the global port list and creates a new list with the matching \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host\+\_\+id} & The ID of the host to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the first \mbox{\hyperlink{structnet__port}{net\+\_\+port}} structure in the list of matching ports, or NULL if no matching ports are found. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{net_8h_a22b2914249628f6cba7d4e1f138c969f}\label{net_8h_a22b2914249628f6cba7d4e1f138c969f}} 
 \index{net.h@{net.h}!net\_init@{net\_init}}
 \index{net\_init@{net\_init}!net.h@{net.h}}

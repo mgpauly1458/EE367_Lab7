@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EE 367 Lab 7: net.h Source File</title>
+<title>EE 367 Lab 7: src/net.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -46,7 +47,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,44 +68,72 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">net.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="net_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keywordtype">int</span> <a class="code hl_function" href="net_8h.html#a22b2914249628f6cba7d4e1f138c969f">net_init</a>();</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">struct </span><a class="code hl_struct" href="structman__port__at__man.html">man_port_at_man</a> *<a class="code hl_function" href="net_8h.html#aec19f600a98c80de0a2d5369350e0194">net_get_man_ports_at_man_list</a>();</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">struct </span><a class="code hl_struct" href="structman__port__at__host.html">man_port_at_host</a> *<a class="code hl_function" href="net_8h.html#ae5ce1bc73a406917997636e3d52853a8">net_get_host_port</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="structman__port__at__host.html#ac072e5957b1e30988c55adc51d0ccff5">host_id</a>);</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__node.html">net_node</a> *<a class="code hl_function" href="net_8h.html#aa59500439b78e290e89c2c01b8cac797">net_get_node_list</a>();</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__port.html">net_port</a> *<a class="code hl_function" href="net_8h.html#a2d57f7f0c32601131260cb00d1d6518d">net_get_port_list</a>(<span class="keywordtype">int</span> host_id);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structnet__data.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__data.html">net_data</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structnet__data.html#a808e30640169857474cc6d788a8c6eb1">   12</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#a808e30640169857474cc6d788a8c6eb1">send_port</a>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structnet__data.html#a8087f485c61292295052d667b7880a2b">   13</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#a8087f485c61292295052d667b7880a2b">server_port</a>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structnet__data.html#a6cc2c38b2df894c2cfcac5b379e27c7f">   14</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#a6cc2c38b2df894c2cfcac5b379e27c7f">server_pipe</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structnet__data.html#acc7002d5cd35de37986623a3d80748d4">   15</a></span>   <span class="keywordtype">char</span> <a class="code hl_variable" href="structnet__data.html#acc7002d5cd35de37986623a3d80748d4">send_domain</a>[100];</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structnet__data.html#aa3d66fcca5cf324826082c9826238941">   16</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#aa3d66fcca5cf324826082c9826238941">switch_host_id</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<a href="net_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="net_8h.html#a369266c24eacffb87046522897a570d5">    1</a></span><span class="preprocessor">#define _GNU_SOURCE</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno"><a class="line" href="net_8h.html#af43dedece15d018ffad8970492870bac">    2</a></span><span class="preprocessor">#define MAX_FILE_NAME 100</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="net_8h.html#a4d3fd39039e53cbef1db585ad1099a22">    3</a></span><span class="preprocessor">#define PIPE_READ 0</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="net_8h.html#a9c4636b2eca0b9f6c873269df40f3dda">    4</a></span><span class="preprocessor">#define PIPE_WRITE 1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="net_8h.html#af6a258d8f3ee5206d682d799316314b1">    5</a></span><span class="keyword">enum</span> <span class="keywordtype">bool</span> {<a class="code hl_enumvalue" href="net_8h.html#af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>, <a class="code hl_enumvalue" href="net_8h.html#af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839">TRUE</a>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * Struct used to store a link. It is used when the</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * network configuration file is loaded.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structnet__link.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__link.html">net_link</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structnet__link.html#a4074c59d2febd90aa871fbd32e6b6743">   13</a></span>   <span class="keyword">enum</span> <a class="code hl_enumeration" href="main_8h.html#ad3175955d2e6ef3c4f52da9b509d5b4a">NetLinkType</a> <a class="code hl_variable" href="structnet__link.html#a4074c59d2febd90aa871fbd32e6b6743">type</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structnet__link.html#a753a3cfbaf78eeeb5eb3f3404b3ad105">   14</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__link.html#a753a3cfbaf78eeeb5eb3f3404b3ad105">pipe_node0</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structnet__link.html#a95a166bd171eba492a75084112b9b173">   15</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__link.html#a95a166bd171eba492a75084112b9b173">pipe_node1</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__data.html">net_data</a>** <a class="code hl_function" href="net_8h.html#a1e50ac47f3d599c9148f0a01fc07fb8a">get_g_net_data</a>();</div>
-<div class="ttc" id="anet_8h_html_a1e50ac47f3d599c9148f0a01fc07fb8a"><div class="ttname"><a href="net_8h.html#a1e50ac47f3d599c9148f0a01fc07fb8a">get_g_net_data</a></div><div class="ttdeci">struct net_data ** get_g_net_data()</div><div class="ttdef"><b>Definition:</b> net.c:82</div></div>
-<div class="ttc" id="anet_8h_html_a22b2914249628f6cba7d4e1f138c969f"><div class="ttname"><a href="net_8h.html#a22b2914249628f6cba7d4e1f138c969f">net_init</a></div><div class="ttdeci">int net_init()</div><div class="ttdef"><b>Definition:</b> net.c:262</div></div>
-<div class="ttc" id="anet_8h_html_a2d57f7f0c32601131260cb00d1d6518d"><div class="ttname"><a href="net_8h.html#a2d57f7f0c32601131260cb00d1d6518d">net_get_port_list</a></div><div class="ttdeci">struct net_port * net_get_port_list(int host_id)</div><div class="ttdef"><b>Definition:</b> net.c:136</div></div>
-<div class="ttc" id="anet_8h_html_aa59500439b78e290e89c2c01b8cac797"><div class="ttname"><a href="net_8h.html#aa59500439b78e290e89c2c01b8cac797">net_get_node_list</a></div><div class="ttdeci">struct net_node * net_get_node_list()</div><div class="ttdef"><b>Definition:</b> net.c:162</div></div>
-<div class="ttc" id="anet_8h_html_ae5ce1bc73a406917997636e3d52853a8"><div class="ttname"><a href="net_8h.html#ae5ce1bc73a406917997636e3d52853a8">net_get_host_port</a></div><div class="ttdeci">struct man_port_at_host * net_get_host_port(int host_id)</div><div class="ttdef"><b>Definition:</b> net.c:174</div></div>
-<div class="ttc" id="anet_8h_html_aec19f600a98c80de0a2d5369350e0194"><div class="ttname"><a href="net_8h.html#aec19f600a98c80de0a2d5369350e0194">net_get_man_ports_at_man_list</a></div><div class="ttdeci">struct man_port_at_man * net_get_man_ports_at_man_list()</div><div class="ttdef"><b>Definition:</b> net.c:168</div></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">int</span> <a class="code hl_function" href="net_8h.html#a22b2914249628f6cba7d4e1f138c969f">net_init</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">struct </span><a class="code hl_struct" href="structman__port__at__man.html">man_port_at_man</a> *<a class="code hl_function" href="net_8h.html#aec19f600a98c80de0a2d5369350e0194">net_get_man_ports_at_man_list</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">struct </span><a class="code hl_struct" href="structman__port__at__host.html">man_port_at_host</a> *<a class="code hl_function" href="net_8h.html#ae5ce1bc73a406917997636e3d52853a8">net_get_host_port</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="structman__port__at__host.html#ac072e5957b1e30988c55adc51d0ccff5">host_id</a>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__node.html">net_node</a> *<a class="code hl_function" href="net_8h.html#aa59500439b78e290e89c2c01b8cac797">net_get_node_list</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__port.html">net_port</a> *<a class="code hl_function" href="net_8h.html#a2d57f7f0c32601131260cb00d1d6518d">net_get_port_list</a>(<span class="keywordtype">int</span> host_id);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structnet__data.html">   27</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__data.html">net_data</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structnet__data.html#a808e30640169857474cc6d788a8c6eb1">   28</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#a808e30640169857474cc6d788a8c6eb1">send_port</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structnet__data.html#a8087f485c61292295052d667b7880a2b">   29</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#a8087f485c61292295052d667b7880a2b">server_port</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structnet__data.html#a6cc2c38b2df894c2cfcac5b379e27c7f">   30</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#a6cc2c38b2df894c2cfcac5b379e27c7f">server_pipe</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structnet__data.html#acc7002d5cd35de37986623a3d80748d4">   31</a></span>   <span class="keywordtype">char</span> <a class="code hl_variable" href="structnet__data.html#acc7002d5cd35de37986623a3d80748d4">send_domain</a>[100];</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structnet__data.html#aa3d66fcca5cf324826082c9826238941">   32</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="structnet__data.html#aa3d66fcca5cf324826082c9826238941">switch_host_id</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">struct </span><a class="code hl_struct" href="structnet__data.html">net_data</a>** <a class="code hl_function" href="net_8h.html#a1e50ac47f3d599c9148f0a01fc07fb8a">get_g_net_data</a>();</div>
+<div class="ttc" id="amain_8h_html_ad3175955d2e6ef3c4f52da9b509d5b4a"><div class="ttname"><a href="main_8h.html#ad3175955d2e6ef3c4f52da9b509d5b4a">NetLinkType</a></div><div class="ttdeci">NetLinkType</div><div class="ttdef"><b>Definition:</b> main.h:12</div></div>
+<div class="ttc" id="anet_8h_html_a1e50ac47f3d599c9148f0a01fc07fb8a"><div class="ttname"><a href="net_8h.html#a1e50ac47f3d599c9148f0a01fc07fb8a">get_g_net_data</a></div><div class="ttdeci">struct net_data ** get_g_net_data()</div><div class="ttdef"><b>Definition:</b> net.c:59</div></div>
+<div class="ttc" id="anet_8h_html_a22b2914249628f6cba7d4e1f138c969f"><div class="ttname"><a href="net_8h.html#a22b2914249628f6cba7d4e1f138c969f">net_init</a></div><div class="ttdeci">int net_init()</div><div class="ttdef"><b>Definition:</b> net.c:268</div></div>
+<div class="ttc" id="anet_8h_html_a2d57f7f0c32601131260cb00d1d6518d"><div class="ttname"><a href="net_8h.html#a2d57f7f0c32601131260cb00d1d6518d">net_get_port_list</a></div><div class="ttdeci">struct net_port * net_get_port_list(int host_id)</div><div class="ttdoc">Retrieves a list of net_port structures for a given host ID.</div><div class="ttdef"><b>Definition:</b> net.c:115</div></div>
+<div class="ttc" id="anet_8h_html_aa59500439b78e290e89c2c01b8cac797"><div class="ttname"><a href="net_8h.html#aa59500439b78e290e89c2c01b8cac797">net_get_node_list</a></div><div class="ttdeci">struct net_node * net_get_node_list()</div><div class="ttdef"><b>Definition:</b> net.c:138</div></div>
+<div class="ttc" id="anet_8h_html_ae5ce1bc73a406917997636e3d52853a8"><div class="ttname"><a href="net_8h.html#ae5ce1bc73a406917997636e3d52853a8">net_get_host_port</a></div><div class="ttdeci">struct man_port_at_host * net_get_host_port(int host_id)</div><div class="ttdoc">Retrieves the management port at a host with a given host ID.</div><div class="ttdef"><b>Definition:</b> net.c:160</div></div>
+<div class="ttc" id="anet_8h_html_aec19f600a98c80de0a2d5369350e0194"><div class="ttname"><a href="net_8h.html#aec19f600a98c80de0a2d5369350e0194">net_get_man_ports_at_man_list</a></div><div class="ttdeci">struct man_port_at_man * net_get_man_ports_at_man_list()</div><div class="ttdoc">Retrieves the list of management ports at the management node.</div><div class="ttdef"><b>Definition:</b> net.c:147</div></div>
+<div class="ttc" id="anet_8h_html_af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="net_8h.html#af6a258d8f3ee5206d682d799316314b1aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition:</b> net.h:5</div></div>
+<div class="ttc" id="anet_8h_html_af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="net_8h.html#af6a258d8f3ee5206d682d799316314b1aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition:</b> net.h:5</div></div>
 <div class="ttc" id="astructman__port__at__host_html"><div class="ttname"><a href="structman__port__at__host.html">man_port_at_host</a></div><div class="ttdef"><b>Definition:</b> man.h:13</div></div>
 <div class="ttc" id="astructman__port__at__host_html_ac072e5957b1e30988c55adc51d0ccff5"><div class="ttname"><a href="structman__port__at__host.html#ac072e5957b1e30988c55adc51d0ccff5">man_port_at_host::host_id</a></div><div class="ttdeci">int host_id</div><div class="ttdef"><b>Definition:</b> man.h:14</div></div>
 <div class="ttc" id="astructman__port__at__man_html"><div class="ttname"><a href="structman__port__at__man.html">man_port_at_man</a></div><div class="ttdef"><b>Definition:</b> man.h:20</div></div>
-<div class="ttc" id="astructnet__data_html"><div class="ttname"><a href="structnet__data.html">net_data</a></div><div class="ttdef"><b>Definition:</b> net.h:11</div></div>
-<div class="ttc" id="astructnet__data_html_a6cc2c38b2df894c2cfcac5b379e27c7f"><div class="ttname"><a href="structnet__data.html#a6cc2c38b2df894c2cfcac5b379e27c7f">net_data::server_pipe</a></div><div class="ttdeci">int server_pipe</div><div class="ttdef"><b>Definition:</b> net.h:14</div></div>
-<div class="ttc" id="astructnet__data_html_a8087f485c61292295052d667b7880a2b"><div class="ttname"><a href="structnet__data.html#a8087f485c61292295052d667b7880a2b">net_data::server_port</a></div><div class="ttdeci">int server_port</div><div class="ttdef"><b>Definition:</b> net.h:13</div></div>
-<div class="ttc" id="astructnet__data_html_a808e30640169857474cc6d788a8c6eb1"><div class="ttname"><a href="structnet__data.html#a808e30640169857474cc6d788a8c6eb1">net_data::send_port</a></div><div class="ttdeci">int send_port</div><div class="ttdef"><b>Definition:</b> net.h:12</div></div>
-<div class="ttc" id="astructnet__data_html_aa3d66fcca5cf324826082c9826238941"><div class="ttname"><a href="structnet__data.html#aa3d66fcca5cf324826082c9826238941">net_data::switch_host_id</a></div><div class="ttdeci">int switch_host_id</div><div class="ttdef"><b>Definition:</b> net.h:16</div></div>
-<div class="ttc" id="astructnet__data_html_acc7002d5cd35de37986623a3d80748d4"><div class="ttname"><a href="structnet__data.html#acc7002d5cd35de37986623a3d80748d4">net_data::send_domain</a></div><div class="ttdeci">char send_domain[100]</div><div class="ttdef"><b>Definition:</b> net.h:15</div></div>
+<div class="ttc" id="astructnet__data_html"><div class="ttname"><a href="structnet__data.html">net_data</a></div><div class="ttdef"><b>Definition:</b> net.h:27</div></div>
+<div class="ttc" id="astructnet__data_html_a6cc2c38b2df894c2cfcac5b379e27c7f"><div class="ttname"><a href="structnet__data.html#a6cc2c38b2df894c2cfcac5b379e27c7f">net_data::server_pipe</a></div><div class="ttdeci">int server_pipe</div><div class="ttdef"><b>Definition:</b> net.h:30</div></div>
+<div class="ttc" id="astructnet__data_html_a8087f485c61292295052d667b7880a2b"><div class="ttname"><a href="structnet__data.html#a8087f485c61292295052d667b7880a2b">net_data::server_port</a></div><div class="ttdeci">int server_port</div><div class="ttdef"><b>Definition:</b> net.h:29</div></div>
+<div class="ttc" id="astructnet__data_html_a808e30640169857474cc6d788a8c6eb1"><div class="ttname"><a href="structnet__data.html#a808e30640169857474cc6d788a8c6eb1">net_data::send_port</a></div><div class="ttdeci">int send_port</div><div class="ttdef"><b>Definition:</b> net.h:28</div></div>
+<div class="ttc" id="astructnet__data_html_aa3d66fcca5cf324826082c9826238941"><div class="ttname"><a href="structnet__data.html#aa3d66fcca5cf324826082c9826238941">net_data::switch_host_id</a></div><div class="ttdeci">int switch_host_id</div><div class="ttdef"><b>Definition:</b> net.h:32</div></div>
+<div class="ttc" id="astructnet__data_html_acc7002d5cd35de37986623a3d80748d4"><div class="ttname"><a href="structnet__data.html#acc7002d5cd35de37986623a3d80748d4">net_data::send_domain</a></div><div class="ttdeci">char send_domain[100]</div><div class="ttdef"><b>Definition:</b> net.h:31</div></div>
+<div class="ttc" id="astructnet__link_html"><div class="ttname"><a href="structnet__link.html">net_link</a></div><div class="ttdef"><b>Definition:</b> net.h:12</div></div>
+<div class="ttc" id="astructnet__link_html_a4074c59d2febd90aa871fbd32e6b6743"><div class="ttname"><a href="structnet__link.html#a4074c59d2febd90aa871fbd32e6b6743">net_link::type</a></div><div class="ttdeci">enum NetLinkType type</div><div class="ttdef"><b>Definition:</b> net.h:13</div></div>
+<div class="ttc" id="astructnet__link_html_a753a3cfbaf78eeeb5eb3f3404b3ad105"><div class="ttname"><a href="structnet__link.html#a753a3cfbaf78eeeb5eb3f3404b3ad105">net_link::pipe_node0</a></div><div class="ttdeci">int pipe_node0</div><div class="ttdef"><b>Definition:</b> net.h:14</div></div>
+<div class="ttc" id="astructnet__link_html_a95a166bd171eba492a75084112b9b173"><div class="ttname"><a href="structnet__link.html#a95a166bd171eba492a75084112b9b173">net_link::pipe_node1</a></div><div class="ttdeci">int pipe_node1</div><div class="ttdef"><b>Definition:</b> net.h:15</div></div>
 <div class="ttc" id="astructnet__node_html"><div class="ttname"><a href="structnet__node.html">net_node</a></div><div class="ttdef"><b>Definition:</b> main.h:17</div></div>
 <div class="ttc" id="astructnet__port_html"><div class="ttname"><a href="structnet__port.html">net_port</a></div><div class="ttdef"><b>Definition:</b> main.h:23</div></div>
 </div><!-- fragment --></div><!-- contents -->

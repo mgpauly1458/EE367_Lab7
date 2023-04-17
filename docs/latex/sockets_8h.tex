@@ -1,16 +1,16 @@
-\hypertarget{sockets_8h}{}\doxysection{sockets.\+h File Reference}
-\label{sockets_8h}\index{sockets.h@{sockets.h}}
+\hypertarget{sockets_8h}{}\doxysection{src/sockets.h File Reference}
+\label{sockets_8h}\index{src/sockets.h@{src/sockets.h}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{sockets_8h_ac682607ad77ec7cfeda376a8bf15dc99}{create\+\_\+server}} (int port, int pipe\+\_\+fd)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a server socket, listens for incoming connections and forwards received data to a pipe. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{sockets_8h_a00e3cf7960681f2888aacd8fb3639266}{send\+\_\+packet}} (int pipe\+\_\+fd, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
-\item 
+\begin{DoxyCompactList}\small\item\em Sends a packet by writing its message format to the given pipe. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{sockets_8h_aa5180eae33365fe64d3591720fe0f424}{create\+\_\+client}} (char $\ast$domain\+\_\+name, int port, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a client socket, connects to a remote server, and sends a packet. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{sockets_8h_a428e2e73d20e902b21d84e19cd231016}{receive\+\_\+packet}} (int pipe\+\_\+fd, struct \mbox{\hyperlink{structpacket}{packet}} $\ast$p)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Receives a packet by reading its message format from the given pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -20,21 +20,78 @@ int \mbox{\hyperlink{sockets_8h_a428e2e73d20e902b21d84e19cd231016}{receive\+\_\+
 \doxysubsubsection{\texorpdfstring{create\_client()}{create\_client()}}
 {\footnotesize\ttfamily void create\+\_\+client (\begin{DoxyParamCaption}\item[{char $\ast$}]{domain\+\_\+name,  }\item[{int}]{port,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
 
+
+
+Creates a client socket, connects to a remote server, and sends a packet. 
+
+This function creates a client socket, resolves the domain name to an IP address, and connects to the remote server at the specified port. It sets the socket to non-\/blocking mode for asynchronous communication and sends the given packet to the server.
+
+
+\begin{DoxyParams}{Parameters}
+{\em domain\+\_\+name} & The domain name of the remote server to connect to. \\
+\hline
+{\em port} & The port number of the remote server. \\
+\hline
+{\em p} & Pointer to the packet structure to be sent. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{sockets_8h_ac682607ad77ec7cfeda376a8bf15dc99}\label{sockets_8h_ac682607ad77ec7cfeda376a8bf15dc99}} 
 \index{sockets.h@{sockets.h}!create\_server@{create\_server}}
 \index{create\_server@{create\_server}!sockets.h@{sockets.h}}
 \doxysubsubsection{\texorpdfstring{create\_server()}{create\_server()}}
 {\footnotesize\ttfamily void create\+\_\+server (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{int}]{pipe\+\_\+fd }\end{DoxyParamCaption})}
 
+
+
+Creates a server socket, listens for incoming connections and forwards received data to a pipe. 
+
+This function creates a server socket, binds it to the specified port, and listens for incoming connections. It accepts connections, reads data from the clients, and sends the data to the specified pipe file descriptor for further processing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port number on which the server socket will listen for incoming connections. \\
+\hline
+{\em pipe\+\_\+fd} & The file descriptor of the pipe to write the received data to. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{sockets_8h_a428e2e73d20e902b21d84e19cd231016}\label{sockets_8h_a428e2e73d20e902b21d84e19cd231016}} 
 \index{sockets.h@{sockets.h}!receive\_packet@{receive\_packet}}
 \index{receive\_packet@{receive\_packet}!sockets.h@{sockets.h}}
 \doxysubsubsection{\texorpdfstring{receive\_packet()}{receive\_packet()}}
 {\footnotesize\ttfamily int receive\+\_\+packet (\begin{DoxyParamCaption}\item[{int}]{pipe\+\_\+fd,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
 
+
+
+Receives a packet by reading its message format from the given pipe. 
+
+This function reads a message from the specified pipe file descriptor and converts it to a packet format. It returns the number of bytes read from the pipe.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipe\+\_\+fd} & The file descriptor of the pipe to read the message from. \\
+\hline
+{\em p} & Pointer to the packet structure that will store the received packet data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes read from the pipe. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{sockets_8h_a00e3cf7960681f2888aacd8fb3639266}\label{sockets_8h_a00e3cf7960681f2888aacd8fb3639266}} 
 \index{sockets.h@{sockets.h}!send\_packet@{send\_packet}}
 \index{send\_packet@{send\_packet}!sockets.h@{sockets.h}}
 \doxysubsubsection{\texorpdfstring{send\_packet()}{send\_packet()}}
 {\footnotesize\ttfamily void send\+\_\+packet (\begin{DoxyParamCaption}\item[{int}]{pipe\+\_\+fd,  }\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{p }\end{DoxyParamCaption})}
 
+
+
+Sends a packet by writing its message format to the given pipe. 
+
+This function converts the given packet to a message format and writes the message to the specified pipe file descriptor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipe\+\_\+fd} & The file descriptor of the pipe to write the message to. \\
+\hline
+{\em p} & Pointer to the packet structure to be sent. \\
+\hline
+\end{DoxyParams}

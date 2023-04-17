@@ -8,5 +8,7 @@ var searchData=
   ['host_5fjob_5',['host_job',['../structhost__job.html',1,'']]],
   ['host_5fjob_5ftype_6',['host_job_type',['../host_8h.html#a6c2f6cdd2948f011e385256203daaf40',1,'host.h']]],
   ['host_5fmain_7',['host_main',['../host_8c.html#a35f54a0431212d003631782de8c3fe6b',1,'host_main(int host_id):&#160;host.c'],['../host_8h.html#a35f54a0431212d003631782de8c3fe6b',1,'host_main(int host_id):&#160;host.c']]],
-  ['hostid_8',['HostID',['../structforward__table.html#a269ec3cf05b377d36e30f909dcdc2df9',1,'forward_table']]]
+  ['host_5futil_2ec_8',['host_util.c',['../host__util_8c.html',1,'']]],
+  ['host_5futil_2eh_9',['host_util.h',['../host__util_8h.html',1,'']]],
+  ['hostid_10',['HostID',['../structforward__table.html#a269ec3cf05b377d36e30f909dcdc2df9',1,'forward_table']]]
 ];

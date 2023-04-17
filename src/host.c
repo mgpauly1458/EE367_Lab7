@@ -1,6 +1,29 @@
- /*
-  * host.c
- */
+/**
+ * @file host.c
+ * 
+ * 
+ * Assignment 4.1 was to allow the download and upload of files of 
+ * up to 1000 bytes from other hosts without changing the packet 
+ * capacity (100 bytes). I did this by modifying the upload code.
+ * 
+ * When a user wants to upload a file to another host, the file is 
+ * first opened and read, and then broken down into smaller packets. 
+ * The initial packet, containing the file name, is sent as a 
+ * PKT_FILE_UPLOAD_START packet, followed by one or more PKT_FILE_UPLOAD_CONT 
+ * packets containing the actual file content. These packets are sent via the 
+ * network using the JOB_SEND_PKT_ALL_PORTS job type, which ensures that the 
+ * packets are transmitted through all available ports. Once the entire file 
+ * has been sent, a PKT_FILE_UPLOAD_END packet is transmitted to signal the 
+ * completion of the file transfer. On the receiving host, the packets are 
+ * processed and reassembled, and the file is stored in the destination host's
+ *  designated directory.
+ * 
+ * When a user wants to download a file, the filename is sent along with a 
+ * PKT_FILE_DOWNLOAD_SEND packet, which contains the filename in the payload.
+ * The receiving host then reads the file name, it initiates an upload job
+ * to itself with the src of the packet as the dst.
+ * 
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

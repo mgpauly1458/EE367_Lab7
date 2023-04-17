@@ -1,16 +1,14 @@
-/*
- * net.c
- *
- * Here is where pipes and sockets are created.
- * Note that they are "nonblocking".  This means that
- * whenever a read/write (or send/recv) call is made,
- * the called function will do its best to fulfill
- * the request and quickly return to the caller.
- *
- * Note that if a pipe or socket is "blocking" then
- * when a call to read/write (or send/recv) will be blocked
- * until the read/write is completely fulfilled.
- */
+
+/**
+ *@file net.c
+
+This file handles the initialization and management of a network, 
+including nodes, links, and communication between hosts and a manager. 
+It provides various functions for network manipulation, such as creating 
+nodes, links, and port lists, as well as loading a network configuration 
+file.
+
+*/
 
 #include <fcntl.h>
 #include <stdio.h>
@@ -102,10 +100,17 @@ struct net_port *net_get_port_list(int host_id);
  */
 struct net_node *net_get_node_list();
 
-/*
- * Remove all the ports for the host from linked lisst g_port_list.
- * and create another linked list.  Return the pointer to this
- * linked list.
+/**
+ * @brief Retrieves a list of net_port structures for a given host ID.
+ *
+ * This function retrieves a list of net_port structures that match the
+ * specified host ID, either as pipe_host_id or sock_host_id. The function
+ * modifies the global port list and creates a new list with the matching
+ * net_port structures.
+ *
+ * @param host_id The ID of the host to search for.
+ * @return A pointer to the first net_port structure in the list of matching
+ *         ports, or NULL if no matching ports are found.
  */
 struct net_port *net_get_port_list(int host_id) {
   struct net_port **p;
@@ -129,15 +134,29 @@ struct net_port *net_get_port_list(int host_id) {
   return r;
 }
 
-/* Return the linked list of nodes */
+/** Return the linked list of nodes */
 struct net_node *net_get_node_list() { return g_node_list; }
 
-/* Return linked list of ports used by the manager to connect to hosts */
-struct man_port_at_man *net_get_man_ports_at_man_list() {
+/**
+ * @brief Retrieves the list of management ports at the management node.
+ *
+ * This function returns the global list of management ports at the management
+ * node.
+ *
+ * @return A pointer to the first man_port_at_man structure in the list.
+ */struct man_port_at_man *net_get_man_ports_at_man_list() {
   return (g_man_man_port_list);
 }
 
-/* Return the port used by host to link with other nodes */
+/**
+ * @brief Retrieves the management port at a host with a given host ID.
+ *
+ * This function searches for the management port at a host with the specified
+ * host ID and returns it.
+ *
+ * @param host_id The ID of the host to search for.
+ * @return A pointer to the man_port_at_host structure, or NULL if not found.
+ */
 struct man_port_at_host *net_get_host_port(int host_id) {
   struct man_port_at_host *p;
 
@@ -148,7 +167,12 @@ struct man_port_at_host *net_get_host_port(int host_id) {
   return (p);
 }
 
-/* Close all host ports not used by manager */
+/**
+ * @brief Closes all management ports at host nodes.
+ *
+ * This function iterates through the list of management ports at host nodes
+ * and closes both the send and receive file descriptors for each port.
+ */
 void net_close_man_ports_at_hosts() {
   struct man_port_at_host *p_h;
 
@@ -161,7 +185,15 @@ void net_close_man_ports_at_hosts() {
   }
 }
 
-/* Close all host ports used by manager except to host_id */
+/**
+ * @brief Closes all management ports at host nodes, except for the specified host ID.
+ *
+ * This function iterates through the list of management ports at host nodes
+ * and closes both the send and receive file descriptors for each port, except
+ * for the one with the specified host ID.
+ *
+ * @param host_id The ID of the host to exclude from closing.
+ */
 void net_close_man_ports_at_hosts_except(int host_id) {
   struct man_port_at_host *p_h;
 
@@ -176,7 +208,12 @@ void net_close_man_ports_at_hosts_except(int host_id) {
   }
 }
 
-/* Free all host ports to manager */
+/**
+ * @brief Frees the memory allocated for management ports at host nodes.
+ *
+ * This function iterates through the list of management ports at host nodes
+ * and frees the memory allocated for each man_port_at_host structure.
+ */
 void net_free_man_ports_at_hosts() {
   struct man_port_at_host *p_h;
   struct man_port_at_host *t_h;
@@ -190,7 +227,12 @@ void net_free_man_ports_at_hosts() {
   }
 }
 
-/* Close all manager ports */
+/**
+ * @brief Closes all management ports at the management node.
+ *
+ * This function iterates through the list of management ports at the management
+ * node and closes both the send and receive file descriptors for each port.
+ */
 void net_close_man_ports_at_man() {
   struct man_port_at_man *p_m;
 
@@ -203,7 +245,12 @@ void net_close_man_ports_at_man() {
   }
 }
 
-/* Free all manager ports */
+/**
+ * @brief Frees the memory allocated for management ports at the management node.
+ *
+ * This function iterates through the list of management ports at the management
+ * node and frees the memory allocated for each man_port_at_man structure.
+ */
 void net_free_man_ports_at_man() {
   struct man_port_at_man *p_m;
   struct man_port_at_man *t_m;
@@ -246,12 +293,16 @@ int net_init() {
   create_man_ports(&g_man_man_port_list, &g_man_host_port_list);
 }
 
-/*
- *  Create pipes to connect the manager to host nodes.
- *  (Note that the manager is not connected to switch nodes.)
- *  p_man is a linked list of ports at the manager.
- *  p_host is a linked list of ports at the hosts.
- *  Note that the pipes are nonblocking.
+/**
+ * @brief Creates management ports for host nodes and the management node.
+ *
+ * This function creates management ports for host nodes and the management
+ * node by iterating through the list of net_node structures. It sets up the
+ * pipes, file descriptors, and adds the created ports to the corresponding
+ * global lists.
+ *
+ * @param[out] p_man Pointer to the pointer of the first man_port_at_man structure.
+ * @param[out] p_host Pointer to the pointer of the first man_port_at_host structure.
  */
 void create_man_ports(struct man_port_at_man **p_man,
                       struct man_port_at_host **p_host) {
@@ -297,7 +348,14 @@ void create_man_ports(struct man_port_at_man **p_man,
   }
 }
 
-/* Create a linked list of nodes at g_node_list */
+/**
+
+\brief Creates a node list based on the network configuration.
+
+This function reads the global network node data and creates a linked list
+of net_node structures, which represents the network nodes.
+The resulting linked list is stored in the global variable g_node_list.
+*/
 void create_node_list() {
   struct net_node *p;
   int i;
@@ -312,10 +370,16 @@ void create_node_list() {
   }
 }
 
-/*
- * Create links, each with either a pipe or socket.
- * It uses private global varaibles g_net_link[] and g_net_link_num
- */
+/**
+
+\brief Creates a port list based on the network configuration.
+
+This function reads the global network link data and creates a linked list
+of net_port structures, which represents the network ports.
+The resulting linked list is stored in the global variable g_port_list.
+Each port in the list is properly configured according to its type (PIPE or SOCKET),
+and it also includes necessary file descriptors for sending and receiving data.
+*/
 void create_port_list() {
   struct net_port *p0;
   struct net_port *p1;
@@ -374,10 +438,18 @@ void create_port_list() {
   }
 }
 
-/*
- * Loads network configuration file and creates data structures
- * for nodes and links.
- */
+/**
+\brief Loads network data from a file and initializes the network structures.
+
+This function prompts the user for a network data file, reads the file, and
+initializes the network structures (nodes and links) based on the file content.
+It stores the number of nodes and links in the private global variables g_net_node_num
+and g_net_link_num, respectively. The nodes and links are stored in global arrays
+g_net_node and g_net_link, respectively.
+
+\return 1 if the data file is loaded successfully and the network structures are
+initialized correctly, 0 otherwise.
+*/
 int load_net_data_file() {
   FILE *fp;
   char fname[MAX_FILE_NAME];
