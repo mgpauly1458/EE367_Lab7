@@ -13,7 +13,7 @@
 #include "packet.h"
 #include "switch.h"
 #include "sockets.h"
-
+#include "switch_util.h"
 
 void switch_main(int host_id) {
 
