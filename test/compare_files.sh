@@ -1,13 +1,16 @@
 #!/bin/bash
 
+parentdir="$(pwd)"
+
 files=("haha.txt" "large.txt")
 exit_code=0
 
 echo "Comparison results:"
+echo $parentdir
 
 for file in "${files[@]}"
 do
-  if cmp -s "t0/$file" "t1/$file"; then
+  if cmp -s "$parentdir/t0/$file" "$parentdir/t1/$file"; then
     printf "  t0/%-10s equal to t1/%s\n" "$file" "$file"
   else
     echo "Error: $file is not equal"

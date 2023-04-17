@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./compare_files.sh
+./test/compare_files.sh
 
 if [ $? -eq 0 ]; then
   rmh

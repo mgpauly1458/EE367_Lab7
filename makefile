@@ -1,29 +1,34 @@
-# Make file
+# Makefile
 
-net367: sockets.o host.o switch.o packet.o man.o main.o net.o
-	gcc -o net367 sockets.o host.o switch.o man.o main.o net.o packet.o
+# Directories
+SRCDIR := src
+BUILDDIR := build
 
-main.o: main.c
-	gcc -c main.c
+# Source files
+SRCS := $(wildcard $(SRCDIR)/*.c)
+OBJS := $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
 
-host.o: host.c 
-	gcc -c host.c  
+# Targets
+TARGET := $(BUILDDIR)/net367
+DEPS := $(OBJS:.o=.d)
 
-man.o:  man.c
-	gcc -c man.c
+# Compiler settings
+CC := gcc
+LDFLAGS :=
 
-net.o:  net.c
-	gcc -c net.c
+# Rules
+.PHONY: all clean
 
-packet.o:  packet.c
-	gcc -c packet.c
+all: $(TARGET)
 
-switch.o: switch.c
-	gcc -c switch.c
+$(TARGET): $(OBJS)
+	$(CC) $(LDFLAGS) $^ -o $@
 
-sockets.o: sockets.c
-	gcc -c sockets.c
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@ -MMD -MP -MF $(@:.o=.d)
 
 clean:
-	rm *.o
+	$(RM) $(OBJS) $(DEPS) $(TARGET)
+
+-include $(DEPS)
 
