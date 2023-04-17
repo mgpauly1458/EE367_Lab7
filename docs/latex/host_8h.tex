@@ -49,9 +49,9 @@ enum \mbox{\hyperlink{host_8h_a6c2f6cdd2948f011e385256203daaf40}{host\+\_\+job\+
 void \mbox{\hyperlink{host_8h_a35f54a0431212d003631782de8c3fe6b}{host\+\_\+main}} (int host\+\_\+id)
 \item 
 void \mbox{\hyperlink{host_8h_ad4eda050472b9f02b29a574ddeb04b05}{display\+\_\+packet\+\_\+info}} (struct \mbox{\hyperlink{structpacket}{packet}} $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Display the information of a packet. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{host_8h_a312ab59f3184926dc8c5a97908dee884}{display\+\_\+host\+\_\+job\+\_\+info}} (struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$, int)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Display the job information for a given host job and host ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -151,12 +151,35 @@ JOB\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+RECV\+\_\+\+END&\\
 \doxysubsubsection{\texorpdfstring{display\_host\_job\_info()}{display\_host\_job\_info()}}
 {\footnotesize\ttfamily void display\+\_\+host\+\_\+job\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structhost__job}{host\+\_\+job}} $\ast$}]{job,  }\item[{int}]{hostid }\end{DoxyParamCaption})}
 
+
+
+Display the job information for a given host job and host ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em job} & Pointer to the host job structure. \\
+\hline
+{\em hostid} & Host ID. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{host_8h_ad4eda050472b9f02b29a574ddeb04b05}\label{host_8h_ad4eda050472b9f02b29a574ddeb04b05}} 
 \index{host.h@{host.h}!display\_packet\_info@{display\_packet\_info}}
 \index{display\_packet\_info@{display\_packet\_info}!host.h@{host.h}}
 \doxysubsubsection{\texorpdfstring{display\_packet\_info()}{display\_packet\_info()}}
 {\footnotesize\ttfamily void display\+\_\+packet\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structpacket}{packet}} $\ast$}]{pkt }\end{DoxyParamCaption})}
 
+
+
+Display the information of a packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pkt} & Pointer to the packet struct to display information from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{host_8h_a35f54a0431212d003631782de8c3fe6b}\label{host_8h_a35f54a0431212d003631782de8c3fe6b}} 
 \index{host.h@{host.h}!host\_main@{host\_main}}
 \index{host\_main@{host\_main}!host.h@{host.h}}

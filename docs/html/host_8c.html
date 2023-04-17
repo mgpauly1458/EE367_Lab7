@@ -79,6 +79,9 @@ $(function() {
   <div class="headertitle"><div class="title">host.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements the host main loop.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -99,7 +102,8 @@ Functions</h2></td></tr>
 <tr class="separator:a35f54a0431212d003631782de8c3fe6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Assignment 4.1 was to allow the download and upload of files of up to 1000 bytes from other hosts without changing the packet capacity (100 bytes). I did this by modifying the upload code.</p>
+<div class="textblock"><p>Implements the host main loop. </p>
+<p>Assignment 4.1 was to allow the download and upload of files of up to 1000 bytes from other hosts without changing the packet capacity (100 bytes). I did this by modifying the upload code.</p>
 <p>When a user wants to upload a file to another host, the file is first opened and read, and then broken down into smaller packets. The initial packet, containing the file name, is sent as a PKT_FILE_UPLOAD_START packet, followed by one or more PKT_FILE_UPLOAD_CONT packets containing the actual file content. These packets are sent via the network using the JOB_SEND_PKT_ALL_PORTS job type, which ensures that the packets are transmitted through all available ports. Once the entire file has been sent, a PKT_FILE_UPLOAD_END packet is transmitted to signal the completion of the file transfer. On the receiving host, the packets are processed and reassembled, and the file is stored in the destination host's designated directory.</p>
 <p>When a user wants to download a file, the filename is sent along with a PKT_FILE_DOWNLOAD_SEND packet, which contains the filename in the payload. The receiving host then reads the file name, it initiates an upload job to itself with the src of the packet as the dst. </p>
 </div><h2 class="groupheader">Function Documentation</h2>

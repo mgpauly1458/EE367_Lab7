@@ -1,5 +1,10 @@
 \hypertarget{switch_8c}{}\doxysection{src/switch.c File Reference}
 \label{switch_8c}\index{src/switch.c@{src/switch.c}}
+
+
+Main program for managing network port communication, forwarding table, and packet handling.  
+
+
 {\ttfamily \#include $<$fcntl.\+h$>$}\newline
 {\ttfamily \#include $<$signal.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
@@ -21,6 +26,15 @@
 void \mbox{\hyperlink{switch_8c_ac56485197b10f5021cedeaae9feec56c}{switch\+\_\+main}} (int host\+\_\+id)
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Main program for managing network port communication, forwarding table, and packet handling. 
+
+This file contains the main program for a network switch application, handling network port communication, maintaining a forwarding table, and processing incoming packets. The main functionality includes\+:
+
+\begin{DoxyItemize}
+\item Displaying network port information. \item Displaying and managing the forwarding table. \item Initializing the forwarding table. \item Adding source hosts to the forwarding table. \item Sending packets to all network ports. \item Checking if a host is in the forwarding table.\end{DoxyItemize}
+The main program manages the forwarding table, which is used to keep track of host IDs and their associated ports. When a packet is received, the main program checks if the destination host is in the forwarding table. If so, it forwards the packet to the appropriate port. If not, it broadcasts the packet to all network ports. 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{switch_8c_ac56485197b10f5021cedeaae9feec56c}\label{switch_8c_ac56485197b10f5021cedeaae9feec56c}} 

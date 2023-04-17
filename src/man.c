@@ -1,6 +1,13 @@
-/*
- * Source code for the manager.
- */
+/**
+
+@file man.c
+@brief Source code for the manager.
+This file contains the implementation of a manager which is responsible
+for managing multiple hosts. It allows the user to interact with the
+hosts and perform various actions like changing the current host, displaying
+host's state, pinging a host, uploading a file to a host, and downloading a file
+from a host.
+*/
 
 #include "man.h"
 
@@ -31,7 +38,14 @@ void display_host_state(struct man_port_at_man *curr_host);
 void set_host_dir(struct man_port_at_man *curr_host);
 char man_get_user_cmd(int curr_host);
 
-/* Get the user command */
+/**
+
+@brief Get the user command.
+This function prompts the user to enter a command from the available options
+and returns the command entered by the user.
+@param curr_host ID of the current host.
+@return The user command.
+*/
 char man_get_user_cmd(int curr_host) {
   char cmd;
 
@@ -68,7 +82,14 @@ char man_get_user_cmd(int curr_host) {
   }
 }
 
-/* Change the current host */
+/**
+
+@brief Change the current host.
+This function prompts the user to enter the ID of the new host to set as the current host.
+It searches for the port of the new host and sets it as the current host.
+@param list The list of all hosts.
+@param curr_host Pointer to the current host.
+*/
 void change_host(struct man_port_at_man *list,
                  struct man_port_at_man **curr_host) {
   int new_host_id;
@@ -88,7 +109,14 @@ void change_host(struct man_port_at_man *list,
   }
 }
 
-/* Display the hosts on the consosle */
+/**
+
+@brief Display the hosts on the console.
+This function displays the list of all hosts on the console, along with an indication
+of the currently connected host.
+@param list The list of all hosts.
+@param curr_host Pointer to the current host.
+*/
 void display_host(struct man_port_at_man *list,
                   struct man_port_at_man *curr_host) {
   struct man_port_at_man *p;
@@ -103,13 +131,14 @@ void display_host(struct man_port_at_man *list,
   }
 }
 
-/*
- * Send command to the host for it's state.  The command
- * is a single character 's'
- *
- * Wait for reply from host, which should be the host's state.
- * Then display on the console.
- */
+/**
+
+@brief Send command to the host for its state.
+This function sends a command message to the current host to get its state. The command
+is a single character 's'. It then waits for a reply from the host, which should be the
+host's state. The state is displayed on the console.
+@param curr_host Pointer to the current host.
+*/
 void display_host_state(struct man_port_at_man *curr_host) {
   char msg[MAN_MSG_LENGTH];
   char reply[MAN_MSG_LENGTH];
@@ -131,6 +160,13 @@ void display_host_state(struct man_port_at_man *curr_host) {
   printf("    Directory = %s\n", dir);
 }
 
+/**
+
+@brief Set the host's main directory.
+This function prompts the user to enter the name of the directory to set as the host's
+main directory. It then sends a command message to the current host to set the directory.
+@param curr_host Pointer to the current host.
+*/
 void set_host_dir(struct man_port_at_man *curr_host) {
   char name[NAME_LENGTH];
   char msg[NAME_LENGTH];
@@ -154,6 +190,14 @@ void set_host_dir(struct man_port_at_man *curr_host) {
  * Wiat for a reply
  */
 
+/**
+
+@brief Ping a host from the current host.
+This function prompts the user to enter the ID of the host to ping. It then sends a command
+message to the current host to ping the specified host. It waits for a reply from the host
+and displays it on the console.
+@param curr_host Pointer to the current host.
+*/
 void ping(struct man_port_at_man *curr_host) {
   char msg[MAN_MSG_LENGTH];
   char reply[MAN_MSG_LENGTH];
@@ -175,19 +219,15 @@ void ping(struct man_port_at_man *curr_host) {
   printf("%s\n", reply);
 }
 
-/*
- * Command host to send a file to another host.
- *
- * User is queried for the
- *    - name of the file to transfer;
- *        the file is in the current directory 'dir'
- *    - id of the host to ping.
- *
- * A command message is sent to the current host.
- *    The message starrts with 'u' followed by the
- *    -  id of the destination host
- *    -  name of file to transfer
- */
+/**
+
+@brief Upload a file from the current host to another host.
+This function prompts the user to enter the name of the file to transfer and the ID of the
+destination host. It then sends a command message to the current host to upload the file to
+the specified host.
+@param curr_host Pointer to the current host.
+@return 0 on success, -1 on failure.
+*/
 int file_upload(struct man_port_at_man *curr_host) {
   int n;
   int host_id;
@@ -205,6 +245,15 @@ int file_upload(struct man_port_at_man *curr_host) {
   usleep(TENMILLISEC);
 }
 
+/**
+
+@brief Download a file from a host.
+This function prompts the user to enter the name of the file to download and the ID of the
+host from which to download the file. It then sends a command message to the current host to
+download the file from the specified host.
+@param curr_host Pointer to the current host.
+@return 0 on success, -1 on failure.
+*/
 int file_download(struct man_port_at_man *curr_host) {
   int n;
   int host_id;
@@ -222,10 +271,12 @@ int file_download(struct man_port_at_man *curr_host) {
   usleep(TENMILLISEC);
 }
 
-///////////////////////////////////////
-/*****************************
- * Main loop of the manager  *
- *****************************/
+/**
+
+@brief Main loop of the manager.
+This function contains the main loop of the manager. It repeatedly gets a command
+from the user and executes it.
+*/
 void man_main() {
   // State
   struct man_port_at_man *host_list;

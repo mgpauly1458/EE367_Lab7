@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Provides functions for creating server and client sockets, sending and receiving packets in a C networking program. This file contains functions for handling sockets in a C networking program, including:  
+<p>Provides functions for creating server and client sockets, sending and receiving packets in a C networking program.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;arpa/inet.h&gt;</code><br />
 <code>#include &lt;fcntl.h&gt;</code><br />
@@ -112,14 +112,15 @@ Functions</h2></td></tr>
 <tr class="separator:aa5180eae33365fe64d3591720fe0f424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides functions for creating server and client sockets, sending and receiving packets in a C networking program. This file contains functions for handling sockets in a C networking program, including: </p>
+<div class="textblock"><p>Provides functions for creating server and client sockets, sending and receiving packets in a C networking program. </p>
+<p>This file contains functions for handling sockets in a C networking program, including:</p>
 <ul>
 <li>Creating a server socket, which listens for incoming connections and forwards received data to a pipe. </li>
 <li>Creating a client socket, which connects to a remote server and sends packets. </li>
 <li>Sending a packet, which involves converting the packet to a message format and writing the message to a pipe or socket. </li>
 <li>Receiving a packet, which involves reading a message from a pipe or socket and converting it to a packet format.</li>
 </ul>
-<p>The server socket is created as a child process in the <a class="el" href="switch_8c.html">switch.c</a> file, specifically in the <a class="el" href="switch_8c.html#ac56485197b10f5021cedeaae9feec56c">switch_main(int host_id)</a> function.</p>
+<p>The server socket is created as a child process in the <a class="el" href="switch_8c.html" title="Main program for managing network port communication, forwarding table, and packet handling.">switch.c</a> file, specifically in the <a class="el" href="switch_8c.html#ac56485197b10f5021cedeaae9feec56c">switch_main(int host_id)</a> function.</p>
 <p>This child process listens for incoming connections, reads data from the clients, and sends the data to the pipe for further</p>
 <p>processing by the parent process.</p>
 <p>The client socket is used to connect to a remote server and send packets, such as when forwarding packets to their destinations in a network. The client socket is set to non-blocking mode to allow for asynchronous communication. </p>

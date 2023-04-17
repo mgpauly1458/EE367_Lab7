@@ -1,5 +1,10 @@
 \hypertarget{man_8c}{}\doxysection{src/man.c File Reference}
 \label{man_8c}\index{src/man.c@{src/man.c}}
+
+
+Source code for the manager. This file contains the implementation of a manager which is responsible for managing multiple hosts. It allows the user to interact with the hosts and perform various actions like changing the current host, displaying host\textquotesingle{}s state, pinging a host, uploading a file to a host, and downloading a file from a host.  
+
+
 {\ttfamily \#include \char`\"{}man.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$fcntl.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
@@ -27,23 +32,28 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{man_8c_adc38eb35b9d78b25d4f8fb06a1224039}{display\+\_\+host}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$list, struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Display the hosts on the console. This function displays the list of all hosts on the console, along with an indication of the currently connected host. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{man_8c_a6e6782ad3effc46713c100e88c9640ac}{change\+\_\+host}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$list, struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Change the current host. This function prompts the user to enter the ID of the new host to set as the current host. It searches for the port of the new host and sets it as the current host. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{man_8c_a6d059a9dc0d2eae334306ba2ecb3e524}{display\+\_\+host\+\_\+state}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Send command to the host for its state. This function sends a command message to the current host to get its state. The command is a single character \textquotesingle{}s\textquotesingle{}. It then waits for a reply from the host, which should be the host\textquotesingle{}s state. The state is displayed on the console. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{man_8c_ac9ba2c3a1a62dc03767de9c4809cde22}{set\+\_\+host\+\_\+dir}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the host\textquotesingle{}s main directory. This function prompts the user to enter the name of the directory to set as the host\textquotesingle{}s main directory. It then sends a command message to the current host to set the directory. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{man_8c_a00394a4112e50ace1a9e2819b9144769}{man\+\_\+get\+\_\+user\+\_\+cmd}} (int curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Get the user command. This function prompts the user to enter a command from the available options and returns the command entered by the user. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{man_8c_ae4378cb13b8341080a3563606fd5a8ff}{ping}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Ping a host from the current host. This function prompts the user to enter the ID of the host to ping. It then sends a command message to the current host to ping the specified host. It waits for a reply from the host and displays it on the console. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{man_8c_ae6450ec543935f296e9b394801c1e9e7}{file\+\_\+upload}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Upload a file from the current host to another host. This function prompts the user to enter the name of the file to transfer and the ID of the destination host. It then sends a command message to the current host to upload the file to the specified host. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{man_8c_abd94258fb8b93b3ad5e2983ae6ed3687}{file\+\_\+download}} (struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$curr\+\_\+host)
-\item 
+\begin{DoxyCompactList}\small\item\em Download a file from a host. This function prompts the user to enter the name of the file to download and the ID of the host from which to download the file. It then sends a command message to the current host to download the file from the specified host. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{man_8c_aa6dcff712a69b62c3e78532997ea2396}{man\+\_\+main}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Main loop of the manager. This function contains the main loop of the manager. It repeatedly gets a command from the user and executes it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code for the manager. This file contains the implementation of a manager which is responsible for managing multiple hosts. It allows the user to interact with the hosts and perform various actions like changing the current host, displaying host\textquotesingle{}s state, pinging a host, uploading a file to a host, and downloading a file from a host. 
+
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -86,41 +96,112 @@ void \mbox{\hyperlink{man_8c_aa6dcff712a69b62c3e78532997ea2396}{man\+\_\+main}} 
 \doxysubsubsection{\texorpdfstring{change\_host()}{change\_host()}}
 {\footnotesize\ttfamily void change\+\_\+host (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{list,  }\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$$\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Change the current host. This function prompts the user to enter the ID of the new host to set as the current host. It searches for the port of the new host and sets it as the current host. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The list of all hosts. \\
+\hline
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{man_8c_adc38eb35b9d78b25d4f8fb06a1224039}\label{man_8c_adc38eb35b9d78b25d4f8fb06a1224039}} 
 \index{man.c@{man.c}!display\_host@{display\_host}}
 \index{display\_host@{display\_host}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{display\_host()}{display\_host()}}
 {\footnotesize\ttfamily void display\+\_\+host (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{list,  }\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Display the hosts on the console. This function displays the list of all hosts on the console, along with an indication of the currently connected host. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The list of all hosts. \\
+\hline
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{man_8c_a6d059a9dc0d2eae334306ba2ecb3e524}\label{man_8c_a6d059a9dc0d2eae334306ba2ecb3e524}} 
 \index{man.c@{man.c}!display\_host\_state@{display\_host\_state}}
 \index{display\_host\_state@{display\_host\_state}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{display\_host\_state()}{display\_host\_state()}}
 {\footnotesize\ttfamily void display\+\_\+host\+\_\+state (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Send command to the host for its state. This function sends a command message to the current host to get its state. The command is a single character \textquotesingle{}s\textquotesingle{}. It then waits for a reply from the host, which should be the host\textquotesingle{}s state. The state is displayed on the console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{man_8c_abd94258fb8b93b3ad5e2983ae6ed3687}\label{man_8c_abd94258fb8b93b3ad5e2983ae6ed3687}} 
 \index{man.c@{man.c}!file\_download@{file\_download}}
 \index{file\_download@{file\_download}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{file\_download()}{file\_download()}}
 {\footnotesize\ttfamily int file\+\_\+download (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Download a file from a host. This function prompts the user to enter the name of the file to download and the ID of the host from which to download the file. It then sends a command message to the current host to download the file from the specified host. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{man_8c_ae6450ec543935f296e9b394801c1e9e7}\label{man_8c_ae6450ec543935f296e9b394801c1e9e7}} 
 \index{man.c@{man.c}!file\_upload@{file\_upload}}
 \index{file\_upload@{file\_upload}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{file\_upload()}{file\_upload()}}
 {\footnotesize\ttfamily int file\+\_\+upload (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Upload a file from the current host to another host. This function prompts the user to enter the name of the file to transfer and the ID of the destination host. It then sends a command message to the current host to upload the file to the specified host. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{man_8c_a00394a4112e50ace1a9e2819b9144769}\label{man_8c_a00394a4112e50ace1a9e2819b9144769}} 
 \index{man.c@{man.c}!man\_get\_user\_cmd@{man\_get\_user\_cmd}}
 \index{man\_get\_user\_cmd@{man\_get\_user\_cmd}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{man\_get\_user\_cmd()}{man\_get\_user\_cmd()}}
 {\footnotesize\ttfamily char man\+\_\+get\+\_\+user\+\_\+cmd (\begin{DoxyParamCaption}\item[{int}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Get the user command. This function prompts the user to enter a command from the available options and returns the command entered by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+host} & ID of the current host. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The user command. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{man_8c_aa6dcff712a69b62c3e78532997ea2396}\label{man_8c_aa6dcff712a69b62c3e78532997ea2396}} 
 \index{man.c@{man.c}!man\_main@{man\_main}}
 \index{man\_main@{man\_main}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{man\_main()}{man\_main()}}
 {\footnotesize\ttfamily void man\+\_\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main loop of the manager. This function contains the main loop of the manager. It repeatedly gets a command from the user and executes it. 
 
 \mbox{\Hypertarget{man_8c_ae4378cb13b8341080a3563606fd5a8ff}\label{man_8c_ae4378cb13b8341080a3563606fd5a8ff}} 
 \index{man.c@{man.c}!ping@{ping}}
@@ -128,9 +209,27 @@ void \mbox{\hyperlink{man_8c_aa6dcff712a69b62c3e78532997ea2396}{man\+\_\+main}} 
 \doxysubsubsection{\texorpdfstring{ping()}{ping()}}
 {\footnotesize\ttfamily void ping (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Ping a host from the current host. This function prompts the user to enter the ID of the host to ping. It then sends a command message to the current host to ping the specified host. It waits for a reply from the host and displays it on the console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{man_8c_ac9ba2c3a1a62dc03767de9c4809cde22}\label{man_8c_ac9ba2c3a1a62dc03767de9c4809cde22}} 
 \index{man.c@{man.c}!set\_host\_dir@{set\_host\_dir}}
 \index{set\_host\_dir@{set\_host\_dir}!man.c@{man.c}}
 \doxysubsubsection{\texorpdfstring{set\_host\_dir()}{set\_host\_dir()}}
 {\footnotesize\ttfamily void set\+\_\+host\+\_\+dir (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structman__port__at__man}{man\+\_\+port\+\_\+at\+\_\+man}} $\ast$}]{curr\+\_\+host }\end{DoxyParamCaption})}
 
+
+
+Set the host\textquotesingle{}s main directory. This function prompts the user to enter the name of the directory to set as the host\textquotesingle{}s main directory. It then sends a command message to the current host to set the directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+host} & Pointer to the current host. \\
+\hline
+\end{DoxyParams}

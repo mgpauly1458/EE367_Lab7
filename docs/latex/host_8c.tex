@@ -1,5 +1,10 @@
 \hypertarget{host_8c}{}\doxysection{src/host.c File Reference}
 \label{host_8c}\index{src/host.c@{src/host.c}}
+
+
+Implements the host main loop.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
@@ -21,6 +26,8 @@ void \mbox{\hyperlink{host_8c_a35f54a0431212d003631782de8c3fe6b}{host\+\_\+main}
 
 
 \doxysubsection{Detailed Description}
+Implements the host main loop. 
+
 Assignment 4.\+1 was to allow the download and upload of files of up to 1000 bytes from other hosts without changing the packet capacity (100 bytes). I did this by modifying the upload code.
 
 When a user wants to upload a file to another host, the file is first opened and read, and then broken down into smaller packets. The initial packet, containing the file name, is sent as a PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+START packet, followed by one or more PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+CONT packets containing the actual file content. These packets are sent via the network using the JOB\+\_\+\+SEND\+\_\+\+PKT\+\_\+\+ALL\+\_\+\+PORTS job type, which ensures that the packets are transmitted through all available ports. Once the entire file has been sent, a PKT\+\_\+\+FILE\+\_\+\+UPLOAD\+\_\+\+END packet is transmitted to signal the completion of the file transfer. On the receiving host, the packets are processed and reassembled, and the file is stored in the destination host\textquotesingle{}s designated directory.

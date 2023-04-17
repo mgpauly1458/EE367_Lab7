@@ -2,6 +2,8 @@
 /**
  *@file net.c
 
+ * @brief This file initializes the network.
+
 This file handles the initialization and management of a network, 
 including nodes, links, and communication between hosts and a manager. 
 It provides various functions for network manipulation, such as creating 

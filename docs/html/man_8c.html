@@ -80,6 +80,9 @@ $(function() {
   <div class="headertitle"><div class="title">man.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Source code for the manager. This file contains the implementation of a manager which is responsible for managing multiple hosts. It allows the user to interact with the hosts and perform various actions like changing the current host, displaying host's state, pinging a host, uploading a file to a host, and downloading a file from a host.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="man_8h_source.html">man.h</a>&quot;</code><br />
 <code>#include &lt;fcntl.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
@@ -107,25 +110,36 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:adc38eb35b9d78b25d4f8fb06a1224039"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#adc38eb35b9d78b25d4f8fb06a1224039">display_host</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *list, struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *curr_host)</td></tr>
+<tr class="memdesc:adc38eb35b9d78b25d4f8fb06a1224039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the hosts on the console. This function displays the list of all hosts on the console, along with an indication of the currently connected host.  <br /></td></tr>
 <tr class="separator:adc38eb35b9d78b25d4f8fb06a1224039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e6782ad3effc46713c100e88c9640ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#a6e6782ad3effc46713c100e88c9640ac">change_host</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *list, struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> **curr_host)</td></tr>
+<tr class="memdesc:a6e6782ad3effc46713c100e88c9640ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the current host. This function prompts the user to enter the ID of the new host to set as the current host. It searches for the port of the new host and sets it as the current host.  <br /></td></tr>
 <tr class="separator:a6e6782ad3effc46713c100e88c9640ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d059a9dc0d2eae334306ba2ecb3e524"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#a6d059a9dc0d2eae334306ba2ecb3e524">display_host_state</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *curr_host)</td></tr>
+<tr class="memdesc:a6d059a9dc0d2eae334306ba2ecb3e524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send command to the host for its state. This function sends a command message to the current host to get its state. The command is a single character 's'. It then waits for a reply from the host, which should be the host's state. The state is displayed on the console.  <br /></td></tr>
 <tr class="separator:a6d059a9dc0d2eae334306ba2ecb3e524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9ba2c3a1a62dc03767de9c4809cde22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#ac9ba2c3a1a62dc03767de9c4809cde22">set_host_dir</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *curr_host)</td></tr>
+<tr class="memdesc:ac9ba2c3a1a62dc03767de9c4809cde22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the host's main directory. This function prompts the user to enter the name of the directory to set as the host's main directory. It then sends a command message to the current host to set the directory.  <br /></td></tr>
 <tr class="separator:ac9ba2c3a1a62dc03767de9c4809cde22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00394a4112e50ace1a9e2819b9144769"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#a00394a4112e50ace1a9e2819b9144769">man_get_user_cmd</a> (int curr_host)</td></tr>
+<tr class="memdesc:a00394a4112e50ace1a9e2819b9144769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the user command. This function prompts the user to enter a command from the available options and returns the command entered by the user.  <br /></td></tr>
 <tr class="separator:a00394a4112e50ace1a9e2819b9144769"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4378cb13b8341080a3563606fd5a8ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#ae4378cb13b8341080a3563606fd5a8ff">ping</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *curr_host)</td></tr>
+<tr class="memdesc:ae4378cb13b8341080a3563606fd5a8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ping a host from the current host. This function prompts the user to enter the ID of the host to ping. It then sends a command message to the current host to ping the specified host. It waits for a reply from the host and displays it on the console.  <br /></td></tr>
 <tr class="separator:ae4378cb13b8341080a3563606fd5a8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6450ec543935f296e9b394801c1e9e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#ae6450ec543935f296e9b394801c1e9e7">file_upload</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *curr_host)</td></tr>
+<tr class="memdesc:ae6450ec543935f296e9b394801c1e9e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upload a file from the current host to another host. This function prompts the user to enter the name of the file to transfer and the ID of the destination host. It then sends a command message to the current host to upload the file to the specified host.  <br /></td></tr>
 <tr class="separator:ae6450ec543935f296e9b394801c1e9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd94258fb8b93b3ad5e2983ae6ed3687"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#abd94258fb8b93b3ad5e2983ae6ed3687">file_download</a> (struct <a class="el" href="structman__port__at__man.html">man_port_at_man</a> *curr_host)</td></tr>
+<tr class="memdesc:abd94258fb8b93b3ad5e2983ae6ed3687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Download a file from a host. This function prompts the user to enter the name of the file to download and the ID of the host from which to download the file. It then sends a command message to the current host to download the file from the specified host.  <br /></td></tr>
 <tr class="separator:abd94258fb8b93b3ad5e2983ae6ed3687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6dcff712a69b62c3e78532997ea2396"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="man_8c.html#aa6dcff712a69b62c3e78532997ea2396">man_main</a> ()</td></tr>
+<tr class="memdesc:aa6dcff712a69b62c3e78532997ea2396"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main loop of the manager. This function contains the main loop of the manager. It repeatedly gets a command from the user and executes it.  <br /></td></tr>
 <tr class="separator:aa6dcff712a69b62c3e78532997ea2396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Source code for the manager. This file contains the implementation of a manager which is responsible for managing multiple hosts. It allows the user to interact with the hosts and perform various actions like changing the current host, displaying host's state, pinging a host, uploading a file to a host, and downloading a file from a host. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a1eb935c0b49607f19ed1a74e64ee5184" name="a1eb935c0b49607f19ed1a74e64ee5184"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1eb935c0b49607f19ed1a74e64ee5184">&#9670;&#160;</a></span>DELAY_FOR_HOST_REPLY</h2>
 
@@ -223,6 +237,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Change the current host. This function prompts the user to enter the ID of the new host to set as the current host. It searches for the port of the new host and sets it as the current host. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>The list of all hosts. </td></tr>
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="adc38eb35b9d78b25d4f8fb06a1224039" name="adc38eb35b9d78b25d4f8fb06a1224039"></a>
@@ -251,6 +274,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Display the hosts on the console. This function displays the list of all hosts on the console, along with an indication of the currently connected host. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>The list of all hosts. </td></tr>
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a6d059a9dc0d2eae334306ba2ecb3e524" name="a6d059a9dc0d2eae334306ba2ecb3e524"></a>
@@ -268,6 +300,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Send command to the host for its state. This function sends a command message to the current host to get its state. The command is a single character 's'. It then waits for a reply from the host, which should be the host's state. The state is displayed on the console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -287,6 +327,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Download a file from a host. This function prompts the user to enter the name of the file to download and the ID of the host from which to download the file. It then sends a command message to the current host to download the file from the specified host. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, -1 on failure. </dd></dl>
+
 </div>
 </div>
 <a id="ae6450ec543935f296e9b394801c1e9e7" name="ae6450ec543935f296e9b394801c1e9e7"></a>
@@ -304,6 +353,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Upload a file from the current host to another host. This function prompts the user to enter the name of the file to transfer and the ID of the destination host. It then sends a command message to the current host to upload the file to the specified host. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, -1 on failure. </dd></dl>
 
 </div>
 </div>
@@ -323,6 +381,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the user command. This function prompts the user to enter a command from the available options and returns the command entered by the user. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">curr_host</td><td>ID of the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The user command. </dd></dl>
+
 </div>
 </div>
 <a id="aa6dcff712a69b62c3e78532997ea2396" name="aa6dcff712a69b62c3e78532997ea2396"></a>
@@ -339,6 +406,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Main loop of the manager. This function contains the main loop of the manager. It repeatedly gets a command from the user and executes it. </p>
 
 </div>
 </div>
@@ -358,6 +427,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Ping a host from the current host. This function prompts the user to enter the ID of the host to ping. It then sends a command message to the current host to ping the specified host. It waits for a reply from the host and displays it on the console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ac9ba2c3a1a62dc03767de9c4809cde22" name="ac9ba2c3a1a62dc03767de9c4809cde22"></a>
@@ -375,6 +452,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the host's main directory. This function prompts the user to enter the name of the directory to set as the host's main directory. It then sends a command message to the current host to set the directory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">curr_host</td><td>Pointer to the current host. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

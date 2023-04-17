@@ -2,7 +2,7 @@
 \label{sockets_8c}\index{src/sockets.c@{src/sockets.c}}
 
 
-Provides functions for creating server and client sockets, sending and receiving packets in a C networking program. This file contains functions for handling sockets in a C networking program, including\+:  
+Provides functions for creating server and client sockets, sending and receiving packets in a C networking program.  
 
 
 {\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
@@ -32,7 +32,9 @@ void \mbox{\hyperlink{sockets_8c_aa5180eae33365fe64d3591720fe0f424}{create\+\_\+
 
 
 \doxysubsection{Detailed Description}
-Provides functions for creating server and client sockets, sending and receiving packets in a C networking program. This file contains functions for handling sockets in a C networking program, including\+: 
+Provides functions for creating server and client sockets, sending and receiving packets in a C networking program. 
+
+This file contains functions for handling sockets in a C networking program, including\+:
 
 \begin{DoxyItemize}
 \item Creating a server socket, which listens for incoming connections and forwards received data to a pipe. \item Creating a client socket, which connects to a remote server and sends packets. \item Sending a packet, which involves converting the packet to a message format and writing the message to a pipe or socket. \item Receiving a packet, which involves reading a message from a pipe or socket and converting it to a packet format.\end{DoxyItemize}

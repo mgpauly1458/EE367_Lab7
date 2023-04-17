@@ -3,6 +3,7 @@
 
 @file sockets.c
 @brief Provides functions for creating server and client sockets, sending and receiving packets in a C networking program.
+
 This file contains functions for handling sockets in a C networking program, including:
 
 \li Creating a server socket, which listens for incoming connections and forwards received data to a pipe.

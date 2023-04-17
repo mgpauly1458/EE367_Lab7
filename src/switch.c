@@ -1,5 +1,6 @@
 /**
-@file main.c
+@file switch.c
+
 @brief Main program for managing network port communication, forwarding table, and packet handling.
 
 This file contains the main program for a network switch application, handling network port communication, maintaining a forwarding table, and processing incoming packets. The main functionality includes:

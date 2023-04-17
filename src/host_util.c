@@ -1,6 +1,9 @@
-/*
- * host.c
- */
+/**
+
+@file host_util.c
+
+@brief This file contains implementations of functions related to the host and its operations.
+*/
 
 #include <fcntl.h>
 #include <stdio.h>
@@ -16,6 +19,12 @@
 #include "packet.h"
 #include "switch.h"
 
+/**
+
+@brief Display the job information for a given host job and host ID.
+@param job Pointer to the host job structure.
+@param hostid Host ID.
+*/
 void display_host_job_info(struct host_job *job, int hostid) {
   const char *job_type_str;
 
@@ -68,11 +77,11 @@ void display_host_job_info(struct host_job *job, int hostid) {
   printf("\n\n\n");
 }
 
-/*
- * File buffer operations
- */
+/**
 
-/* Initialize file buffer data structure */
+@brief Initialize the file buffer data structure.
+@param f Pointer to the file buffer structure.
+*/
 void file_buf_init(struct file_buf *f) {
   f->head = 0;
   f->tail = MAX_FILE_BUFFER;
@@ -80,10 +89,13 @@ void file_buf_init(struct file_buf *f) {
   f->name_length = 0;
 }
 
-/*
- * Get the file name in the file buffer and store it in name
- * Terminate the string in name with tne null character
- */
+/**
+
+@brief Get the file name in the file buffer and store it in name.
+Terminate the string in name with the null character.
+@param f Pointer to the file buffer structure.
+@param name Character array to store the file name.
+*/
 void file_buf_get_name(struct file_buf *f, char name[]) {
   int i;
 
@@ -93,10 +105,13 @@ void file_buf_get_name(struct file_buf *f, char name[]) {
   name[f->name_length] = '\0';
 }
 
-/*
- *  Put name[] into the file name in the file buffer
- *  length = the length of name[]
- */
+/**
+
+@brief Put name[] into the file name in the file buffer.
+@param f Pointer to the file buffer structure.
+@param name Character array containing the file name.
+@param length Length of the name array.
+*/
 void file_buf_put_name(struct file_buf *f, char name[], int length) {
   int i;
 
@@ -106,9 +121,14 @@ void file_buf_put_name(struct file_buf *f, char name[], int length) {
   f->name_length = length;
 }
 
-/*
- *  Add 'length' bytes n string[] to the file buffer
- */
+/**
+
+@brief Add 'length' bytes in string[] to the file buffer.
+@param f Pointer to the file buffer structure.
+@param string Character array containing the bytes to add.
+@param length Length of the string array.
+@return The number of bytes added.
+*/
 int file_buf_add(struct file_buf *f, char string[], int length) {
   int i = 0;
 
@@ -121,10 +141,14 @@ int file_buf_add(struct file_buf *f, char string[], int length) {
   return (i);
 }
 
-/*
- *  Remove bytes from the file buffer and store it in string[]
- *  The number of bytes is length.
- */
+/**
+
+@brief Remove bytes from the file buffer and store them in string[].
+@param f Pointer to the file buffer structure.
+@param string Character array to store the removed bytes.
+@param length Number of bytes to remove.
+@return The number of bytes removed.
+*/
 int file_buf_remove(struct file_buf *f, char string[], int length) {
   int i = 0;
 
@@ -138,10 +162,14 @@ int file_buf_remove(struct file_buf *f, char string[], int length) {
   return (i);
 }
 
-/*
- * Operations with the manager
- */
+/**
 
+@brief Get the manager command message and extract the command character.
+@param port Pointer to the manager port at the host.
+@param msg Character array to store the command message.
+@param c Pointer to store the extracted command character.
+@return The number of bytes in the command message.
+*/
 int get_man_command(struct man_port_at_host *port, char msg[], char *c) {
   int n;
   int i;
@@ -163,11 +191,14 @@ int get_man_command(struct man_port_at_host *port, char msg[], char *c) {
   return n;
 }
 
-/*
- * Operations requested by the manager
- */
+/**
 
-/* Send back state of the host to the manager as a text message */
+@brief Send back state of the host to the manager as a text message.
+@param port Pointer to the manager port at the host.
+@param dir Character array representing the direction of the message.
+@param dir_valid Boolean indicating if the direction is valid.
+@param host_id Host ID.
+*/
 void reply_display_host_state(struct man_port_at_host *port, char dir[],
                               int dir_valid, int host_id) {
   int n;
@@ -182,9 +213,12 @@ void reply_display_host_state(struct man_port_at_host *port, char dir[],
   write(port->send_fd, reply_msg, n);
 }
 
-/* Job queue operations */
+/**
 
-/* Add a job to the job queue */
+@brief Add a job to the job queue.
+@param j_q Pointer to the job queue structure.
+@param j Pointer to the host job structure.
+*/
 void job_q_add(struct job_queue *j_q, struct host_job *j) {
   if (j_q->head == NULL) {
     j_q->head = j;
@@ -198,7 +232,12 @@ void job_q_add(struct job_queue *j_q, struct host_job *j) {
   }
 }
 
-/* Remove job from the job queue, and return pointer to the job*/
+/**
+
+@brief Remove job from the job queue, and return pointer to the job.
+@param j_q Pointer to the job queue structure.
+@return Pointer to the removed host job.
+*/
 struct host_job *job_q_remove(struct job_queue *j_q) {
   struct host_job *j;
 
@@ -209,19 +248,32 @@ struct host_job *job_q_remove(struct job_queue *j_q) {
   return (j);
 }
 
-/* Initialize job queue */
+/**
+
+@brief Initialize the job queue.
+@param j_q Pointer to the job queue struct to be initialized.
+@return void.
+*/
 void job_q_init(struct job_queue *j_q) {
   j_q->occ = 0;
   j_q->head = NULL;
   j_q->tail = NULL;
 }
 
+/**
+
+@brief Get the number of jobs in the job queue.
+@param j_q Pointer to the job queue struct to get the number of jobs from.
+@return The number of jobs in the job queue as an integer.
+*/
 int job_q_num(struct job_queue *j_q) { return j_q->occ; }
 
-/*
- *  Main
- */
+/**
 
+@brief Get the string representation of a job type.
+@param job_type The job type to get the string representation of.
+@return The string representation of the job type as a constant character pointer.
+*/
 const char *get_job_type_string(int job_type) {
   switch (job_type) {
     case JOB_SEND_PKT_ALL_PORTS:
@@ -249,10 +301,22 @@ const char *get_job_type_string(int job_type) {
   }
 }
 
+/**
+
+@brief Display the number of jobs in the job queue.
+@param j Pointer to the job queue struct to display the number of jobs from.
+@return void.
+*/
 void display_job_number(struct job_queue *j) {
   printf("\nnumber of jobs = %d\n", job_q_num(j));
 }
 
+/**
+
+@brief Display the information of a packet.
+@param pkt Pointer to the packet struct to display information from.
+@return void.
+*/
 void display_packet_info(struct packet *pkt) {
   const char *type_string;
   printf("\n\nPacket Info:\n");
@@ -287,6 +351,12 @@ void display_packet_info(struct packet *pkt) {
   printf("Payload: %s\n", pkt->payload);
 }
 
+/**
+
+@brief Print the contents of a job queue.
+@param queue Pointer to the job queue struct to print contents from.
+@return void.
+*/
 void print_job_queue_contents(struct job_queue *queue) {
   struct host_job *current_job = queue->head;
 
