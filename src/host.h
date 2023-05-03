@@ -10,6 +10,7 @@
 #define MAX_FILE_NAME 100
 #define PKT_PAYLOAD_MAX 100
 #define TENMILLISEC 10000   /* 10 millisecond sleep */
+#define DNS_SERVER_ID 100
 
 struct file_buf {
    char name[MAX_FILE_NAME];
@@ -56,5 +57,6 @@ struct job_queue {
 };
 
 void host_main(int host_id);
+void dns_main(int host_id);
 void display_packet_info(struct packet *);
 void display_host_job_info(struct host_job*, int);
