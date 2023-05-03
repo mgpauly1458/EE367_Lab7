@@ -48,3 +48,8 @@ struct packet { /* struct for a packet */
 #define PKT_FILE_UPLOAD_END 4
 #define PKT_FILE_DOWNLOAD_SEND 5
 #define PKT_FILE_DOWNLOAD_RECV 6
+#define PKT_GET_ID_P 7
+#define PKT_GET_ID_D 8
+#define PKT_SET_DOMAIN 9
+#define PKT_ID_P 10
+#define PKT_ID_D 11
