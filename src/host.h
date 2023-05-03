@@ -12,6 +12,7 @@
 #define TENMILLISEC 10000   /* 10 millisecond sleep */
 #define DNS_SERVER_ID 100   /* DNS Servers hostID */
 #define MAX_NAME_LENGTH 50  /* Max length of domain names */
+#define TABLE_SIZE 256
 
 struct file_buf {
    char name[MAX_FILE_NAME];
@@ -36,7 +37,8 @@ enum host_job_type {
 	JOB_FILE_UPLOAD_RECV_CONT,
    JOB_FILE_UPLOAD_RECV_END,
    JOB_RECV_GET_ID_P,
-   JOB_RECV_GET_ID_D
+   JOB_RECV_GET_ID_D,
+   JOB_SET_DOMAIN
 };
 
 struct host_job {

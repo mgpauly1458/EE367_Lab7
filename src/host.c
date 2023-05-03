@@ -213,16 +213,16 @@ while(1) {
             new_packet->src = (char)host_id;
             new_packet->dst = (char)DNS_SERVER_ID;
             new_packet->type = (char)PKT_SET_DOMAIN;
-            //printf("debug: packet->src: %d\n", new_packet->src);
-            //printf("debug: packet->dst (should be 100): %d\n", new_packet->dst);
-            //printf("debug: packet->type (should be 9) : %d\n", new_packet->type);
+            printf("debug: packet->src: %d\n", new_packet->src);
+            printf("debug: packet->dst (should be 100): %d\n", new_packet->dst);
+            printf("debug: packet->type (should be 9) : %d\n", new_packet->type);
             for (i=0; domain_name[i] != '\0'; i++) {
                new_packet->payload[i] = domain_name[i];
             }
             new_packet->payload[i] = '\0';
             new_packet->length = i;
-            //printf("debug: packet->paylod: %s\n", new_packet->payload);
-            //printf("debug: packet->length: %d\n", new_packet->length);
+            printf("debug: packet->paylod: %s\n", new_packet->payload);
+            printf("debug: packet->length: %d\n", new_packet->length);
             // Create job to send the packet to all ports (it eventually ends up at dns server)
             new_job = (struct host_job*)malloc(sizeof(struct host_job));
             new_job->packet = new_packet;

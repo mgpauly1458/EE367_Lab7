@@ -37,11 +37,13 @@ void main() {
       printf("Error:  the fork() failed\n");
       return;
     } else if (pid == 0) {        /* The child process, which is a node  */
-       if (p_node->id == DNS_SERVER_ID) {   /* If the node being create is the dns server */
-          dns_main(p_node->id);
-       }
-       else if (p_node->type == HOST) { /* Execute host routine */
+       if (p_node->type == HOST) { /* Execute host routine */
+         if (p_node->id == DNS_SERVER_ID) {
+            dns_main(p_node->id);
+         }
+         else {
          host_main(p_node->id);
+         }
       } else if (p_node->type = SWITCH) {
         switch_main(p_node->id);
         /* Execute switch routine, which you have to write */

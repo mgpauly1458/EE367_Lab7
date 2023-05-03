@@ -329,7 +329,9 @@ while(1) {
                printf("get id packet d received\n");
                break;
             case (char) PKT_SET_DOMAIN:
-               printf("set domain packet received\n");
+               new_job->type = JOB_SET_DOMAIN;
+               job_q_add(&job_q, new_job);
+               printf("Debug: Set domain job sent to queue\n");
                break;
             default:
 					free(in_packet);
@@ -357,7 +359,38 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
-		/* Send packets on all ports */	
+		/* Add domain name from incoming packet to the naming_table */
+      case JOB_SET_DOMAIN:
+         int table_id = 0;
+         printf("Starting job to register domain name %s as id %d\n",  // Debug statement to check packet 
+               new_job->packet->payload, new_job->packet->src);
+         /* Search the naming table for duplicate physical id's */
+         for (i=0; i < TABLE_SIZE; i++) {
+            if (naming_table.entries[i].valid == 1) {
+               if (new_job->packet->src == naming_table.entries[i].physical_id) {
+                  printf("The physical id associated with this host node is already registered\n");
+                  break;
+               }
+            }
+         }
+         /* Else add the domain name to the table 
+          * First check for the first empty table entry then add
+         */
+         while (naming_table.entries[table_id].valid == 1) {
+            table_id++;
+         }
+         new_job->packet->payload[new_job->packet->length] = '\0';  /* Make sure the name is null terminated */
+         strcpy(naming_table.entries[table_id].domain_name, new_job->packet->payload); // Add payload to table
+         naming_table.entries[table_id].valid = 1;
+         naming_table.entries[table_id].physical_id = new_job->packet->src;
+         /* Debug statement */
+         printf("Registered %s as %d at naming_table[%d]\n", 
+               naming_table.entries[table_id].domain_name,
+               naming_table.entries[table_id].physical_id,
+               table_id);
+         print_dns_table(&naming_table);
+         break;
+      /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
 			for (k=0; k<node_port_num; k++) {
 				packet_send(node_port[k], new_job->packet);
