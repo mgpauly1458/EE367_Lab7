@@ -10,7 +10,8 @@
 #define MAX_FILE_NAME 100
 #define PKT_PAYLOAD_MAX 100
 #define TENMILLISEC 10000   /* 10 millisecond sleep */
-#define DNS_SERVER_ID 100
+#define DNS_SERVER_ID 100   /* DNS Servers hostID */
+#define MAX_NAME_LENGTH 50  /* Max length of domain names */
 
 struct file_buf {
    char name[MAX_FILE_NAME];

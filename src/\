@@ -53,7 +53,7 @@
 /* Initialize the naming table to be empty w/ no valid domain names */
 void init_dns_table(struct naming_table * naming_table) {
    for(int i = 0; i < TABLE_SIZE; i++) {
-      strcpy(naming_table->entries[i].domain_name, "\0");      // empty string
+      naming_table->entries[i].domain_name = '\0';      // empty string
       naming_table->entries[i].physical_id = -1;        // no id
       naming_table->entries[i].valid = 0;               // not available    
    }
@@ -61,19 +61,11 @@ void init_dns_table(struct naming_table * naming_table) {
 
 /* Display the current valid domain names in the naming table  */
 void print_dns_table (struct naming_table * naming_table) {
-   int count = 0;
    printf("%-20s %-10s %-10s\n", "Domain Name", "Physical ID", "Valid Bit");
    for (int i = 0; i < TABLE_SIZE; i++) {
-      if (naming_table->entries[i].valid == 1) {
-         printf("%-20s %-10d %-10d\n", naming_table->entries[i].domain_name, 
+      printf("%-20s %-10d %-10d\n", naming_table->entries[i].domain_name, 
             naming_table->entries[i].physical_id,
-            naming_table->entries[i].valid);
-         count++;
-      }
-   }
-   // Debug statement
-   if (count == 0) {
-      printf("Naming table is still empty\n");
+            naming_table.->entries[i].valid);
    }
 }
 

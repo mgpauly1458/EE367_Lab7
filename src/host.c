@@ -64,6 +64,7 @@ int ping_reply_received;
 int i, k, n;
 int dst;
 char name[MAX_FILE_NAME];
+char domain_name[MAX_NAME_LENGTH];
 char string[PKT_PAYLOAD_MAX+1]; 
 
 FILE *fp;
@@ -159,7 +160,7 @@ while(1) {
 						malloc(sizeof(struct host_job));
 				ping_reply_received = 0;
 				new_job2->type = JOB_PING_WAIT_FOR_REPLY;
-				new_job2->ping_timer = 10;
+				new_job2->ping_timer = 20;
 				job_q_add(&job_q, new_job2);
 
 				break;
@@ -176,9 +177,9 @@ while(1) {
 				new_job->fname_upload[i] = '\0';
 				job_q_add(&job_q, new_job);
 				
-            
-
-			case 'd':
+            break;
+			
+         case 'd':
             sscanf(man_msg, "%d %s", &dst, name);
             new_job = (struct host_job *) malloc(sizeof(struct host_job));
             new_job->type = JOB_FILE_DOWNLOAD_SEND;
@@ -189,9 +190,47 @@ while(1) {
             new_job->fname_download[i] = '\0';
             job_q_add(&job_q, new_job);
             
-
             break;
-			default:
+         
+         case 'g': // Ping with domain name
+            break;
+         
+         case 'j': // Download with domain name
+            break;
+         
+         /* 
+          * Set Domain Name
+          * 
+          * From the current host node ...
+          *    Create a packet with dst of DNS SERVER, and payload of domain_name
+          *    Create a job to send the packet on all ports
+          */
+         case 'k': 
+            sscanf(man_msg, "%s", domain_name);
+            printf("debug: domain name %s request recieved in host.c\n", domain_name);
+            // Create the request packet to send to DNS Server w/ domain name
+            new_packet = (struct packet*) malloc(sizeof(struct packet *));
+            new_packet->src = (char)host_id;
+            new_packet->dst = (char)DNS_SERVER_ID;
+            new_packet->type = (char)PKT_SET_DOMAIN;
+            //printf("debug: packet->src: %d\n", new_packet->src);
+            //printf("debug: packet->dst (should be 100): %d\n", new_packet->dst);
+            //printf("debug: packet->type (should be 9) : %d\n", new_packet->type);
+            for (i=0; domain_name[i] != '\0'; i++) {
+               new_packet->payload[i] = domain_name[i];
+            }
+            new_packet->payload[i] = '\0';
+            new_packet->length = i;
+            //printf("debug: packet->paylod: %s\n", new_packet->payload);
+            //printf("debug: packet->length: %d\n", new_packet->length);
+            // Create job to send the packet to all ports (it eventually ends up at dns server)
+            new_job = (struct host_job*)malloc(sizeof(struct host_job));
+            new_job->packet = new_packet;
+            new_job->type = JOB_SEND_PKT_ALL_PORTS;
+            job_q_add(&job_q, new_job);
+            printf("Set domain job sent to job queue\n");
+            break;
+         default:
 			;
 		}
 	}
@@ -257,11 +296,16 @@ while(1) {
 						= JOB_FILE_UPLOAD_RECV_END;
 					job_q_add(&job_q, new_job);
 					break;
-            case (char) PKT_FILE_DOWNLOAD_SEND:
-               
+            case (char) PKT_FILE_DOWNLOAD_SEND:        
                new_job->type = JOB_FILE_DOWNLOAD_RECV;
                job_q_add(&job_q, new_job);
 				   break;
+            case (char) PKT_ID_P:
+               printf("id p packet received\n");
+               break;
+            case (char) PKT_ID_D:
+               printf("id d packet received\n");
+               break;
             default:
 					free(in_packet);
 					free(new_job);
@@ -288,7 +332,13 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
-		/* Send packets on all ports */	
+      case JOB_RECV_GET_ID_P:
+         printf("recv get id p job started\n");
+         break;
+      case JOB_RECV_GET_ID_D:
+         printf("recv get id d job started\n");
+         break;
+      /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
 			for (k=0; k<node_port_num; k++) {
 				packet_send(node_port[k], new_job->packet);

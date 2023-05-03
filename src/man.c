@@ -56,9 +56,12 @@ char man_get_user_cmd(int curr_host) {
     printf("   (m) Set host's main directory\n");
     printf("   (h) Display all hosts\n");
     printf("   (c) Change host\n");
-    printf("   (p) Ping a host\n");
+    printf("   (k) Set a domain name\n");
+    printf("   (p) Ping a host using hostID\n");
+    printf("   (g) Ping a host using domain name\n");
     printf("   (u) Upload a file to a host\n");
-    printf("   (d) Download a file from a host\n");
+    printf("   (d) Download a file from a host using hostID\n");
+    printf("   (j) Download a file from a host using domain name\n");
     printf("   (q) Quit\n");
     printf("   Enter Command: ");
     do {
@@ -75,6 +78,9 @@ char man_get_user_cmd(int curr_host) {
       case 'u':
       case 'd':
       case 'q':
+      case 'g':
+      case 'j':
+      case 'k':
         return cmd;
       default:
         printf("Invalid: you entered %c\n\n", cmd);
@@ -176,6 +182,17 @@ void set_host_dir(struct man_port_at_man *curr_host) {
   scanf("%s", name);
   n = sprintf(msg, "m %s", name);
   write(curr_host->send_fd, msg, n);
+}
+
+void register_domain_name(struct man_port_at_man * curr_host) {
+   char msg[MAN_MSG_LENGTH];
+   char domain_name[MAX_NAME_LENGTH];
+   int n;
+
+   printf("Enter a domain name to save: ");
+   scanf("%s", domain_name);
+   n = sprintf(msg, "k %s", domain_name);
+   write(curr_host->send_fd, msg, n);
 }
 
 /*
@@ -305,15 +322,24 @@ void man_main() {
       case 'c': /* Change the current host */
         change_host(host_list, &curr_host);
         break;
-      case 'p': /* Ping a host from the current host */
+      case 'k': /* Set a domain name up */
+        register_domain_name(curr_host);
+        break;
+      case 'p': /* Ping a host from the current host using hostID */
         ping(curr_host);
+        break;
+      case 'g': /* Ping a host from the current host using domain name */ 
+        printf("To be implemented\n");
         break;
       case 'u': /* Upload a file from the current host
                    to another host */
         file_upload(curr_host);
         break;
-      case 'd': /* Download a file from a host */
+      case 'd': /* Download a file from a host using hostID */
         file_download(curr_host);
+        break;
+      case 'j': /* Download a file from a host using domain name */
+        printf("To be implemented\n");
         break;
       case 'q': /* Quit */
         return;
