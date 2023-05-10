@@ -13,6 +13,11 @@ struct net_link {
    enum NetLinkType type;
    int pipe_node0;
    int pipe_node1;
+   int sock_node;
+   char send_domain[100];
+   int send_port;
+   char recv_domain[100];
+   int recv_port;
 };
 
 

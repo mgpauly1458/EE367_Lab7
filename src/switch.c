@@ -34,6 +34,19 @@ The main program manages the forwarding table, which is used to keep track of ho
 #include "switch.h"
 #include "switch_util.h"
 
+void debugStruct(struct net_port *port) {
+    printf("Type: %d\n", port->type);
+    printf("Pipe Host ID: %d\n", port->pipe_host_id);
+    printf("Pipe Send FD: %d\n", port->pipe_send_fd);
+    printf("Pipe Recv FD: %d\n", port->pipe_recv_fd);
+    printf("Next: %p\n", port->next);
+    printf("Socket Host ID: %d\n", port->sock_host_id);
+    printf("Socket Send Domain: %s\n", port->sock_send_domain);
+    printf("Socket Send Port: %d\n", port->sock_send_port);
+    printf("Socket Recv Domain: %s\n", port->sock_recv_domain);
+    printf("Socket Recv Port: %d\n", port->sock_recv_port);
+}
+
 void switch_main(int host_id) {
   // initialization
   struct net_port *node_port_list;
@@ -61,6 +74,8 @@ void switch_main(int host_id) {
   p = node_port_list;
   for (k = 0; k < node_port_num; k++) {
     node_port[k] = p;
+    sleep(0.5);
+    if(p->type == SOCKET) debugStruct(p);
     p = p->next;
   }
 

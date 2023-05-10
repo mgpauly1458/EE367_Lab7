@@ -26,7 +26,12 @@ struct net_port { /* port to communicate with another node */
 	int pipe_send_fd;
 	int pipe_recv_fd;
 	struct net_port *next;
+
    int sock_host_id;
+   char sock_send_domain[100];
+   int sock_send_port;
+   char sock_recv_domain[100];
+   int sock_recv_port;
 };
 
 /* Packet sent between nodes  */

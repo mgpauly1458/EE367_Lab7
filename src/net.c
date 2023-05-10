@@ -432,7 +432,11 @@ void create_port_list() {
     } else if (g_net_link[i].type == SOCKET) {
       p0 = (struct net_port *)malloc(sizeof(struct net_port));
       p0->type = g_net_link[i].type;
-      p0->sock_host_id = g_net_data->switch_host_id;
+      p0->sock_host_id = g_net_link[i].sock_node;
+      strcpy(p0->sock_send_domain, g_net_link[i].send_domain);
+      p0->sock_send_port = g_net_link[i].send_port;
+      strcpy(p0->sock_recv_domain, g_net_link[i].recv_domain);
+      p0->sock_recv_port = g_net_link[i].recv_port;
 
       p0->next = g_port_list;
       g_port_list = p0;
@@ -546,6 +550,13 @@ int load_net_data_file() {
         fscanf(fp, " %d %s %d %s %d ", &node0, send_domain, &send_port,
                server_domain, &server_port);
         g_net_link[i].type = SOCKET;
+        g_net_link[i].sock_node = node0;
+        strcpy(g_net_link[i].send_domain, send_domain);
+        g_net_link[i].send_port = send_port;
+        strcpy(g_net_link[i].recv_domain, server_domain);
+        g_net_link[i].recv_port = server_port;
+
+        ///////////////////// DELETE OLD GLOBAL NET DATA ////
 
         g_net_data->send_port = send_port;
         g_net_data->server_port = server_port;
