@@ -339,6 +339,9 @@ void display_packet_info(struct packet *pkt) {
     case PKT_FILE_DOWNLOAD_SEND:
       type_string = "PKT_FILE_DOWNLOAD_SEND";
       break;
+   case PKT_SET_DOMAIN:
+      type_string = "PKT_SET_DOMAIN";
+      break;
     default:
       type_string = "UNKNOWN_PACKET_TYPE";
       break;
@@ -380,3 +383,5 @@ void print_job_queue_contents(struct job_queue *queue) {
     current_job = current_job->next;
   }
 }
+
+

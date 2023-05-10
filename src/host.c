@@ -228,7 +228,8 @@ while(1) {
             new_job->packet = new_packet;
             new_job->type = JOB_SEND_PKT_ALL_PORTS;
             job_q_add(&job_q, new_job);
-            printf("Set domain job sent to job queue\n");
+            printf("Debug: Set domain job sent to job queue\n");
+            print_job_queue_contents(&job_q);
             break;
          default:
 			;
@@ -340,7 +341,8 @@ while(1) {
          break;
       /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
-			for (k=0; k<node_port_num; k++) {
+			printf("Debug: Entered job_send_pkt_all_ports\n");
+         for (k=0; k<node_port_num; k++) {
 				packet_send(node_port[k], new_job->packet);
 			}
 			free(new_job->packet);

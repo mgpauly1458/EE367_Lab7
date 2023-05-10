@@ -61,6 +61,15 @@ struct job_queue {
 	int occ;
 };
 
+
+
+
+
+
+/*
+ In the main file we can create a struct dns_entry dns_server[TABLE_SIZE]. Then pass &dns_server into the init_dns_server function
+ */
+
 void host_main(int host_id);
 void dns_main(int host_id);
 void display_packet_info(struct packet *);

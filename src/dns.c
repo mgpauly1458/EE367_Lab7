@@ -81,6 +81,8 @@ void print_dns_table (struct naming_table * naming_table) {
 void dns_main(int host_id)
 {
 
+// Debug for succesful dns server creation
+printf("DNS Serve Host Node Created Succesfully\n");
 /* State */
 char dir[MAX_DIR_NAME];
 int dir_valid = 0;
@@ -162,85 +164,6 @@ for (k = 0; k < node_port_num; k++) {
 job_q_init(&job_q);
 
 while(1) {
-	/* Execute command from manager, if any */
-
-		/* Get command from manager */
-	n = get_man_command(man_port, man_msg, &man_cmd);
-
-		/* Execute command */
-	if (n>0) {
-		switch(man_cmd) {
-			case 's':
-				reply_display_host_state(man_port,
-					dir, 
-					dir_valid,
-					host_id);
-				break;	
-			
-			case 'm':
-				dir_valid = 1;
-				for (i=0; man_msg[i] != '\0'; i++) {
-					dir[i] = man_msg[i];
-				}
-				dir[i] = man_msg[i];
-				break;
-
-			case 'p': // Sending ping request
-				// Create new ping request packet
-				sscanf(man_msg, "%d", &dst);
-				new_packet = (struct packet *) 
-						malloc(sizeof(struct packet));	
-				new_packet->src =  host_id;
-				new_packet->dst =  dst;
-				new_packet->type = (char) PKT_PING_REQ;
-				new_packet->length = 0;
-				new_job = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				new_job->packet = new_packet;
-				new_job->type = JOB_SEND_PKT_ALL_PORTS;
-				job_q_add(&job_q, new_job);
-
-				new_job2 = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				ping_reply_received = 0;
-				new_job2->type = JOB_PING_WAIT_FOR_REPLY;
-				new_job2->ping_timer = 20;
-				job_q_add(&job_q, new_job2);
-
-				break;
-
-			case 'u': /* Upload a file to a host */
-				sscanf(man_msg, "%d %s", &dst, name);
-				new_job = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				new_job->type = JOB_FILE_UPLOAD_SEND;
-				new_job->file_upload_dst = dst;	
-				for (i=0; name[i] != '\0'; i++) {
-					new_job->fname_upload[i] = name[i];
-				}
-				new_job->fname_upload[i] = '\0';
-				job_q_add(&job_q, new_job);
-				
-            
-
-			case 'd':
-            sscanf(man_msg, "%d %s", &dst, name);
-            new_job = (struct host_job *) malloc(sizeof(struct host_job));
-            new_job->type = JOB_FILE_DOWNLOAD_SEND;
-            new_job->file_download_dst = dst;
-            for (i=0; name[i] != '\0'; i++) {
-               new_job->fname_download[i] = name[i];
-            }
-            new_job->fname_download[i] = '\0';
-            job_q_add(&job_q, new_job);
-            
-
-            break;
-			default:
-			;
-		}
-	}
-	
 	/*
 	 * Get packets from incoming links and translate to jobs
   	 * Put jobs in job queue
@@ -250,8 +173,8 @@ while(1) {
 
 		in_packet = (struct packet *) malloc(sizeof(struct packet));
 		n = packet_recv(node_port[k], in_packet);
-
 		if ((n > 0) && ((int) in_packet->dst == host_id)) {
+         printf("DNS server %d received packet from host node\n", in_packet->dst);
 			new_job = (struct host_job *) 
 				malloc(sizeof(struct host_job));
 			new_job->in_port_index = k;
@@ -274,54 +197,6 @@ while(1) {
 					free(in_packet);
 					free(new_job);
 					break;
-
-				/* 
-				 * The next two packet types
-				 * are for the upload file operation.
-				 *
-				 * The first type is the start packet
-				 * which includes the file name in
-				 * the payload.
-				 *
-				 * The second type is the end packet
-				 * which carries the content of the file
-				 * in its payload
-				 */
-		
-				case (char) PKT_FILE_UPLOAD_START:
-					new_job->type 
-						= JOB_FILE_UPLOAD_RECV_START;
-					job_q_add(&job_q, new_job);
-					break;
-            case (char) PKT_FILE_UPLOAD_CONT:
-               new_job->type = JOB_FILE_UPLOAD_RECV_CONT;
-               job_q_add(&job_q, new_job);
-               break;
-				case (char) PKT_FILE_UPLOAD_END:
-					new_job->type 
-						= JOB_FILE_UPLOAD_RECV_END;
-					job_q_add(&job_q, new_job);
-					break;
-            case (char) PKT_FILE_DOWNLOAD_SEND:
-               
-               new_job->type = JOB_FILE_DOWNLOAD_RECV;
-               job_q_add(&job_q, new_job);
-				   break;
-
-            /*
-             * The next three packet types are for 
-             * the operations using domain names.
-             *
-             * The first type is to request a domain name
-             * from the dns server.
-             *
-             * The second type is to send the domain
-             * name reply from the dns server to the 
-             * asking node.
-             *
-             * the third type is used to set a domain 
-             * name in the naming table of the dns server.
-             */
             case (char) PKT_GET_ID_P:
                printf("get id packet p received\n");
                break;
@@ -329,6 +204,7 @@ while(1) {
                printf("get id packet d received\n");
                break;
             case (char) PKT_SET_DOMAIN:
+               printf("Debug: set domain packet recieved from host node\n");
                new_job->type = JOB_SET_DOMAIN;
                job_q_add(&job_q, new_job);
                printf("Debug: Set domain job sent to queue\n");

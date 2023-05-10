@@ -123,10 +123,7 @@ void switch_main(int host_id) {
       for (k = 0; k < node_port_num; k++) {
         in_packet = (struct packet *)malloc(sizeof(struct packet));
         n = packet_recv(node_port[k], in_packet);
-
         if (n > 0) {
-          // display_packet_info(in_packet);
-          //              display_forward_table(table);
           // add packet routing here
           // check whole table
           if (is_host_in_table(&table, in_packet->dst)) {
