@@ -129,8 +129,9 @@ void switch_main(int host_id) {
           if (is_host_in_table(&table, in_packet->dst)) {
             // port is in table, send it
             packet_send(node_port[table.port[in_packet->dst]], in_packet);
-            add_src_to_table(&table, in_packet, k);
-
+            /* Bug: src should only be added to the table if the dst is not in the table 
+               If the dst is in the table, then the src port is also already in the table
+             */
           } else {
             // port is not in table
             add_src_to_table(&table, in_packet, k);
