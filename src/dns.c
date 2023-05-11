@@ -313,20 +313,21 @@ while(1) {
          }
          new_packet->type = (char) PKT_RECV_ID_D;
          new_packet->length = 0;
-         printf("Debug: new_packet->src (verify on name table) = %d\n", new_packet->src);
-         printf("Debug: new_packet->dst (current host_id) = %d\n", new_job->packet->src);
+         
+         printf("\n Verify New Packet \n");
+         printf("Debug: new_packet->src (PhysID verify on name table) = %d\n", new_packet->src);
+         printf("Debug: new_packet->dst (current host_id) = %d\n", new_packet->dst);
          printf("Debug: new_packet->type (should be 11) = %d\n", new_packet->type);
+         printf("Debug: new_packet->payload (filename) = %s \n", new_packet->payload);
          new_packet->length = strlen(new_packet->payload);
          
          /* Debug Statement */ 
-         printf("Debug: compare payload:  %s vs  %s \n", new_packet->payload, new_job->packet->payload);
          new_job = (struct host_job *)
                malloc(sizeof(struct host_job));
          new_job->packet = new_packet;
          new_job->type = JOB_SEND_PKT_ALL_PORTS;
          job_q_add(&job_q, new_job);
          printf("Debug: Packet containing physical id sent back to host\n");
-       
          break;
 
       case JOB_SET_DOMAIN:

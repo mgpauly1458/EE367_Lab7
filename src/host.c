@@ -183,7 +183,9 @@ while(1) {
             sscanf(man_msg, "%d %s", &dst, name);
             new_job = (struct host_job *) malloc(sizeof(struct host_job));
             new_job->type = JOB_FILE_DOWNLOAD_SEND;
+         
             new_job->file_download_dst = dst;
+            printf("new->file download dst = %c \n", dst);
             for (i=0; name[i] != '\0'; i++) {
                new_job->fname_download[i] = name[i];
             }
@@ -358,14 +360,14 @@ while(1) {
                //job_q_add(&job_q, new_job);
                break;
             case (char) PKT_RECV_ID_D:
-               printf("Debug: id d packet received\n");
+               printf("\n Debug: id d packet received\n");
                printf("Verify recieved packet \n");
-               printf("new_job->packet->src(3) %d \n", new_job->packet->src);
+               printf("new_job->packet->src(PhysID) %d \n", new_job->packet->src);
                printf("new_job->packet->payload %s \n", new_job->packet->payload);
                new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
                new_job2->type = JOB_FILE_DOWNLOAD_SEND;
                new_job2->file_download_dst = new_job->packet->src;
-               for (i=0; new_job->packet->payload[i] != '#'; i++) {
+               for (i=0; new_job->packet->payload[i] != '\0'; i++) {
                   new_job2->fname_download[i] = new_job->packet->payload[i];
                }
                new_job2->fname_download[i] = '\0';
