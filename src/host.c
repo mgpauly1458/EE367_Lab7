@@ -278,7 +278,8 @@ while(1) {
 				 * The next two packet types are 
 				 * the ping request and ping reply
 				 */
-				case (char) PKT_PING_REQ: 
+				case (char) PKT_PING_REQ:
+               printf("Debug: Entetered PKT_PING_REQ_JOB in host.c\n");
 					new_job->type = JOB_PING_SEND_REPLY;
 					job_q_add(&job_q, new_job);
 					break;
@@ -320,11 +321,14 @@ while(1) {
                new_job->type = JOB_FILE_DOWNLOAD_RECV;
                job_q_add(&job_q, new_job);
 				   break;
-            case (char) PKT_ID_P:
-               printf("id p packet received\n");
+            case (char) PKT_RECV_ID_P:
+               printf("Debug: id p packet received\n");
+               //new_job->type = JOB_RECV_ID_P;
+               printf("Debug: new_job->packet->payload: %s\n", new_job->packet->payload);
+               //job_q_add(&job_q, new_job);
                break;
-            case (char) PKT_ID_D:
-               printf("id d packet received\n");
+            case (char) PKT_RECV_ID_D:
+               printf("Debug: id d packet received\n");
                break;
             default:
 					free(in_packet);
@@ -352,15 +356,34 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
-      case JOB_RECV_GET_ID_P:
+      case JOB_RECV_ID_P:
          printf("recv get id p job started\n");
+         new_packet = (struct packet *) 
+            malloc(sizeof(struct packet));	
+			new_packet->src =  host_id;
+			new_packet->dst =  dst;
+			new_packet->type = (char) PKT_PING_REQ;
+			new_packet->length = 0;
+			new_job = (struct host_job *) 
+            malloc(sizeof(struct host_job));
+			new_job->packet = new_packet;
+			new_job->type = JOB_SEND_PKT_ALL_PORTS;
+			job_q_add(&job_q, new_job);
+
+			new_job2 = (struct host_job *) 
+            malloc(sizeof(struct host_job));
+			ping_reply_received = 0;
+			new_job2->type = JOB_PING_WAIT_FOR_REPLY;
+			new_job2->ping_timer = 20;
+			job_q_add(&job_q, new_job2);
          break;
-      case JOB_RECV_GET_ID_D:
+      case JOB_RECV_ID_D:
          printf("recv get id d job started\n");
          break;
       /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
 			printf("Debug: Entered job_send_pkt_all_ports\n");
+         printf("Debug: Sending packet type: %d\n", new_job->packet->type);
          for (k=0; k<node_port_num; k++) {
 				packet_send(node_port[k], new_job->packet);
 			}

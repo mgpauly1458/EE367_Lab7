@@ -211,7 +211,7 @@ while(1) {
 					break;
             case (char) PKT_GET_ID_P:
                printf("Debug: get id packet p received\n");
-               new_job->type = JOB_RECV_GET_ID_P;
+               new_job->type = JOB_GET_ID_P;
                job_q_add(&job_q, new_job);
                printf("Debug: Return ID from dns job sent to queue\n"); 
                break;
@@ -251,10 +251,33 @@ while(1) {
 		switch(new_job->type) {
 
       /* Return the hostID of a domain name to the src node */
-      case JOB_RECV_GET_ID_P:
+      case JOB_GET_ID_P:
          int physID;
+         int n;
          physID = get_physical_id(&naming_table, new_job->packet->payload);
          printf("Debug: Physical id for %s is %d\n", new_job->packet->payload, physID);
+         new_packet = (struct packet *)
+						malloc(sizeof(struct packet));
+		   new_packet->src = (char) DNS_SERVER_ID;
+         new_packet->dst = (char) new_job->packet->src;
+         new_packet->type = (char) PKT_RECV_ID_P;
+         new_packet->length = 0;
+         printf("Debug: new_packet->src (should be 100) = %d\n", new_packet->src);
+         printf("Debug: new_packet->dst = %d\n", physID);
+         printf("Debug: new_packet->type (should be 0) = %d\n", new_packet->type);
+
+         /* Store the physID from the naming table into the packet payload 
+            Then send it to all ports via a job. You must store the length of the payload since packet_send()
+            only sends a msg that is the size of length
+          * */
+         n = sprintf(new_packet->payload, "%d", physID);
+         new_packet->length = strlen(new_packet->payload);
+         /* Debug Statement */
+         printf("Debug: new_packet->payload holds %s\n", new_packet->payload);
+         new_job->packet = new_packet;
+         new_job->type = JOB_SEND_PKT_ALL_PORTS;
+         job_q_add(&job_q, new_job);
+         printf("Debug: Packet containing physical id sent back to host\n");
          break;
 		/* Add domain name from incoming packet to the naming_table */
       case JOB_SET_DOMAIN:
