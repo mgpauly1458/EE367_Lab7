@@ -364,7 +364,7 @@ while(1) {
                printf("Verify recieved packet \n");
                printf("new_job->packet->src(PhysID) %d \n", new_job->packet->src);
                printf("new_job->packet->payload %s \n", new_job->packet->payload);
-               new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
+             /*  new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
                new_job2->type = JOB_FILE_DOWNLOAD_SEND;
                new_job2->file_download_dst = new_job->packet->src;
                for (i=0; new_job->packet->payload[i] != '\0'; i++) {
@@ -374,8 +374,9 @@ while(1) {
                printf("Debug: new_job src(3) = %d \n",new_job2->file_download_dst);
                printf("Debug: fname_download(haha.txt) %s \n", new_job2->fname_download);
                job_q_add(&job_q, new_job2);
-               //new_job->type = JOB_FILE_DOWNLOAD_SEND;
-               //job_q_add(&job_q, new_job);
+               */
+               new_job->type = JOB_RECV_ID_D;
+               job_q_add(&job_q, new_job);
                break;
             default:
 					free(in_packet);
@@ -426,6 +427,16 @@ while(1) {
          break;
       case JOB_RECV_ID_D:
          printf("recv get id d job started\n");
+         new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
+         new_job2->type = JOB_FILE_DOWNLOAD_SEND;
+         new_job2->file_download_dst = new_job->packet->src;
+         for (i=0; new_job->packet->payload[i] != '#'; i++) {
+            new_job2->fname_download[i] = new_job->packet->payload[i];
+         }
+         new_job2->fname_download[i] = '\0';
+         printf("Debug: new_job src(3) = %d \n",new_job2->file_download_dst);
+         printf("Debug: fname_download(filename) %s \n", new_job2->fname_download);
+         job_q_add(&job_q, new_job2);
          break;
       /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
