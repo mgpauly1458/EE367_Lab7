@@ -311,7 +311,7 @@ int file_download(struct man_port_at_man *curr_host) {
 
 int file_download_domain(struct man_port_at_man *curr_host) {
    int n;
-   int domain_name;
+   char domain_name[MAX_NAME_LENGTH];
    char name[NAME_LENGTH];
    char msg[NAME_LENGTH];
 

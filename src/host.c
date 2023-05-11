@@ -216,7 +216,8 @@ while(1) {
             break;
          
          case 'j': // Download with domain name
-            printf("About to start download to domain process");
+            printf("About to start download to domain process\n");
+            
             sscanf(man_msg, "%s %s", domain_name, name);
             new_packet = (struct packet*) malloc(sizeof(struct packet *));
             new_packet->src = (char)host_id;
@@ -234,13 +235,18 @@ while(1) {
             //separation between file name and domain_name is a #
             new_packet->payload[i+1+j] = '\0';
             new_packet->length = i+j+1;
-
+            printf("debug: packet->payload (should be file#domain) = %s \n", new_packet->payload);
+            new_job = (struct host_job *)
+                  malloc(sizeof(struct host_job));
+            
             new_job = (struct host_job *)
                   malloc(sizeof(struct host_job));
             new_job->packet = new_packet;
             new_job->type = JOB_SEND_PKT_ALL_PORTS;
             job_q_add(&job_q, new_job);
+            
             break;
+            
          /* 
           * Set Domain Name
           * 
@@ -248,6 +254,7 @@ while(1) {
           *    Create a packet with dst of DNS SERVER, and payload of domain_name
           *    Create a job to send the packet on all ports
           */
+
          case 'k': 
             sscanf(man_msg, "%s", domain_name);
             printf("debug: domain name %s request recieved in host.c\n", domain_name);
@@ -352,6 +359,19 @@ while(1) {
                break;
             case (char) PKT_RECV_ID_D:
                printf("Debug: id d packet received\n");
+               printf("Verify recieved packet \n");
+               printf("new_job->packet->src(3) %d \n", new_job->packet->src);
+               printf("new_job->packet->payload %s \n", new_job->packet->payload);
+               new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
+               new_job2->type = JOB_FILE_DOWNLOAD_SEND;
+               new_job2->file_download_dst = new_job->packet->src;
+               for (i=0; new_job->packet->payload[i] != '#'; i++) {
+                  new_job2->fname_download[i] = new_job->packet->payload[i];
+               }
+               new_job2->fname_download[i] = '\0';
+               printf("Debug: new_job src(3) = %d \n",new_job2->file_download_dst);
+               printf("Debug: fname_download(haha.txt) %s \n", new_job2->fname_download);
+               job_q_add(&job_q, new_job2);
                //new_job->type = JOB_FILE_DOWNLOAD_SEND;
                //job_q_add(&job_q, new_job);
                break;
@@ -587,9 +607,6 @@ case JOB_FILE_UPLOAD_SEND:
                
                new_packet = (struct packet *) malloc(sizeof(struct packet));
                new_packet->src = host_id;
-               new_packet->dst = (char) new_job->file_upload_dst;
-               new_packet->type = PKT_FILE_UPLOAD_END;
-               new_packet->length = 0;
                strcpy(new_packet->payload, "No Data");
 
                new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
