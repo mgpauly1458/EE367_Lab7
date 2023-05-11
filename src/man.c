@@ -288,6 +288,22 @@ int file_download(struct man_port_at_man *curr_host) {
   usleep(TENMILLISEC);
 }
 
+int file_download_domain(struct man_port_at_man *curr_host) {
+   int n;
+   int domain_name;
+   char name[NAME_LENGTH];
+   char msg[NAME_LENGTH];
+
+   printf("Enter file name to download: ");
+   scanf("%s", name);
+   printf("Enter domain name of destination: ");
+   scanf("%s", domain_name);
+   printf("\n");
+
+   n = sprintf(msg, "j %s %s", domain_name, name);
+   write(curr_host->send_fd, msg, n);
+   usleep(TENMILLISEC);
+}
 /**
 
 @brief Main loop of the manager.
@@ -340,6 +356,7 @@ void man_main() {
         break;
       case 'j': /* Download a file from a host using domain name */
         printf("To be implemented\n");
+        file_donwload_domain(curr_host);
         break;
       case 'q': /* Quit */
         return;

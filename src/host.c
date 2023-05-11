@@ -196,6 +196,24 @@ while(1) {
             break;
          
          case 'j': // Download with domain name
+            sscanf(man_msg, "%s %s", domain_name, name);
+            new_packet = (struct packet*) malloc(sizeof(struct packet *));
+            new_packet->src = (char)host_id;
+            new_packet->dst = (char)DNS_SERVER_ID;
+            new_packet->type = (char)PKT_GET_ID_D;
+            for (i=0; name[i] != '\0'; i++) {
+                  new_packet->payload[i] = name[i];
+             }
+            new_packet->payload[i] = '\0';
+            new_packet->length = i;
+            //store domain name in packet
+            int j;
+            for(j=0; domain_name[j] != '\0'; j++){
+               new_packet->payload[i+1+j] = domain[j];
+            }
+            //separation between file name and domain_name is a #
+            new_packet->payload[i+1+j] = '\0';
+           
             break;
          
          /* 
@@ -305,6 +323,9 @@ while(1) {
                break;
             case (char) PKT_ID_D:
                printf("id d packet received\n");
+               //make packet accordingly
+               new_job->type = JOB_FILE_DOWNLOAD_SEND;
+               job_q_add(&job_q, new_job);
                break;
             default:
 					free(in_packet);

@@ -326,6 +326,8 @@ while(1) {
                printf("get id packet p received\n");
                break;
             case (char) PKT_GET_ID_D:
+               new_job->type = JOB_RECV_GET_ID_D;
+               job_q_add(&job_q, new_job);
                printf("get id packet d received\n");
                break;
             case (char) PKT_SET_DOMAIN:
@@ -398,7 +400,40 @@ while(1) {
 			free(new_job->packet);
 			free(new_job);
 			break;
+      /* Getting ID of DNS */
+      case JOB_RECV_GET_ID_D:
+         printf("Recv get id job started");
+         /* create packet to get id */
+         // get the domain from payload   
+         int i = 0;
+         while(new_job->packet->payload[i] != '\0'){
+            i++;
+         }
+         int j;
+         int name_len = 0;
+         char domain_name[20] = "";
+         for(j = i+1; new_job->packet->payload != '\0'; j++){
+            domain_name[name_len] = new_job->packet->payload[j];
+            name_len++;
+         }
+         domain_name[name_len] = '\0';
 
+         // Check d(main_name in exist in name table & corresponding host
+         printf("Domain Name: %s \n", domain_name);
+         int table_id = 0;
+         for (i=0; i < TABLE_SIZE; i++) {
+            if(strcmp(domain_name, naming_table.entries[i].domain_name) == 0){
+               break;
+            }
+         }
+         // src should be host id of domain name that was just checked
+         new_packet = (struct packet *)
+              malloc(sizeof(struct packet));
+         new_packet->dst = new_job->packet->src;
+         new_packet->src =  get_physical_id;
+         new_packet->type = PKT_ID_D;
+         new_packet->length = 0;
+         break;
 		/* The next three jobs deal with the pinging process */
 		case JOB_PING_SEND_REPLY:
 			/* Send a ping reply packet */
@@ -464,7 +499,7 @@ while(1) {
             new_job2->type = JOB_SEND_PKT_ALL_PORTS;
             new_job2->packet = new_packet;
             job_q_add(&job_q, new_job2);
-           
+          
 
          }
             free(new_job);
