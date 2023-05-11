@@ -236,6 +236,27 @@ void ping(struct man_port_at_man *curr_host) {
   printf("%s\n", reply);
 }
 
+void ping_by_domain_name(struct man_port_at_man *curr_host) {
+  char msg[MAN_MSG_LENGTH];
+  char reply[MAN_MSG_LENGTH];
+  char domain_name[MAX_NAME_LENGTH];
+  int n;
+
+  printf("Enter domain name of host to ping: ");
+  scanf("%s", domain_name);
+  n = sprintf(msg, "g %s", domain_name);
+
+  write(curr_host->send_fd, msg, n);
+
+  n = 0;
+  while (n <= 0) {
+    usleep(TENMILLISEC);
+    n = read(curr_host->recv_fd, reply, MAN_MSG_LENGTH);
+  } 
+  reply[n] = '\0';
+  printf("%s\n", reply);
+}
+
 /**
 
 @brief Upload a file from the current host to another host.
@@ -331,7 +352,7 @@ void man_main() {
         ping(curr_host);
         break;
       case 'g': /* Ping a host from the current host using domain name */ 
-        printf("To be implemented\n");
+        ping_by_domain_name(curr_host);
         break;
       case 'u': /* Upload a file from the current host
                    to another host */

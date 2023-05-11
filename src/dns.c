@@ -77,6 +77,18 @@ void print_dns_table (struct naming_table * naming_table) {
    }
 }
 
+/* Get the physical id of a domain name from the naming table */
+int get_physical_id(struct naming_table *naming_table, char *s) { 
+   printf("Debug: Entered get_physical_id\n");
+   print_dns_table(naming_table);
+   for(int i = 0; i < TABLE_SIZE; i++) {
+      if (strcmp(naming_table->entries[i].domain_name, s) == 0 && naming_table->entries[i].valid == 1) {
+         return naming_table->entries[i].physical_id;
+      }
+   }
+   return -1;  // not found
+}
+
 
 void dns_main(int host_id)
 {
@@ -198,7 +210,10 @@ while(1) {
 					free(new_job);
 					break;
             case (char) PKT_GET_ID_P:
-               printf("get id packet p received\n");
+               printf("Debug: get id packet p received\n");
+               new_job->type = JOB_RECV_GET_ID_P;
+               job_q_add(&job_q, new_job);
+               printf("Debug: Return ID from dns job sent to queue\n"); 
                break;
             case (char) PKT_GET_ID_D:
                printf("get id packet d received\n");
@@ -235,16 +250,24 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
+      /* Return the hostID of a domain name to the src node */
+      case JOB_RECV_GET_ID_P:
+         int physID;
+         physID = get_physical_id(&naming_table, new_job->packet->payload);
+         printf("Debug: Physical id for %s is %d\n", new_job->packet->payload, physID);
+         break;
 		/* Add domain name from incoming packet to the naming_table */
       case JOB_SET_DOMAIN:
          int table_id = 0;
+         int set_id = 1;
          printf("Starting job to register domain name %s as id %d\n",  // Debug statement to check packet 
                new_job->packet->payload, new_job->packet->src);
          /* Search the naming table for duplicate physical id's */
          for (i=0; i < TABLE_SIZE; i++) {
             if (naming_table.entries[i].valid == 1) {
-               if (new_job->packet->src == naming_table.entries[i].physical_id) {
+               if ((int)new_job->packet->src == (int)naming_table.entries[i].physical_id) {
                   printf("The physical id associated with this host node is already registered\n");
+                  set_id = 0;
                   break;
                }
             }
@@ -252,19 +275,21 @@ while(1) {
          /* Else add the domain name to the table 
           * First check for the first empty table entry then add
          */
-         while (naming_table.entries[table_id].valid == 1) {
-            table_id++;
+         if (set_id) {
+            while (naming_table.entries[table_id].valid == 1) {
+               table_id++;
+            }
+            new_job->packet->payload[new_job->packet->length] = '\0';  /* Make sure the name is null terminated */
+            strcpy(naming_table.entries[table_id].domain_name, new_job->packet->payload); // Add payload to table
+            naming_table.entries[table_id].valid = 1;
+            naming_table.entries[table_id].physical_id = new_job->packet->src;
+            /* Debug statement */
+            printf("Registered %s as %d at naming_table[%d]\n", 
+                  naming_table.entries[table_id].domain_name,
+                  naming_table.entries[table_id].physical_id,
+                  table_id);
+            print_dns_table(&naming_table);
          }
-         new_job->packet->payload[new_job->packet->length] = '\0';  /* Make sure the name is null terminated */
-         strcpy(naming_table.entries[table_id].domain_name, new_job->packet->payload); // Add payload to table
-         naming_table.entries[table_id].valid = 1;
-         naming_table.entries[table_id].physical_id = new_job->packet->src;
-         /* Debug statement */
-         printf("Registered %s as %d at naming_table[%d]\n", 
-               naming_table.entries[table_id].domain_name,
-               naming_table.entries[table_id].physical_id,
-               table_id);
-         print_dns_table(&naming_table);
          break;
       /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
