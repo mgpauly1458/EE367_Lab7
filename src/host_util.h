@@ -19,3 +19,4 @@ void file_buf_get_name(struct file_buf *f, char name[]);
 void file_buf_init(struct file_buf *f);
 
 void display_host_job_info(struct host_job *job, int hostid);
+

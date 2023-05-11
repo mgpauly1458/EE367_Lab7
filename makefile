@@ -14,6 +14,7 @@ DEPS := $(OBJS:.o=.d)
 
 # Compiler settings
 CC := gcc
+CFLAGS := -g
 LDFLAGS :=
 
 # Rules

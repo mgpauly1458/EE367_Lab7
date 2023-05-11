@@ -77,10 +77,24 @@ void print_dns_table (struct naming_table * naming_table) {
    }
 }
 
+/* Get the physical id of a domain name from the naming table */
+int get_physical_id(struct naming_table *naming_table, char *s) { 
+   printf("Debug: Entered get_physical_id\n");
+   print_dns_table(naming_table);
+   for(int i = 0; i < TABLE_SIZE; i++) {
+      if (strcmp(naming_table->entries[i].domain_name, s) == 0 && naming_table->entries[i].valid == 1) {
+         return naming_table->entries[i].physical_id;
+      }
+   }
+   return -1;  // not found
+}
+
 
 void dns_main(int host_id)
 {
 
+// Debug for succesful dns server creation
+printf("DNS Serve Host Node Created Succesfully\n");
 /* State */
 char dir[MAX_DIR_NAME];
 int dir_valid = 0;
@@ -162,85 +176,6 @@ for (k = 0; k < node_port_num; k++) {
 job_q_init(&job_q);
 
 while(1) {
-	/* Execute command from manager, if any */
-
-		/* Get command from manager */
-	n = get_man_command(man_port, man_msg, &man_cmd);
-
-		/* Execute command */
-	if (n>0) {
-		switch(man_cmd) {
-			case 's':
-				reply_display_host_state(man_port,
-					dir, 
-					dir_valid,
-					host_id);
-				break;	
-			
-			case 'm':
-				dir_valid = 1;
-				for (i=0; man_msg[i] != '\0'; i++) {
-					dir[i] = man_msg[i];
-				}
-				dir[i] = man_msg[i];
-				break;
-
-			case 'p': // Sending ping request
-				// Create new ping request packet
-				sscanf(man_msg, "%d", &dst);
-				new_packet = (struct packet *) 
-						malloc(sizeof(struct packet));	
-				new_packet->src =  host_id;
-				new_packet->dst =  dst;
-				new_packet->type = (char) PKT_PING_REQ;
-				new_packet->length = 0;
-				new_job = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				new_job->packet = new_packet;
-				new_job->type = JOB_SEND_PKT_ALL_PORTS;
-				job_q_add(&job_q, new_job);
-
-				new_job2 = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				ping_reply_received = 0;
-				new_job2->type = JOB_PING_WAIT_FOR_REPLY;
-				new_job2->ping_timer = 20;
-				job_q_add(&job_q, new_job2);
-
-				break;
-
-			case 'u': /* Upload a file to a host */
-				sscanf(man_msg, "%d %s", &dst, name);
-				new_job = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				new_job->type = JOB_FILE_UPLOAD_SEND;
-				new_job->file_upload_dst = dst;	
-				for (i=0; name[i] != '\0'; i++) {
-					new_job->fname_upload[i] = name[i];
-				}
-				new_job->fname_upload[i] = '\0';
-				job_q_add(&job_q, new_job);
-				
-            
-
-			case 'd':
-            sscanf(man_msg, "%d %s", &dst, name);
-            new_job = (struct host_job *) malloc(sizeof(struct host_job));
-            new_job->type = JOB_FILE_DOWNLOAD_SEND;
-            new_job->file_download_dst = dst;
-            for (i=0; name[i] != '\0'; i++) {
-               new_job->fname_download[i] = name[i];
-            }
-            new_job->fname_download[i] = '\0';
-            job_q_add(&job_q, new_job);
-            
-
-            break;
-			default:
-			;
-		}
-	}
-	
 	/*
 	 * Get packets from incoming links and translate to jobs
   	 * Put jobs in job queue
@@ -250,8 +185,8 @@ while(1) {
 
 		in_packet = (struct packet *) malloc(sizeof(struct packet));
 		n = packet_recv(node_port[k], in_packet);
-
 		if ((n > 0) && ((int) in_packet->dst == host_id)) {
+         printf("DNS server %d received packet from host node\n", in_packet->dst);
 			new_job = (struct host_job *) 
 				malloc(sizeof(struct host_job));
 			new_job->in_port_index = k;
@@ -274,63 +209,19 @@ while(1) {
 					free(in_packet);
 					free(new_job);
 					break;
-
-				/* 
-				 * The next two packet types
-				 * are for the upload file operation.
-				 *
-				 * The first type is the start packet
-				 * which includes the file name in
-				 * the payload.
-				 *
-				 * The second type is the end packet
-				 * which carries the content of the file
-				 * in its payload
-				 */
-		
-				case (char) PKT_FILE_UPLOAD_START:
-					new_job->type 
-						= JOB_FILE_UPLOAD_RECV_START;
-					job_q_add(&job_q, new_job);
-					break;
-            case (char) PKT_FILE_UPLOAD_CONT:
-               new_job->type = JOB_FILE_UPLOAD_RECV_CONT;
-               job_q_add(&job_q, new_job);
-               break;
-				case (char) PKT_FILE_UPLOAD_END:
-					new_job->type 
-						= JOB_FILE_UPLOAD_RECV_END;
-					job_q_add(&job_q, new_job);
-					break;
-            case (char) PKT_FILE_DOWNLOAD_SEND:
-               
-               new_job->type = JOB_FILE_DOWNLOAD_RECV;
-               job_q_add(&job_q, new_job);
-				   break;
-
-            /*
-             * The next three packet types are for 
-             * the operations using domain names.
-             *
-             * The first type is to request a domain name
-             * from the dns server.
-             *
-             * The second type is to send the domain
-             * name reply from the dns server to the 
-             * asking node.
-             *
-             * the third type is used to set a domain 
-             * name in the naming table of the dns server.
-             */
             case (char) PKT_GET_ID_P:
-               printf("get id packet p received\n");
+               printf("Debug: get id packet p received\n");
+               new_job->type = JOB_GET_ID_P;
+               job_q_add(&job_q, new_job);
+               printf("Debug: Return ID from dns job sent to queue\n"); 
                break;
             case (char) PKT_GET_ID_D:
-               new_job->type = JOB_RECV_GET_ID_D;
+               new_job->type = JOB_GET_ID_D;
                job_q_add(&job_q, new_job);
                printf("get id packet d received\n");
                break;
             case (char) PKT_SET_DOMAIN:
+               printf("Debug: set domain packet recieved from host node\n");
                new_job->type = JOB_SET_DOMAIN;
                job_q_add(&job_q, new_job);
                printf("Debug: Set domain job sent to queue\n");
@@ -361,16 +252,87 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
-		/* Add domain name from incoming packet to the naming_table */
+      /* Return the hostID of a domain name to the src node */
+      case JOB_GET_ID_P:
+         int physID;
+         int n;
+         physID = get_physical_id(&naming_table, new_job->packet->payload);
+         printf("Debug: Physical id for %s is %d\n", new_job->packet->payload, physID);
+         new_packet = (struct packet *)
+						malloc(sizeof(struct packet));
+		   new_packet->src = (char) DNS_SERVER_ID;
+         new_packet->dst = (char) new_job->packet->src;
+         new_packet->type = (char) PKT_RECV_ID_P;
+         new_packet->length = 0;
+         printf("Debug: new_packet->src (should be 100) = %d\n", new_packet->src);
+         printf("Debug: new_packet->dst = %d\n", physID);
+         printf("Debug: new_packet->type (should be 0) = %d\n", new_packet->type);
+
+         /* Store the physID from the naming table into the packet payload 
+            Then send it to all ports via a job. You must store the length of the payload since packet_send()
+            only sends a msg that is the size of length
+          * */
+         n = sprintf(new_packet->payload, "%d", physID);
+         new_packet->length = strlen(new_packet->payload);
+         /* Debug Statement */
+         printf("Debug: new_packet->payload holds %s\n", new_packet->payload);
+         new_job->packet = new_packet;
+         new_job->type = JOB_SEND_PKT_ALL_PORTS;
+         job_q_add(&job_q, new_job);
+         printf("Debug: Packet containing physical id sent back to host\n");
+         break;
+   case JOB_GET_ID_D:
+         printf("Recv get id job started");
+         /* create packet to get id */
+         // get the domain from payload
+         int i = 0;
+         while(new_job->packet->payload[i] != '#'){
+             i++;
+          }
+         int j;
+         int name_len = 0;
+         char domain_name[20] = "";
+         for(j = i+1; new_job->packet->payload[j] != '\0'; j++){
+            domain_name[name_len] = new_job->packet->payload[j];
+            name_len++;
+         }
+         //reset packet payload to just file name
+         domain_name[name_len] = '\0';
+         new_job->packet->payload[i] = '\0';
+
+         printf("Domain Name: %s \n", domain_name);
+         physID = get_physical_id(&naming_table, domain_name);
+         
+         new_packet = (struct packet *)
+                              malloc(sizeof(struct packet));
+         new_packet->src = (char) physID;
+         new_packet->dst = (char) new_job->packet->src;
+         new_packet->type = (char) PKT_RECV_ID_D;
+         new_packet->length = 0;
+
+         printf("Debug: new_packet->src (should be 100) = %d\n", physID);
+         printf("Debug: new_packet->dst = %d\n", physID);
+         printf("Debug: new_packet->type (should be 0) = %d\n", new_packet->type);
+         new_packet->length = strlen(new_packet->payload);
+         /* Debug Statement */
+         printf("Debug: new_packet->payload holds %s\n", new_packet->payload);
+         new_job->packet = new_packet;
+         new_job->type = JOB_SEND_PKT_ALL_PORTS;
+         job_q_add(&job_q, new_job);
+         printf("Debug: Packet containing physical id sent back to host\n");
+         break;
+
       case JOB_SET_DOMAIN:
          int table_id = 0;
+         int set_id = 1;
          printf("Starting job to register domain name %s as id %d\n",  // Debug statement to check packet 
                new_job->packet->payload, new_job->packet->src);
          /* Search the naming table for duplicate physical id's */
          for (i=0; i < TABLE_SIZE; i++) {
             if (naming_table.entries[i].valid == 1) {
-               if (new_job->packet->src == naming_table.entries[i].physical_id) {
+               if ((int)new_job->packet->src == (int)naming_table.entries[i].physical_id) {
                   printf("The physical id associated with this host node is already registered\n");
+                  set_id = 0;
                   break;
                }
             }
@@ -378,19 +340,21 @@ while(1) {
          /* Else add the domain name to the table 
           * First check for the first empty table entry then add
          */
-         while (naming_table.entries[table_id].valid == 1) {
-            table_id++;
+         if (set_id) {
+            while (naming_table.entries[table_id].valid == 1) {
+               table_id++;
+            }
+            new_job->packet->payload[new_job->packet->length] = '\0';  /* Make sure the name is null terminated */
+            strcpy(naming_table.entries[table_id].domain_name, new_job->packet->payload); // Add payload to table
+            naming_table.entries[table_id].valid = 1;
+            naming_table.entries[table_id].physical_id = new_job->packet->src;
+            /* Debug statement */
+            printf("Registered %s as %d at naming_table[%d]\n", 
+                  naming_table.entries[table_id].domain_name,
+                  naming_table.entries[table_id].physical_id,
+                  table_id);
+            print_dns_table(&naming_table);
          }
-         new_job->packet->payload[new_job->packet->length] = '\0';  /* Make sure the name is null terminated */
-         strcpy(naming_table.entries[table_id].domain_name, new_job->packet->payload); // Add payload to table
-         naming_table.entries[table_id].valid = 1;
-         naming_table.entries[table_id].physical_id = new_job->packet->src;
-         /* Debug statement */
-         printf("Registered %s as %d at naming_table[%d]\n", 
-               naming_table.entries[table_id].domain_name,
-               naming_table.entries[table_id].physical_id,
-               table_id);
-         print_dns_table(&naming_table);
          break;
       /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
@@ -400,40 +364,6 @@ while(1) {
 			free(new_job->packet);
 			free(new_job);
 			break;
-      /* Getting ID of DNS */
-      case JOB_RECV_GET_ID_D:
-         printf("Recv get id job started");
-         /* create packet to get id */
-         // get the domain from payload   
-         int i = 0;
-         while(new_job->packet->payload[i] != '\0'){
-            i++;
-         }
-         int j;
-         int name_len = 0;
-         char domain_name[20] = "";
-         for(j = i+1; new_job->packet->payload != '\0'; j++){
-            domain_name[name_len] = new_job->packet->payload[j];
-            name_len++;
-         }
-         domain_name[name_len] = '\0';
-
-         // Check d(main_name in exist in name table & corresponding host
-         printf("Domain Name: %s \n", domain_name);
-         int table_id = 0;
-         for (i=0; i < TABLE_SIZE; i++) {
-            if(strcmp(domain_name, naming_table.entries[i].domain_name) == 0){
-               break;
-            }
-         }
-         // src should be host id of domain name that was just checked
-         new_packet = (struct packet *)
-              malloc(sizeof(struct packet));
-         new_packet->dst = new_job->packet->src;
-         new_packet->src =  get_physical_id;
-         new_packet->type = PKT_ID_D;
-         new_packet->length = 0;
-         break;
 		/* The next three jobs deal with the pinging process */
 		case JOB_PING_SEND_REPLY:
 			/* Send a ping reply packet */

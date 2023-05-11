@@ -1,4 +1,4 @@
-#define MAX_TABLE_SIZE 100
+#define MAX_TABLE_SIZE 256
 
 void switch_main(int);
 

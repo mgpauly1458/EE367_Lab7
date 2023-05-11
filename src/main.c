@@ -38,11 +38,10 @@ void main() {
       return;
     } else if (pid == 0) {        /* The child process, which is a node  */
        if (p_node->type == HOST) { /* Execute host routine */
-         if (p_node->id == DNS_SERVER_ID) {
+         if (p_node->id == 100) {
             dns_main(p_node->id);
-         }
-         else {
-         host_main(p_node->id);
+         } else {
+            host_main(p_node->id);
          }
       } else if (p_node->type = SWITCH) {
         switch_main(p_node->id);

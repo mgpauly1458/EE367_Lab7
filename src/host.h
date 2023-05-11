@@ -36,8 +36,10 @@ enum host_job_type {
 	JOB_FILE_UPLOAD_RECV_START,
 	JOB_FILE_UPLOAD_RECV_CONT,
    JOB_FILE_UPLOAD_RECV_END,
-   JOB_RECV_GET_ID_P,
-   JOB_RECV_GET_ID_D,
+   JOB_GET_ID_D,
+   JOB_GET_ID_P,
+   JOB_RECV_ID_P,
+   JOB_RECV_ID_D,
    JOB_SET_DOMAIN
 };
 
@@ -60,6 +62,15 @@ struct job_queue {
 	struct host_job *tail;
 	int occ;
 };
+
+
+
+
+
+
+/*
+ In the main file we can create a struct dns_entry dns_server[TABLE_SIZE]. Then pass &dns_server into the init_dns_server function
+ */
 
 void host_main(int host_id);
 void dns_main(int host_id);
