@@ -51,5 +51,5 @@ struct packet { /* struct for a packet */
 #define PKT_GET_ID_P 7
 #define PKT_GET_ID_D 8
 #define PKT_SET_DOMAIN 9
-#define PKT_ID_P 10
-#define PKT_ID_D 11
+#define PKT_RECV_ID_P 10
+#define PKT_RECV_ID_D 11

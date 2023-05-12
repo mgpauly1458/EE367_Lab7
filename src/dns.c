@@ -41,6 +41,45 @@
 #include "packet.h"
 #include "switch.h"
 #include "host_util.h"
+#include "dns.h"
+
+void init_dns_table(struct naming_table * naming_table) {
+   for(int i = 0; i < TABLE_SIZE; i++) {
+      strcpy(naming_table->entries[i].domain_name, "\0");      // empty string
+      naming_table->entries[i].physical_id = -1;        // no id
+      naming_table->entries[i].valid = 0;               // not available    
+   }
+}
+
+/* Display the current valid domain names in the naming table  */
+void print_dns_table (struct naming_table * naming_table) {
+   int count = 0;
+   printf("%-20s %-10s %-10s\n", "Domain Name", "Physical ID", "Valid Bit");
+   for (int i = 0; i < TABLE_SIZE; i++) {
+      if (naming_table->entries[i].valid == 1) {
+         printf("%-20s %-10d %-10d\n", naming_table->entries[i].domain_name, 
+            naming_table->entries[i].physical_id,
+            naming_table->entries[i].valid);
+         count++;
+      }
+   }
+   // Debug statement
+   if (count == 0) {
+      printf("Naming table is still empty\n");
+   }
+}
+
+/* Get the physical id of a domain name from the naming table */
+int get_physical_id(struct naming_table *naming_table, char *s) { 
+   print_dns_table(naming_table);
+   for(int i = 0; i < TABLE_SIZE; i++) {
+      if (strcmp(naming_table->entries[i].domain_name, s) == 0 && naming_table->entries[i].valid == 1) {
+         return naming_table->entries[i].physical_id;
+      }
+   }
+   return -1;  // not found
+}
+
 
 void dns_main(int host_id)
 {
