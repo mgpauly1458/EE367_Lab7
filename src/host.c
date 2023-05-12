@@ -41,6 +41,7 @@
 #include "packet.h"
 #include "switch.h"
 #include "host_util.h"
+#include "dns.h"
 
 void host_main(int host_id)
 {
@@ -65,6 +66,7 @@ int i, k, n;
 int dst;
 char name[MAX_FILE_NAME];
 char string[PKT_PAYLOAD_MAX+1]; 
+char domain_name[MAX_NAME_LENGTH];
 
 FILE *fp;
 
@@ -74,6 +76,7 @@ struct packet *new_packet;
 struct net_port *p;
 struct host_job *new_job;
 struct host_job *new_job2;
+struct host_job *new_job3;
 
 struct job_queue job_q;
 
@@ -176,7 +179,7 @@ while(1) {
 				new_job->fname_upload[i] = '\0';
 				job_q_add(&job_q, new_job);
 				
-            
+            break;
 
 			case 'd':
             sscanf(man_msg, "%d %s", &dst, name);
@@ -191,7 +194,49 @@ while(1) {
             
 
             break;
-			default:
+
+         case 'k':
+            sscanf(man_msg, "%s", domain_name);
+            // Create the request packet to send to DNS Server w/ domain name
+            new_packet = (struct packet*) malloc(sizeof(struct packet *));
+            new_packet->src = (char)host_id;
+            new_packet->dst = (char)DNS_SERVER_ID;
+            new_packet->type = (char)PKT_SET_DOMAIN;
+            for (i=0; domain_name[i] != '\0'; i++) {
+               new_packet->payload[i] = domain_name[i];
+            }
+            new_packet->payload[i] = '\0';
+            new_packet->length = i;
+            // Create job to send the packet to all ports (it eventually ends up at dns server)
+            new_job = (struct host_job*)malloc(sizeof(struct host_job));
+            new_job->packet = new_packet;
+            new_job->type = JOB_SEND_PKT_ALL_PORTS;
+            job_q_add(&job_q, new_job);
+            break;
+
+         case 'g': // Ping with domain name
+				// Create new request hostid packett
+				sscanf(man_msg, "%s", domain_name);
+				new_packet = (struct packet *) 
+						malloc(sizeof(struct packet));	
+				new_packet->src =  (char)host_id;
+				new_packet->dst =  (char)DNS_SERVER_ID;
+				new_packet->type = (char) PKT_GET_ID_P;
+				new_packet->length = 0;
+            /* Fill payload with domain name */
+            for (i=0; domain_name[i] != '\0'; i++) {
+               new_packet->payload[i] = domain_name[i];
+            }
+            new_packet->payload[i] = '\0';
+            new_packet->length = i;
+				new_job = (struct host_job *) 
+						malloc(sizeof(struct host_job));
+				new_job->packet = new_packet;
+				new_job->type = JOB_SEND_PKT_ALL_PORTS;
+				job_q_add(&job_q, new_job);
+            break;
+
+         default:
 			;
 		}
 	}
@@ -262,6 +307,16 @@ while(1) {
                new_job->type = JOB_FILE_DOWNLOAD_RECV;
                job_q_add(&job_q, new_job);
 				   break;
+            
+            case (char) PKT_RECV_ID_P:
+               new_job->type = JOB_RECV_ID_P;
+               job_q_add(&job_q, new_job);
+               break;
+            
+            case (char) PKT_RECV_ID_D:
+               printf("Debug: id d packet received\n");
+               break;
+
             default:
 					free(in_packet);
 					free(new_job);
@@ -288,7 +343,34 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
-		/* Send packets on all ports */	
+		
+      case JOB_RECV_ID_P:
+         new_packet = (struct packet *)
+            malloc(sizeof(struct packet));
+			new_packet->src = host_id;
+			new_packet->dst = (char)atoi(new_job->packet->payload);
+			new_packet->type =  PKT_PING_REQ;
+			new_packet->length = 0;
+			new_job2 = (struct host_job *)
+            malloc(sizeof(struct host_job));
+			new_job2->packet = new_packet;
+			new_job2->type = JOB_SEND_PKT_ALL_PORTS;
+			job_q_add(&job_q, new_job2);
+
+			new_job3 = (struct host_job *)
+            malloc(sizeof(struct host_job));
+			ping_reply_received = 0;
+			new_job3->type = JOB_PING_WAIT_FOR_REPLY;
+			new_job3->ping_timer = 40;
+			job_q_add(&job_q, new_job3);
+         break;
+      
+      case JOB_RECV_ID_D:
+         printf("recv get id d job started\n");
+         break;
+
+
+      /* Send packets on all ports */	
 		case JOB_SEND_PKT_ALL_PORTS:
 			for (k=0; k<node_port_num; k++) {
 				packet_send(node_port[k], new_job->packet);

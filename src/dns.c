@@ -275,7 +275,27 @@ while(1) {
 		switch(new_job->type) {
 
          case JOB_GET_ID_P:
-            printf("job get_id_p started\n");
+            int physID;
+         int n;
+         physID = get_physical_id(&naming_table, new_job->packet->payload);
+         new_packet = (struct packet *)
+						malloc(sizeof(struct packet));
+		   new_packet->src = (char) DNS_SERVER_ID;
+         new_packet->dst = (char) new_job->packet->src;
+         new_packet->type = (char) PKT_RECV_ID_P;
+         new_packet->length = 0;
+
+         /* Store the physID from the naming table into the packet payload 
+            Then send it to all ports via a job. You must store the length of the payload since packet_send()
+            only sends a msg that is the size of length
+          * */
+         n = sprintf(new_packet->payload, "%d", physID);
+         new_packet->length = strlen(new_packet->payload);
+         new_packet->payload[new_packet->length] = '\0';
+         /* Debug Statement */
+         new_job->packet = new_packet;
+         new_job->type = JOB_SEND_PKT_ALL_PORTS;
+         job_q_add(&job_q, new_job);
             break;
 
          case JOB_GET_ID_D:
@@ -283,7 +303,31 @@ while(1) {
             break;
 
          case JOB_SET_DOMAIN:
-            printf("job set domain started\n");
+            int table_id = 0;
+         int set_id = 1;
+         /* Search the naming table for duplicate physical id's */
+         for (i=0; i < TABLE_SIZE; i++) {
+            if (naming_table.entries[i].valid == 1) {
+               if ((int)new_job->packet->src == (int)naming_table.entries[i].physical_id) {
+                  printf("The physical id associated with this host node is already registered\n");
+                  set_id = 0;
+                  break;
+               }
+            }
+         }
+         /* Else add the domain name to the table 
+          * First check for the first empty table entry then add
+         */
+         if (set_id) {
+            while (naming_table.entries[table_id].valid == 1) {
+               table_id++;
+            }
+            new_job->packet->payload[new_job->packet->length] = '\0';  /* Make sure the name is null terminated */
+            strcpy(naming_table.entries[table_id].domain_name, new_job->packet->payload); // Add payload to table
+            naming_table.entries[table_id].valid = 1;
+            naming_table.entries[table_id].physical_id = new_job->packet->src;
+            print_dns_table(&naming_table);
+         }
             break;
 
 		/* Send packets on all ports */	

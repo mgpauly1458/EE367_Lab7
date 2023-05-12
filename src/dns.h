@@ -1,6 +1,6 @@
 #define TABLE_SIZE 200
-#define MAX_NAME_LENGTH
-
+#define MAX_NAME_LENGTH 100
+#define DNS_SERVER_ID 100
 
 struct naming_table_entry {
    char domain_name[MAX_NAME_LENGTH+1];

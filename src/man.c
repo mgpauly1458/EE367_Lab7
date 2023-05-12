@@ -21,13 +21,13 @@ from a host.
 #include "host.h"
 #include "main.h"
 #include "net.h"
+#include "dns.h"
 
 #define MAXBUFFER 1000
 #define PIPE_WRITE 1
 #define PIPE_READ 0
 #define TENMILLISEC 10000
 #define DELAY_FOR_HOST_REPLY 10 /* Delay in ten of milliseconds */
-#define MAX_NAME_LENGTH 100
 
 
 
