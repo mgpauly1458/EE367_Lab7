@@ -1,7 +1,7 @@
 /**
- * @file dns.c
+ * @file host.c
  * 
- * @brief Implements the dns server main loop.
+ * @brief Implements the host main loop.
  * 
  * Assignment 4.1 was to allow the download and upload of files of 
  * up to 1000 bytes from other hosts without changing the packet 
@@ -564,6 +564,7 @@ case JOB_FILE_UPLOAD_RECV_START:
 } /* End of while loop */
 
 }
+
 
 
 

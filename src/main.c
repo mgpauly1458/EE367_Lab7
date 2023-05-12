@@ -12,6 +12,7 @@
 #include "man.h"
 #include "net.h"
 #include "switch.h"
+#include "dns.h"
 
 void main() {
   pid_t pid; /* Process id */
