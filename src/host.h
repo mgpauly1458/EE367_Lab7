@@ -35,7 +35,10 @@ enum host_job_type {
 	JOB_FILE_UPLOAD_RECV_CONT,
    JOB_FILE_UPLOAD_RECV_END,
    JOB_RECV_GET_ID_P,
-   JOB_RECV_GET_ID_D
+   JOB_RECV_GET_ID_D,
+   JOB_GET_ID_P,
+   JOB_GET_ID_D,
+   JOB_SET_DOMAIN
 };
 
 struct host_job {
