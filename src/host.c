@@ -167,33 +167,7 @@ while(1) {
 
 				break;
 
-			case 'u': /* Upload a file to a host */
-				sscanf(man_msg, "%d %s", &dst, name);
-				new_job = (struct host_job *) 
-						malloc(sizeof(struct host_job));
-				new_job->type = JOB_FILE_UPLOAD_SEND;
-				new_job->file_upload_dst = dst;	
-				for (i=0; name[i] != '\0'; i++) {
-					new_job->fname_upload[i] = name[i];
-				}
-				new_job->fname_upload[i] = '\0';
-				job_q_add(&job_q, new_job);
-				
-            break;
 
-			case 'd':
-            sscanf(man_msg, "%d %s", &dst, name);
-            new_job = (struct host_job *) malloc(sizeof(struct host_job));
-            new_job->type = JOB_FILE_DOWNLOAD_SEND;
-            new_job->file_download_dst = dst;
-            for (i=0; name[i] != '\0'; i++) {
-               new_job->fname_download[i] = name[i];
-            }
-            new_job->fname_download[i] = '\0';
-            job_q_add(&job_q, new_job);
-            
-
-            break;
 
          case 'k':
             sscanf(man_msg, "%s", domain_name);
@@ -234,6 +208,33 @@ while(1) {
 				new_job->packet = new_packet;
 				new_job->type = JOB_SEND_PKT_ALL_PORTS;
 				job_q_add(&job_q, new_job);
+            break;
+
+			case 'u': /* Upload a file to a host */
+				sscanf(man_msg, "%d %s", &dst, name);
+				new_job = (struct host_job *) 
+						malloc(sizeof(struct host_job));
+				new_job->type = JOB_FILE_UPLOAD_SEND;
+				new_job->file_upload_dst = dst;	
+				for (i=0; name[i] != '\0'; i++) {
+					new_job->fname_upload[i] = name[i];
+				}
+				new_job->fname_upload[i] = '\0';
+				job_q_add(&job_q, new_job);
+				
+
+			case 'd':
+            sscanf(man_msg, "%d %s", &dst, name);
+            new_job = (struct host_job *) malloc(sizeof(struct host_job));
+            new_job->type = JOB_FILE_DOWNLOAD_SEND;
+            new_job->file_download_dst = dst;
+            for (i=0; name[i] != '\0'; i++) {
+               new_job->fname_download[i] = name[i];
+            }
+            new_job->fname_download[i] = '\0';
+            job_q_add(&job_q, new_job);
+            
+
             break;
 
          default:
