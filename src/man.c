@@ -194,6 +194,7 @@ void register_domain_name(struct man_port_at_man * curr_host) {
 
    printf("Enter a domain name to save: ");
    scanf("%s", domain_name);
+
    n = sprintf(msg, "k %s", domain_name);
    write(curr_host->send_fd, msg, n);
 }
