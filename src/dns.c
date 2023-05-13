@@ -299,7 +299,52 @@ while(1) {
             break;
 
          case JOB_GET_ID_D:
-            printf("job get_id_d started\n");
+         
+         printf("job get_id_d started\n");
+         i = 0;
+         
+         while(new_job->packet->payload[i] != '#'){
+             i++;
+          }
+         int j;
+         int name_len = 0;
+         char domain_name[20] = "";
+         for(j = i+1; new_job->packet->payload[j] != '\0'; j++){
+            domain_name[name_len] = new_job->packet->payload[j];
+            name_len++;
+         }
+         //reset packet payload to just file name
+         domain_name[name_len] = '\0';
+         new_job->packet->payload[i] = '\0';
+         printf("debug: packet->payload(just filename)= %s \n", new_job->packet->payload);
+         printf("debug: domain Name: %s \n", domain_name);
+         physID = get_physical_id(&naming_table, domain_name);
+         printf("debug physid for domain name: %d \n",physID);
+         new_packet = (struct packet *)
+                              malloc(sizeof(struct packet));
+         new_packet->src =  physID;
+         new_packet->dst = (char) new_job->packet->src;
+         for (i=0; new_job->packet->payload[i] != '\0'; i++) {
+                  new_packet->payload[i] = new_job->packet->payload[i];
+         }
+         new_packet->type = (char) PKT_RECV_ID_D;
+         new_packet->length = 0;
+         
+         printf("\n Verify New Packet \n");
+         printf("Debug: new_packet->src (PhysID verify on name table) = %d\n", new_packet->src);
+         printf("Debug: new_packet->dst (current host_id) = %d\n", new_packet->dst);
+         printf("Debug: new_packet->type (should be 11) = %d\n", new_packet->type);
+         printf("Debug: new_packet->payload (filename) = %s \n", new_packet->payload);
+         new_packet->length = strlen(new_packet->payload);
+         
+         /* Debug Statement */ 
+         new_job = (struct host_job *)
+               malloc(sizeof(struct host_job));
+         new_job->packet = new_packet;
+         new_job->type = JOB_SEND_PKT_ALL_PORTS;
+         job_q_add(&job_q, new_job);
+         printf("Debug: Packet containing physical id sent back to host\n");
+
             break;
 
          case JOB_SET_DOMAIN:

@@ -167,7 +167,37 @@ while(1) {
 
 				break;
 
-
+         case 'j': // Download with domain name
+            printf("About to start download to domain process\n");
+            
+            sscanf(man_msg, "%s %s", domain_name, name);
+            new_packet = (struct packet*) malloc(sizeof(struct packet));
+            new_packet->src = (char)host_id;
+            new_packet->dst = (char)DNS_SERVER_ID;
+            new_packet->type = (char)PKT_GET_ID_D;
+            for (i=0; name[i] != '\0'; i++) {
+                  new_packet->payload[i] = name[i];
+             }
+            new_packet->payload[i] = '#';
+            //store domain name in packet
+            int j;
+            for(j=0; domain_name[j] != '\0'; j++){
+               new_packet->payload[i+1+j] = domain_name[j];
+            }
+            //separation between file name and domain_name is a #
+            new_packet->payload[i+1+j] = '\0';
+            new_packet->length = i+j+1;
+            printf("debug: packet->payload (should be file#domain) = %s \n", new_packet->payload);
+            new_job = (struct host_job *)
+                  malloc(sizeof(struct host_job));
+            
+            new_job = (struct host_job *)
+                  malloc(sizeof(struct host_job));
+            new_job->packet = new_packet;
+            new_job->type = JOB_SEND_PKT_ALL_PORTS;
+            job_q_add(&job_q, new_job);
+            
+            break;
 
          case 'k':
             sscanf(man_msg, "%s", domain_name);
@@ -315,7 +345,10 @@ while(1) {
                break;
             
             case (char) PKT_RECV_ID_D:
+               
                printf("Debug: id d packet received\n");
+               new_job->type = JOB_RECV_ID_D;
+               job_q_add(&job_q, new_job);
                break;
 
             default:
@@ -344,6 +377,30 @@ while(1) {
 		/* Send packet on all ports */
 		switch(new_job->type) {
 
+      case JOB_RECV_ID_D:
+         printf("recv get id d job started\n");
+         new_job2 = (struct host_job *) malloc(sizeof(struct host_job));
+         new_job2->type = JOB_FILE_DOWNLOAD_SEND;
+         new_job2->file_download_dst = new_job->packet->src;
+         for (i=0; new_job->packet->payload[i] != '#'; i++) {
+            new_job2->fname_download[i] = new_job->packet->payload[i];
+         }
+         new_job2->fname_download[i] = '\0';
+         printf("Debug: new_job src(3) = %d \n",new_job2->file_download_dst);
+         printf("Debug: fname_download(filename) %s \n", new_job2->fname_download);
+         job_q_add(&job_q, new_job2);
+         break;
+      
+         /* Send packets on all ports */
+		case JOB_SEND_PKT_ALL_PORTS:
+			printf("Debug: Entered job_send_pkt_all_ports\n");
+         printf("Debug: Sending packet type: %d\n", new_job->packet->type);
+         for (k=0; k<node_port_num; k++) {
+				packet_send(node_port[k], new_job->packet);
+			}
+			free(new_job->packet);
+			free(new_job);
+			break;
 		
       case JOB_RECV_ID_P:
          new_packet = (struct packet *)
@@ -366,19 +423,6 @@ while(1) {
 			job_q_add(&job_q, new_job3);
          break;
       
-      case JOB_RECV_ID_D:
-         printf("recv get id d job started\n");
-         break;
-
-
-      /* Send packets on all ports */	
-		case JOB_SEND_PKT_ALL_PORTS:
-			for (k=0; k<node_port_num; k++) {
-				packet_send(node_port[k], new_job->packet);
-			}
-			free(new_job->packet);
-			free(new_job);
-			break;
 
 		/* The next three jobs deal with the pinging process */
 		case JOB_PING_SEND_REPLY:
